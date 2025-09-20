@@ -38,7 +38,7 @@ export default function HeroSection() {
                     </div>
 
                     <div className="max-w-7xl text-center mr-auto ml-auto space-y-10">
-                        <h1 className="md:text-8xl lg:text-9xl leading-[0.95] text-4xl font-light text-white tracking-tight font-sedgwick-ave">
+                        <h1 className="md:text-8xl lg:text-9xl leading-[1.3] text-4xl font-light text-white tracking-tight font-sedgwick-ave">
                             Turning Concepts <br /> into Digital Airspace
                         </h1>
                         <p className="md:text-xl text-lg text-neutral-400 mt-6">
