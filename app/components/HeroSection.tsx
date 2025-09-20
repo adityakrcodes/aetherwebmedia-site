@@ -38,25 +38,25 @@ export default function HeroSection() {
                     </div>
 
                     <div className="max-w-7xl text-center mr-auto ml-auto space-y-10">
-                        <h1 className="md:text-8xl lg:text-9xl leading-[1.3] text-4xl font-light text-white tracking-tight font-sedgwick-ave">
+                        <h1 className="md:text-8xl lg:text-9xl leading-[1.3] text-4xl font-light text-white tracking-tight font-sedgwick-ave text-shadow-black text-shadow-md">
                             Turning Concepts <br /> into Digital Airspace
                         </h1>
-                        <p className="md:text-xl text-lg text-neutral-400 mt-6">
-                            Elevate your presence with identity systems and product visuals. We design for clarity, momentum, and measurable outcomes.
+                        <p className="md:text-xl text-lg text-neutral-100 mt-6 text-shadow-black text-shadow-md hidden">
+                            To empower businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.
                         </p>
 
                         <div className="flex flex-col gap-3 sm:flex-row mt-8 items-center justify-center">
                             <a href="#contact" className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
-                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                                 <span className="relative z-10 block bg-gray-950 rounded-xl pt-3 pr-6 pb-3 pl-6">
                                     <div className="relative z-10 flex items-center space-x-2">
-                                        <span className="transition-all duration-500 group-hover:translate-x-1 text-sm font-medium">Get Started Now</span>
+                                        <span className="transition-all duration-500 group-hover:translate-x-1 text-sm font-medium">Book a Call</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
                                     </div>
                                 </span>
                             </a>
                             <a href="#work" className="inline-flex items-center gap-2 ring-1 ring-white/15 hover:bg-white/10 transition text-sm font-medium text-white bg-white/5 rounded-xl pt-3 pr-5 pb-3 pl-5 backdrop-blur-lg">
-                                See Projects
+                                Explore Our Services
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
                             </a>
                         </div>
