@@ -58,7 +58,7 @@ export default function Header() {
 
       </div>
     </header>
-        <div className="md:hidden w-full h-screen px-15 absolute">
+        <div className="md:hidden w-full h-screen px-15 absolute overflow-hidden">
           <StaggeredMenu
             position="right"
             items={menuItems}
