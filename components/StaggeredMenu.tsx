@@ -481,7 +481,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             </ul>
 
             {displaySocials && socialItems && socialItems.length > 0 && (
-              <div className="sm-socials mt-auto pt-8 flex flex-col gap-3 mb-12" aria-label="Social links">
+              <div className="sm-socials mt-auto pt-8 flex flex-col gap-3 mb-18" aria-label="Social links">
                 <h3 className="sm-socials-title m-0 text-base font-medium [color:var(--sm-accent,#ff0000)]">Socials</h3>
                 <ul
                   className="sm-socials-list list-none m-0 p-0 flex flex-row items-center gap-4 flex-wrap"
@@ -547,8 +547,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
 @media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 10rem; right: 0; } .sm-scope .sm-panel-itemLabel { font-size: 3rem; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 400px) { .sm-scope .sm-prelayer { width: 40%; } .sm-scope .staggered-menu-panel { width: 100%; left: 4rem; right: 0; } .sm-scope .sm-panel-itemLabel { font-size: 2.5rem; } }
+@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 10rem; right: 0; } .sm-scope .sm-socials-link { font-size: 0.9rem; } .sm-scope .sm-panel-itemLabel { font-size: 3rem; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 400px) { .sm-scope .sm-prelayer { width: 40%; }  .sm-scope .staggered-menu-panel { width: 100%; left: 4rem; right: 0; } .sm-scope .sm-panel-itemLabel { font-size: 2.5rem; }  }
       `}</style>
     </div>
   );
