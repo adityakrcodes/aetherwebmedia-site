@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Qwigley } from "next/font/google";
+import { Geist, Geist_Mono, Qwigley, Moon_Dance, Sedgwick_Ave } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,6 +14,18 @@ const geistMono = Geist_Mono({
 
 const qwigley = Qwigley({
   variable: "--font-qwigley",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const moonDance = Moon_Dance({
+  variable: "--font-moon-dance",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const sedgwickAve = Sedgwick_Ave({
+  variable: "--font-sedgwick-ave",
   subsets: ["latin"],
   weight: "400",
 });
@@ -33,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${qwigley.variable} antialiased bg-neutral-950 text-neutral-200`}
+        className={`${geistSans.variable} ${geistMono.variable} ${qwigley.variable} ${moonDance.variable} ${sedgwickAve.variable} antialiased bg-neutral-950 text-neutral-200`}
       >
         {children}
       </body>
