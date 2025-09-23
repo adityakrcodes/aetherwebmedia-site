@@ -13,11 +13,11 @@ export default function Home() {
       <Header />
       <main>
         <HeroSection />
+        <ServicesSection />
         <WhatSetsUsApart />
         <Showcase />
         <AboutSection />
         <ProcessSection />
-        <ServicesSection />
       </main>
       <Footer />
     </div>
