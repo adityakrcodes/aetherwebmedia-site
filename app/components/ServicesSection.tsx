@@ -19,13 +19,15 @@ export default function ServicesSection() {
     const Skeleton = () => (
         <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800 "></div>
     );
-    const items = [
+    const saas = [
         {
-          title: "The Dawn of Innovation",
+          title: "SaaS m",
           description: "Explore the birth of groundbreaking ideas and inventions.",
           header: <Skeleton />,
           icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
         },
+    ]
+    const items = [
         {
           title: "The Digital Revolution",
           description: "Dive into the transformative power of technology.",
@@ -38,6 +40,8 @@ export default function ServicesSection() {
           header: <Skeleton />,
           icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
         },
+    ]
+    const items2 = [
         {
           title: "The Power of Communication",
           description:
@@ -57,12 +61,6 @@ export default function ServicesSection() {
           header: <Skeleton />,
           icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
         },
-        {
-          title: "The Spirit of Adventure",
-          description: "Embark on exciting journeys and thrilling discoveries.",
-          header: <Skeleton />,
-          icon: <IconBoxAlignRightFilled className="h-4 w-4 text-neutral-500" />,
-        },
       ];
     return (
         <section id="services" className="relative">
@@ -73,7 +71,19 @@ export default function ServicesSection() {
                 />
             </motion.div>
             <div className="my-5 p-2 md:p-0">
-                <BentoGrid className="max-w-4xl mx-auto">
+                <BentoGrid className="max-w-4xl mx-auto mt-2">
+                    {saas.map((item, i) => (
+                        <BentoGridItem
+                        key={i}
+                        title={item.title}
+                        description={item.description}
+                        header={item.header}
+                        icon={item.icon}
+                        className={i === 0 || i === 5 ? "md:col-span-3" : ""}
+                        />
+                    ))}
+                </BentoGrid>
+                <BentoGrid className="max-w-4xl mx-auto mt-2">
                     {items.map((item, i) => (
                         <BentoGridItem
                         key={i}
@@ -81,7 +91,19 @@ export default function ServicesSection() {
                         description={item.description}
                         header={item.header}
                         icon={item.icon}
-                        className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+                        className={i === 1 || i === 4 ? "md:col-span-2" : ""}
+                        />
+                    ))}
+                </BentoGrid>
+                <BentoGrid className="max-w-4xl mx-auto mt-2">
+                    {items2.map((item, i) => (
+                        <BentoGridItem
+                        key={i}
+                        title={item.title}
+                        description={item.description}
+                        header={item.header}
+                        icon={item.icon}
+                        className={i === 3 || i === 5 ? "md:col-span-3" : ""}
                         />
                     ))}
                 </BentoGrid>
