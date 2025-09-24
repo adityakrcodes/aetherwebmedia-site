@@ -21,43 +21,43 @@ export default function ServicesSection() {
     );
     const saas = [
         {
-          title: "SaaS m",
-          description: "Explore the birth of groundbreaking ideas and inventions.",
+          title: "SaaS MVP Development",
+          description: "We help startups launch quickly with lean, functional MVPs that validate ideas fast, attract users, and set the foundation for scalable SaaS products.",
           header: <Skeleton />,
           icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
         },
     ]
     const items = [
         {
-          title: "The Digital Revolution",
-          description: "Dive into the transformative power of technology.",
+          title: "Web Development",
+          description: "Websites that work harder, load faster, and scale smarter.",
           header: <Skeleton />,
           icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
         },
         {
-          title: "The Art of Design",
-          description: "Discover the beauty of thoughtful and functional design.",
+          title: "App Development",
+          description: "Our team builds intuitive, fast, and user-friendly mobile apps that deliver seamless experiences across devices, turning your idea into a tool people love to use.",
           header: <Skeleton />,
           icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
         },
     ]
     const items2 = [
         {
-          title: "The Power of Communication",
+          title: "Designing",
           description:
-            "Understand the impact of effective communication in our lives.",
+            "Creative, impactful designs that elevate your brand's identity.",
           header: <Skeleton />,
           icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
         },
         {
-          title: "The Pursuit of Knowledge",
-          description: "Join the quest for understanding and enlightenment.",
+          title: "Branding and Marketing",
+          description: "We shape brands that connect, engage, and grow.",
           header: <Skeleton />,
           icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
         },
         {
-          title: "The Joy of Creation",
-          description: "Experience the thrill of bringing ideas to life.",
+          title: "Ad Campaigns",
+          description: "Targeted campaigns that drive measurable results and ROI.",
           header: <Skeleton />,
           icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
         },
