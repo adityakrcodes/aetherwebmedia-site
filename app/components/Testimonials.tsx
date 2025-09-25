@@ -1,5 +1,5 @@
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-import { div } from "motion/react-client";
+import GradientBlinds from "@/components/GradientBlinds"
 
 export default function Testimonials(){
     const testimonials = [
@@ -40,11 +40,30 @@ export default function Testimonials(){
         },
       ];
       return(
-        <div>
-            <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium">Testimonials</h2>
+        <div className="relative h-screen">
+            <div className="absolute inset-0 z-0 pointer-events-none">
+            <GradientBlinds
+                gradientColors={['#FF9FFC', '#5227FF']}
+                angle={0}
+                noise={0.3}
+                blindCount={12}
+                blindMinWidth={50}
+                spotlightRadius={0.5}
+                spotlightSoftness={1}
+                spotlightOpacity={1}
+                mouseDampening={0.15}
+                distortAmount={0}
+                shineDirection="left"
+                mixBlendMode="lighten"
+                className="inset-0 z-0 absolute"
+                dpr={1}
+                paused={false}
+            />
             </div>
-            <AnimatedTestimonials testimonials={testimonials} />
+            <div className="relative z-10 mx-auto max-w-4xl text-center top-0 flex flex-col items-center justify-center h-screen">
+                <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium mt-20">Testimonials</h2>
+                <AnimatedTestimonials testimonials={testimonials} />
+            </div>
         </div>
       );
 }
