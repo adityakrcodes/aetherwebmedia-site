@@ -9,6 +9,7 @@ import ProcessSection from "./components/ProcessSection";
 import ServicesSection from "./components/ServicesSection";
 import WhyWorkWithUs from "./components/WhyWorkWithUs";
 import Footer from "./components/Footer";
+import Testimonials from "./components/Testimonials";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <ServicesSection />
         <WhyWorkWithUs />
         <Process />
+        <Testimonials />
         <Showcase />
         <AboutSection />
         <ProcessSection />
