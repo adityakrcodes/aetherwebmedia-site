@@ -32,6 +32,8 @@ export default function HeroSection() {
 
                     rotation={145}
 
+                    
+
                 />
 
             </div>

@@ -1,6 +1,8 @@
+"use client";
+
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-
+import Process from "./components/Process";
 import Showcase from "./components/Showcase";
 import AboutSection from "./components/AboutSection";
 import ProcessSection from "./components/ProcessSection";
@@ -16,6 +18,7 @@ export default function Home() {
         <HeroSection />
         <ServicesSection />
         <WhyWorkWithUs />
+        <Process />
         <Showcase />
         <AboutSection />
         <ProcessSection />
