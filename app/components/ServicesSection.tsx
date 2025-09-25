@@ -24,7 +24,6 @@ export default function ServicesSection() {
           title: "SaaS MVP Development",
           description: "We help startups launch quickly with lean, functional MVPs that validate ideas fast, attract users, and set the foundation for scalable SaaS products.",
           header: <Skeleton />,
-          icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
           url: "/services/saas",
         },
     ]
@@ -33,14 +32,12 @@ export default function ServicesSection() {
           title: "Web Development",
           description: "Websites that work harder, load faster, and scale smarter.",
           header: <Skeleton />,
-          icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
           url: "/services/web",
         },
         {
           title: "App Development",
           description: "Our team builds intuitive, fast, and user-friendly mobile apps that deliver seamless experiences across devices, turning your idea into a tool people love to use.",
           header: <Skeleton />,
-          icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
           url: "/services/app",
         },
     ]
@@ -50,21 +47,18 @@ export default function ServicesSection() {
           description:
             "Creative, impactful designs that elevate your brand's identity.",
           header: <Skeleton />,
-          icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
           url: "/services/design",
         },
         {
           title: "Branding and Marketing",
           description: "We shape brands that connect, engage, and grow.",
           header: <Skeleton />,
-          icon: <IconArrowWaveRightUp className="h-4 w-4 text-neutral-500" />,
           url: "/services/branding",
         },
         {
           title: "Ad Campaigns",
           description: "Targeted campaigns that drive measurable results and ROI.",
           header: <Skeleton />,
-          icon: <IconBoxAlignTopLeft className="h-4 w-4 text-neutral-500" />,
           url: "/services/ad",
         },
       ];
@@ -77,40 +71,37 @@ export default function ServicesSection() {
                 />
             </motion.div>
             <div className="my-5 p-2 md:p-0">
-                <BentoGrid className="max-w-4xl mx-auto mt-2">
+                <BentoGrid className="max-w-8/12 mx-auto mt-2">
                     {saas.map((item, i) => (
                         <BentoGridItem
                         key={i}
                         title={item.title}
                         description={item.description}
                         header={item.header}
-                        icon={item.icon}
                         className={i === 0 || i === 5 ? "md:col-span-3" : ""}
                         url={item.url}
                         />
                     ))}
                 </BentoGrid>
-                <BentoGrid className="max-w-4xl mx-auto mt-2">
+                <BentoGrid className="max-w-8/12 mx-auto mt-2">
                     {items.map((item, i) => (
                         <BentoGridItem
                         key={i}
                         title={item.title}
                         description={item.description}
                         header={item.header}
-                        icon={item.icon}
                         className={i === 1 || i === 4 ? "md:col-span-2" : ""}
                         url={item.url}
                         />
                     ))}
                 </BentoGrid>
-                <BentoGrid className="max-w-4xl mx-auto mt-2">
+                <BentoGrid className="max-w-8/12 mx-auto mt-2">
                     {items2.map((item, i) => (
                         <BentoGridItem
                         key={i}
                         title={item.title}
                         description={item.description}
                         header={item.header}
-                        icon={item.icon}
                         className={i === 3 || i === 5 ? "md:col-span-3" : ""}
                         url={item.url}
                         />
