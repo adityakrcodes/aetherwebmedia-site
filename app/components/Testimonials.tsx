@@ -44,7 +44,7 @@ export default function Testimonials(){
             <div className="absolute inset-0 z-0 pointer-events-none">
             <GradientBlinds
                 gradientColors={['#FF9FFC', '#5227FF']}
-                angle={0}
+                angle={25}
                 noise={0.3}
                 blindCount={12}
                 blindMinWidth={50}
@@ -61,8 +61,10 @@ export default function Testimonials(){
             />
             </div>
             <div className="relative z-10 mx-auto max-w-4xl text-center top-0 flex flex-col items-center justify-center h-screen">
-                <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium mt-20">Testimonials</h2>
-                <AnimatedTestimonials testimonials={testimonials} />
+                <div className="bg-black/50 backdrop-blur-md rounded-2xl p-2 md:p-4">
+                    <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium">Testimonials</h2>
+                    <AnimatedTestimonials testimonials={testimonials} />
+                </div>
             </div>
         </div>
       );
