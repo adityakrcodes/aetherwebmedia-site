@@ -10,6 +10,7 @@ import ServicesSection from "./components/ServicesSection";
 import WhyWorkWithUs from "./components/WhyWorkWithUs";
 import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
+import Pricing from "./components/Pricing";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
         <WhyWorkWithUs />
         <Process />
         <Testimonials />
-        <Showcase />
+        <Pricing />
         <AboutSection />
         <ProcessSection />
       </main>
