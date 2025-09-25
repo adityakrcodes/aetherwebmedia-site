@@ -1,10 +1,11 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import WhatSetsUsApart from "./components/WhatSetsUsApart";
+
 import Showcase from "./components/Showcase";
 import AboutSection from "./components/AboutSection";
 import ProcessSection from "./components/ProcessSection";
 import ServicesSection from "./components/ServicesSection";
+import WhyWorkWithUs from "./components/WhyWorkWithUs";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <ServicesSection />
-        <WhatSetsUsApart />
+        <WhyWorkWithUs />
         <Showcase />
         <AboutSection />
         <ProcessSection />
