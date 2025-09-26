@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
-import LazyComponent from "@/components/LazyComponent";
+
 import { useScrollOptimization } from "@/hooks/useScrollOptimization";
 import { useEffect } from "react";
 
@@ -43,27 +43,27 @@ export default function Home() {
         style={{ boxShadow: "0 20px 50px -12px rgba(0,0,0,1), 0 50px 140px -40px rgba(0,0,0,1)" }}
       >
         <HeroSection />
-        <LazyComponent>
+        
           <ServicesSection />
-        </LazyComponent>
-        <LazyComponent>
+        
+        
           <WhyWorkWithUs />
-        </LazyComponent>
-        <LazyComponent>
+        
+        
           <Process />
-        </LazyComponent>
-        <LazyComponent>
+        
+       
           <Testimonials />
-        </LazyComponent>
-        <LazyComponent>
+        
+        
           <Pricing />
-        </LazyComponent>
-        <LazyComponent>
+        
+        
           <AboutSection />
-        </LazyComponent>
-        <LazyComponent>
+        
+        
           <FAQ />
-        </LazyComponent>
+        
       </main>
       {/* Sticky-reveal footer section for parallax-style reveal */}
       <section className="relative min-h-screen">
