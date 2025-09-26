@@ -224,15 +224,15 @@ function parseLogoImage(file: File | string | { src: string }): Promise<{ imageD
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = function () {
-      // Force SVG to load at a high fidelity size if it's an SVG
+      // Force SVG to load at a moderate fidelity size if it's an SVG
       if (typeof file === 'string' ? file.endsWith('.svg') : 
           (file instanceof File && file.type === 'image/svg+xml')) {
-        img.width = 1000;
-        img.height = 1000;
+        img.width = 512;
+        img.height = 512;
       }
 
-      const MAX_SIZE = 1000;
-      const MIN_SIZE = 500;
+      const MAX_SIZE = 512;
+      const MIN_SIZE = 256;
       let width = img.naturalWidth;
       let height = img.naturalHeight;
 
@@ -310,7 +310,7 @@ function parseLogoImage(file: File | string | { src: string }): Promise<{ imageD
         }
       }
 
-      var ITERATIONS = 300;
+      var ITERATIONS = 150;
 
       function getU(x: number, y: number, arr: Float32Array) {
         if (x < 0 || x >= width || y < 0 || y >= height) return 0;
@@ -412,12 +412,12 @@ export interface MetallicLiquidLogoProps {
 }
 
 const defaultParams: ShaderParams = {
-  patternScale: 2,
-  refraction: 0.015,
+  patternScale: 1.5,
+  refraction: 0.01,
   edge: 0.4,
-  patternBlur: 0.005,
-  liquid: 0.07,
-  speed: 0.3,
+  patternBlur: 0.008,
+  liquid: 0.05,
+  speed: 0.2,
 };
 
 export function MetallicLiquidLogo({
@@ -483,7 +483,7 @@ export function MetallicLiquidLogo({
 
       // Try WebGL2 first, fallback to WebGL1
       let gl = canvas.getContext('webgl2', {
-        antialias: true,
+        antialias: false, // Disable antialiasing for better performance
         alpha: true,
         premultipliedAlpha: false,
         preserveDrawingBuffer: false,
@@ -492,7 +492,7 @@ export function MetallicLiquidLogo({
       if (!gl) {
         console.warn('WebGL2 not supported, falling back to WebGL1');
         gl = canvas.getContext('webgl', {
-          antialias: true,
+          antialias: false, // Disable antialiasing for better performance
           alpha: true,
           premultipliedAlpha: false,
           preserveDrawingBuffer: false,
@@ -596,13 +596,22 @@ export function MetallicLiquidLogo({
     updateUniforms();
   }, [gl, shaderParams, uniforms]);
 
-  // Render every frame
+  // Render every frame with throttling
   useEffect(() => {
     if (!gl || !uniforms) return;
 
     let renderId: number;
+    let lastFrameTime = 0;
+    const targetFPS = 30; // Limit to 30 FPS instead of 60
+    const frameInterval = 1000 / targetFPS;
 
     function render(currentTime: number) {
+      if (currentTime - lastFrameTime < frameInterval) {
+        renderId = requestAnimationFrame(render);
+        return;
+      }
+      
+      lastFrameTime = currentTime;
       const deltaTime = currentTime - lastRenderTime.current;
       lastRenderTime.current = currentTime;
 
@@ -621,6 +630,7 @@ export function MetallicLiquidLogo({
 
     // Kick off the render loop
     lastRenderTime.current = performance.now();
+    lastFrameTime = performance.now();
     renderId = requestAnimationFrame(render);
 
     return () => {
@@ -638,8 +648,10 @@ export function MetallicLiquidLogo({
       gl.uniform1f(uniforms.u_img_ratio, imgRatio);
 
       const side = size;
-      canvas.width = side * devicePixelRatio;
-      canvas.height = side * devicePixelRatio;
+      // Use lower pixel ratio for better performance
+      const pixelRatio = Math.min(devicePixelRatio, 1.5);
+      canvas.width = side * pixelRatio;
+      canvas.height = side * pixelRatio;
       gl.viewport(0, 0, canvas.height, canvas.height);
       gl.uniform1f(uniforms.u_ratio, 1);
       gl.uniform1f(uniforms.u_img_ratio, imgRatio);
@@ -667,9 +679,9 @@ export function MetallicLiquidLogo({
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, imageTexture);
 
-    // Set texture parameters before uploading the data
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    // Set texture parameters before uploading the data - use NEAREST for better performance
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
