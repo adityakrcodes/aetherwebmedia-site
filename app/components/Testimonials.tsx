@@ -1,5 +1,5 @@
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
-import GradientBlinds from "@/components/GradientBlinds"
+import DotGrid from "@/components/DotGrid";
 
 export default function Testimonials(){
     const testimonials = [
@@ -40,31 +40,33 @@ export default function Testimonials(){
         },
       ];
       return(
-        <div className="relative h-screen">
+        <div className="relative ">
             <div className="absolute inset-0 z-0 pointer-events-none">
-            <GradientBlinds
-                gradientColors={['#FF9FFC', '#5227FF']}
-                angle={25}
-                noise={0.3}
-                blindCount={12}
-                blindMinWidth={50}
-                spotlightRadius={0.5}
-                spotlightSoftness={1}
-                spotlightOpacity={1}
-                mouseDampening={0.15}
-                distortAmount={0}
-                shineDirection="left"
-                mixBlendMode="lighten"
-                className="inset-0 z-0 absolute"
-                dpr={1}
-                paused={false}
-            />
+            <DotGrid
+
+                dotSize={5}
+
+                gap={12}
+
+                baseColor="#060405"
+
+                activeColor="#79757A"
+
+                proximity={170}
+
+                shockRadius={200}
+
+                shockStrength={5}
+
+                resistance={750}
+
+                returnDuration={1.5}
+
+                />
             </div>
-            <div className="relative z-10 mx-auto max-w-4xl text-center top-0 flex flex-col items-center justify-center h-screen">
-                <div className="bg-black/50 backdrop-blur-md rounded-2xl p-2 md:p-4">
-                    <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium">Testimonials</h2>
-                    <AnimatedTestimonials testimonials={testimonials} />
-                </div>
+            <div className="relative z-10 mx-auto text-center top-0 flex flex-col items-center justify-center h-screen p-2 md:p-4 w-screen">
+                <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium">Testimonials</h2>
+                <AnimatedTestimonials testimonials={testimonials} />
             </div>
         </div>
       );
