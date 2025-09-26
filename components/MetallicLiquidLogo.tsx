@@ -493,7 +493,7 @@ export function MetallicLiquidLogo({
   const totalAnimationTime = useRef(0);
   const lastRenderTime = useRef(0);
 
-  // Adjust parameters based on performance mode
+  // Adjust parameters based on performance mode - more aggressive optimization
   const getOptimizedParams = () => {
     const baseParams = { ...defaultParams, ...params };
     
@@ -501,21 +501,27 @@ export function MetallicLiquidLogo({
       case 'low':
         return {
           ...baseParams,
+          patternScale: 0.8,
+          refraction: 0.003,
+          liquid: 0.01,
+          speed: 0.05,
+        };
+      case 'medium':
+        return {
+          ...baseParams,
           patternScale: 1.0,
           refraction: 0.005,
           liquid: 0.02,
-          speed: 0.1,
+          speed: 0.08,
         };
-      case 'medium':
+      default:
         return {
           ...baseParams,
           patternScale: 1.1,
           refraction: 0.006,
           liquid: 0.025,
-          speed: 0.12,
+          speed: 0.1,
         };
-      default:
-        return baseParams;
     }
   };
 

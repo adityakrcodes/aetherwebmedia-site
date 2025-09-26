@@ -3,9 +3,9 @@ import logo from '@/public/transparent.svg';
 
 export default function Footer() {
   return (
-    <footer className="relative min-h-screen flex flex-col">
+    <footer className="relative min-h-screen flex flex-col bg-black">
       {/* Main content area */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-16">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 min-h-[80vh]">
         {/* Call to Action Section */}
         <div className="text-center mb-16">
           {/* Globe Icon */}
@@ -46,25 +46,25 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="border-t border-white/10 px-4 py-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-white text-sm">
+      <div className="border-t border-white/10 px-4 py-8 mt-auto">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-white text-sm space-y-4 md:space-y-0">
           {/* Copyright */}
-          <div className="mb-4 md:mb-0">
+          <div className="order-2 md:order-1">
             ©2025 PORTX.DESIGN
           </div>
           
           {/* Social Links */}
-          <div className="mb-4 md:mb-0 space-x-6">
-            <span>DRIBBLE</span>
-            <span>IG</span>
-            <span>X</span>
-            <span>BE</span>
-            <span>IN</span>
+          <div className="order-1 md:order-2 space-x-6">
+            <span className="hover:text-gray-300 cursor-pointer">DRIBBLE</span>
+            <span className="hover:text-gray-300 cursor-pointer">IG</span>
+            <span className="hover:text-gray-300 cursor-pointer">X</span>
+            <span className="hover:text-gray-300 cursor-pointer">BE</span>
+            <span className="hover:text-gray-300 cursor-pointer">IN</span>
           </div>
           
           {/* Back to Top */}
           <button 
-            className="uppercase hover:underline"
+            className="order-3 uppercase hover:underline transition-colors duration-200"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             BACK TO TOP

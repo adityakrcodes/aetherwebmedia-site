@@ -64,10 +64,10 @@ export default function PerformanceMonitor() {
     };
   }, []);
 
-  // Only show in development
-  if (process.env.NODE_ENV !== 'development') {
-    return null;
-  }
+  // Show in both development and production for testing
+  // if (process.env.NODE_ENV !== 'development') {
+  //   return null;
+  // }
 
   return (
     <div className="fixed top-4 right-4 z-50 bg-black/80 text-white p-2 rounded text-xs font-mono">
