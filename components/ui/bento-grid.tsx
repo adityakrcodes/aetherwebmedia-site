@@ -33,8 +33,11 @@ export const BentoGridItem = ({
   header?: React.ReactNode;
   url?: string | null;
 }) => {
+  const Container: any = url ? Link : 'div';
+  const containerProps = url ? { href: url } : {};
   return (
-    <Link href={url || ""}
+    <Container
+      {...containerProps}
       className={cn(
         "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border  p-4 transition duration-200  border-white/[0.2] bg-black",
         className,
@@ -49,6 +52,6 @@ export const BentoGridItem = ({
           {description}
         </div>
       </div>
-    </Link>
+    </Container>
   );
 };
