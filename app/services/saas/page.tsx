@@ -3,7 +3,7 @@
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import DotGrid from "@/components/DotGrid";
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { SaasBentoGrid, SaasBentoGridItem } from "@/components/ui/saas-bento-grid";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 
 export default function Saas() {
@@ -139,17 +139,17 @@ export default function Saas() {
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center">Outcomes over features</h2>
           <p className="text-neutral-300 mt-4 text-center max-w-2xl mx-auto">What you can expect within the first release window.</p>
-          <BentoGrid className="mt-8">
+          <SaasBentoGrid className="mt-8">
             {outcomes.map((o, i) => (
-              <BentoGridItem
+              <SaasBentoGridItem
                 key={o.title}
                 title={o.title}
                 description={o.desc}
                 header={<div className="h-20 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-800" />}
-                className={i % 4 === 0 ? "md:col-span-2" : ""}
+                className={i % 4 === 0 ? "md:col-span-2 lg:col-span-2" : ""}
               />
             ))}
-          </BentoGrid>
+          </SaasBentoGrid>
         </div>
       </section>
 
