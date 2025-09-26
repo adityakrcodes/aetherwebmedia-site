@@ -15,25 +15,14 @@ export default function HeroSection() {
             <div className="w-full h-full absolute top-0 left-0">
 
                 <Beams
-
                     beamWidth={3.2}
-
                     beamHeight={30}
-
-                    beamNumber={12}
-
+                    beamNumber={4}
                     lightColor="#ffffff"
-
                     speed={5.5}
-
                     noiseIntensity={1.75}
-
                     scale={0.2}
-
                     rotation={145}
-
-                    
-
                 />
 
             </div>
