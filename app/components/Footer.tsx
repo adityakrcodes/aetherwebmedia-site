@@ -15,7 +15,7 @@ export default function Footer() {
           
           {/* Main Heading */}
           <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-wider mb-6 font-poppins">
-            READY TO COLLABORATE?
+            READY TO SHIP?
           </h2>
           
           {/* Subtext */}

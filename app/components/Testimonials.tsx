@@ -43,25 +43,15 @@ export default function Testimonials(){
         <div className="relative ">
             <div className="absolute inset-0 z-0 pointer-events-none">
             <DotGrid
-
-                dotSize={5}
-
-                gap={12}
-
+                dotSize={4}
+                gap={16}
                 baseColor="#060405"
-
                 activeColor="#79757A"
-
-                proximity={170}
-
-                shockRadius={200}
-
-                shockStrength={5}
-
-                resistance={750}
-
-                returnDuration={1.5}
-
+                proximity={120}
+                shockRadius={150}
+                shockStrength={3}
+                resistance={900}
+                returnDuration={1.2}
                 />
             </div>
             <div className="relative z-10 mx-auto text-center top-0 flex flex-col items-center justify-center h-screen p-2 md:p-4 w-screen">

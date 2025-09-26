@@ -1,39 +1,52 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Qwigley, Moon_Dance, Sedgwick_Ave, Poppins } from "next/font/google";
 import "./globals.css";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: 'swap',
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: 'swap',
+  preload: false,
 });
 
 const qwigley = Qwigley({
   variable: "--font-qwigley",
   subsets: ["latin"],
   weight: "400",
+  display: 'swap',
+  preload: false,
 });
 
 const moonDance = Moon_Dance({
   variable: "--font-moon-dance",
   subsets: ["latin"],
   weight: "400",
+  display: 'swap',
+  preload: false,
 });
 
 const sedgwickAve = Sedgwick_Ave({
   variable: "--font-sedgwick-ave",
   subsets: ["latin"],
   weight: "400",
+  display: 'swap',
+  preload: false,
 });
 
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: "400",
+  display: 'swap',
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -96,6 +109,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${qwigley.variable} ${moonDance.variable} ${poppins.variable} ${sedgwickAve.variable} antialiased bg-neutral-950 text-neutral-200`}
       >
         {children}
+        <PerformanceMonitor />
       </body>
     </html>
   );

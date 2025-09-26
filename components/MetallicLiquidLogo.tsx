@@ -28,6 +28,7 @@ uniform float u_refraction;
 uniform float u_edge;
 uniform float u_patternBlur;
 uniform float u_liquid;
+uniform float u_simpleMode;
 
 #define TWO_PI 6.28318530718
 #define PI 3.14159265358979323846
@@ -125,6 +126,25 @@ void main() {
 
     vec3 color = vec3(0.);
     float opacity = 1.;
+
+    // Simple mode for low-end devices
+    if (u_simpleMode > 0.5) {
+        vec3 color1 = vec3(1.0, 1.0, 1.0);
+        vec3 color2 = vec3(0.3, 0.3, 0.4);
+        
+        float edge = img.r;
+        opacity = 1. - smoothstep(.8, 1.0, edge);
+        opacity *= get_img_frame_alpha(img_uv, 0.01);
+        
+        float stripe = mod(uv.x + uv.y + t * 0.5, 0.3);
+        float stripe_factor = smoothstep(0.0, 0.1, stripe) * smoothstep(0.2, 0.1, stripe);
+        
+        color = mix(color2, color1, stripe_factor);
+        color *= opacity;
+        
+        gl_FragColor = vec4(color, opacity);
+        return;
+    }
 
     vec3 color1 = vec3(1.0, 1.0, 1.0);  // Bright metallic highlights
     vec3 color2 = vec3(0.2, 0.2, 0.3 + 0.2 * smoothstep(.7, 1.3, uv.x + uv.y));  // Enhanced depth
@@ -224,15 +244,15 @@ function parseLogoImage(file: File | string | { src: string }): Promise<{ imageD
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = function () {
-      // Force SVG to load at a moderate fidelity size if it's an SVG
+      // Force SVG to load at a lower fidelity size if it's an SVG
       if (typeof file === 'string' ? file.endsWith('.svg') : 
           (file instanceof File && file.type === 'image/svg+xml')) {
-        img.width = 512;
-        img.height = 512;
+        img.width = 256;
+        img.height = 256;
       }
 
-      const MAX_SIZE = 512;
-      const MIN_SIZE = 256;
+      const MAX_SIZE = 256;
+      const MIN_SIZE = 128;
       let width = img.naturalWidth;
       let height = img.naturalHeight;
 
@@ -310,7 +330,7 @@ function parseLogoImage(file: File | string | { src: string }): Promise<{ imageD
         }
       }
 
-      var ITERATIONS = 150;
+      var ITERATIONS = 75;
 
       function getU(x: number, y: number, arr: Float32Array) {
         if (x < 0 || x >= width || y < 0 || y >= height) return 0;
@@ -412,12 +432,12 @@ export interface MetallicLiquidLogoProps {
 }
 
 const defaultParams: ShaderParams = {
-  patternScale: 1.5,
-  refraction: 0.01,
+  patternScale: 1.2,
+  refraction: 0.008,
   edge: 0.4,
-  patternBlur: 0.008,
-  liquid: 0.05,
-  speed: 0.2,
+  patternBlur: 0.01,
+  liquid: 0.03,
+  speed: 0.15,
 };
 
 export function MetallicLiquidLogo({
@@ -434,15 +454,72 @@ export function MetallicLiquidLogo({
   const [processing, setProcessing] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
+  const [performanceMode, setPerformanceMode] = useState<'high' | 'medium' | 'low'>('high');
 
   useEffect(() => {
     setIsClient(true);
+    
+    // Detect device performance capabilities
+    const detectPerformanceMode = () => {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') as WebGLRenderingContext | null;
+      
+      if (!gl) {
+        setPerformanceMode('low');
+        return;
+      }
+
+      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+      const renderer = debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : '';
+      
+      // Detect low-end devices
+      const isLowEnd = 
+        navigator.hardwareConcurrency <= 2 ||
+        /mali|adreno|powervr|intel.*hd|intel.*iris/i.test(renderer) ||
+        /mobile|android|iphone|ipad/i.test(navigator.userAgent);
+      
+      if (isLowEnd) {
+        setPerformanceMode('low');
+      } else if (navigator.hardwareConcurrency <= 4) {
+        setPerformanceMode('medium');
+      } else {
+        setPerformanceMode('high');
+      }
+    };
+
+    detectPerformanceMode();
   }, []);
   
   const totalAnimationTime = useRef(0);
   const lastRenderTime = useRef(0);
 
-  const shaderParams = { ...defaultParams, ...params };
+  // Adjust parameters based on performance mode
+  const getOptimizedParams = () => {
+    const baseParams = { ...defaultParams, ...params };
+    
+    switch (performanceMode) {
+      case 'low':
+        return {
+          ...baseParams,
+          patternScale: 1.0,
+          refraction: 0.005,
+          liquid: 0.02,
+          speed: 0.1,
+        };
+      case 'medium':
+        return {
+          ...baseParams,
+          patternScale: 1.1,
+          refraction: 0.006,
+          liquid: 0.025,
+          speed: 0.12,
+        };
+      default:
+        return baseParams;
+    }
+  };
+
+  const shaderParams = getOptimizedParams();
 
   // Process the SVG source
   useEffect(() => {
@@ -468,6 +545,7 @@ export function MetallicLiquidLogo({
     gl.uniform1f(uniforms.u_patternScale, shaderParams.patternScale);
     gl.uniform1f(uniforms.u_refraction, shaderParams.refraction);
     gl.uniform1f(uniforms.u_liquid, shaderParams.liquid);
+    gl.uniform1f(uniforms.u_simpleMode, performanceMode === 'low' ? 1.0 : 0.0);
   }
 
   // Initialize WebGL
@@ -596,16 +674,38 @@ export function MetallicLiquidLogo({
     updateUniforms();
   }, [gl, shaderParams, uniforms]);
 
-  // Render every frame with throttling
+  // Render every frame with aggressive throttling
   useEffect(() => {
     if (!gl || !uniforms) return;
 
     let renderId: number;
     let lastFrameTime = 0;
-    const targetFPS = 30; // Limit to 30 FPS instead of 60
+    
+    // Adjust FPS based on performance mode
+    const getTargetFPS = () => {
+      switch (performanceMode) {
+        case 'low': return 15;
+        case 'medium': return 20;
+        default: return 25;
+      }
+    };
+    
+    const targetFPS = getTargetFPS();
     const frameInterval = 1000 / targetFPS;
+    let isVisible = true;
+
+    // Pause animation when tab is not visible
+    const handleVisibilityChange = () => {
+      isVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     function render(currentTime: number) {
+      if (!isVisible) {
+        renderId = requestAnimationFrame(render);
+        return;
+      }
+
       if (currentTime - lastFrameTime < frameInterval) {
         renderId = requestAnimationFrame(render);
         return;
@@ -635,8 +735,9 @@ export function MetallicLiquidLogo({
 
     return () => {
       cancelAnimationFrame(renderId);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
-  }, [gl, shaderParams.speed]);
+  }, [gl, shaderParams.speed, performanceMode]);
 
   // Handle canvas resize and image data
   useEffect(() => {
@@ -648,8 +749,16 @@ export function MetallicLiquidLogo({
       gl.uniform1f(uniforms.u_img_ratio, imgRatio);
 
       const side = size;
-      // Use lower pixel ratio for better performance
-      const pixelRatio = Math.min(devicePixelRatio, 1.5);
+      // Adjust pixel ratio based on performance mode
+      const getPixelRatio = () => {
+        switch (performanceMode) {
+          case 'low': return 0.75;
+          case 'medium': return 1.0;
+          default: return Math.min(devicePixelRatio, 1.25);
+        }
+      };
+      
+      const pixelRatio = getPixelRatio();
       canvas.width = side * pixelRatio;
       canvas.height = side * pixelRatio;
       gl.viewport(0, 0, canvas.height, canvas.height);
@@ -663,9 +772,9 @@ export function MetallicLiquidLogo({
     return () => {
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, [canvas, gl, uniforms, imageData, size]);
+  }, [canvas, gl, uniforms, imageData, size, performanceMode]);
 
-  // Upload texture
+  // Upload texture with optimization
   useEffect(() => {
     if (!gl || !uniforms || !imageData) return;
 
@@ -679,16 +788,18 @@ export function MetallicLiquidLogo({
     gl.activeTexture(gl.TEXTURE0);
     gl.bindTexture(gl.TEXTURE_2D, imageTexture);
 
-    // Set texture parameters before uploading the data - use NEAREST for better performance
+    // Set texture parameters for maximum performance
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
-    // Ensure power-of-two dimensions or use appropriate texture parameters
+    // Optimize pixel storage
     gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
 
     try {
+      // Use smaller internal format for better performance
       gl.texImage2D(
         gl.TEXTURE_2D,
         0,

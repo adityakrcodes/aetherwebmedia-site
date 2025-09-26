@@ -16,6 +16,18 @@ const throttle = (func: (...args: any[]) => void, limit: number) => {
   };
 };
 
+// Performance monitoring
+const getPerformanceMode = () => {
+  if (typeof window === 'undefined') return 'high';
+  
+  const isLowEnd = 
+    navigator.hardwareConcurrency <= 2 ||
+    /mobile|android|iphone|ipad/i.test(navigator.userAgent) ||
+    window.innerWidth < 768;
+  
+  return isLowEnd ? 'low' : 'high';
+};
+
 interface Dot {
   cx: number;
   cy: number;
@@ -65,6 +77,26 @@ const DotGrid: React.FC<DotGridProps> = ({
   className = '',
   style
 }) => {
+  const performanceMode = getPerformanceMode();
+  
+  // Adjust settings based on performance mode - more aggressive optimization
+  const optimizedProps = performanceMode === 'low' ? {
+    dotSize: Math.max(dotSize * 0.6, 6),
+    gap: Math.max(gap * 1.5, 32),
+    proximity: proximity * 0.6,
+    shockRadius: shockRadius * 0.6,
+    shockStrength: shockStrength * 0.5,
+    maxSpeed: maxSpeed * 0.6,
+    resistance: resistance * 1.5
+  } : {
+    dotSize: Math.max(dotSize * 0.8, 8),
+    gap: Math.max(gap * 1.2, 24),
+    proximity: proximity * 0.8,
+    shockRadius: shockRadius * 0.8,
+    shockStrength: shockStrength * 0.7,
+    maxSpeed: maxSpeed * 0.8,
+    resistance: resistance * 1.2
+  };
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
@@ -96,7 +128,8 @@ const DotGrid: React.FC<DotGridProps> = ({
     if (!wrap || !canvas) return;
 
     const { width, height } = wrap.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
+    // Limit DPR for better performance
+    const dpr = Math.min(window.devicePixelRatio || 1, performanceMode === 'low' ? 1 : 1.5);
 
     canvas.width = width * dpr;
     canvas.height = height * dpr;
@@ -105,18 +138,18 @@ const DotGrid: React.FC<DotGridProps> = ({
     const ctx = canvas.getContext('2d');
     if (ctx) ctx.scale(dpr, dpr);
 
-    const cols = Math.floor((width + gap) / (dotSize + gap));
-    const rows = Math.floor((height + gap) / (dotSize + gap));
-    const cell = dotSize + gap;
+    const cols = Math.floor((width + optimizedProps.gap) / (optimizedProps.dotSize + optimizedProps.gap));
+    const rows = Math.floor((height + optimizedProps.gap) / (optimizedProps.dotSize + optimizedProps.gap));
+    const cell = optimizedProps.dotSize + optimizedProps.gap;
 
-    const gridW = cell * cols - gap;
-    const gridH = cell * rows - gap;
+    const gridW = cell * cols - optimizedProps.gap;
+    const gridH = cell * rows - optimizedProps.gap;
 
     const extraX = width - gridW;
     const extraY = height - gridH;
 
-    const startX = extraX / 2 + dotSize / 2;
-    const startY = extraY / 2 + dotSize / 2;
+    const startX = extraX / 2 + optimizedProps.dotSize / 2;
+    const startY = extraY / 2 + optimizedProps.dotSize / 2;
 
     const dots: Dot[] = [];
     for (let y = 0; y < rows; y++) {
@@ -127,13 +160,13 @@ const DotGrid: React.FC<DotGridProps> = ({
       }
     }
     dotsRef.current = dots;
-  }, [dotSize, gap]);
+  }, [optimizedProps.dotSize, optimizedProps.gap, performanceMode]);
 
   useEffect(() => {
     if (!circlePath) return;
 
     let rafId: number;
-    const proxSq = proximity * proximity;
+    const proxSq = optimizedProps.proximity * optimizedProps.proximity;
 
     const draw = () => {
       const canvas = canvasRef.current;
@@ -154,7 +187,7 @@ const DotGrid: React.FC<DotGridProps> = ({
         let style = baseColor;
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq);
-          const t = 1 - dist / proximity;
+          const t = 1 - dist / optimizedProps.proximity;
           const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
           const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
           const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
@@ -173,7 +206,7 @@ const DotGrid: React.FC<DotGridProps> = ({
 
     draw();
     return () => cancelAnimationFrame(rafId);
-  }, [proximity, baseColor, activeRgb, baseRgb, circlePath]);
+  }, [optimizedProps.proximity, baseColor, activeRgb, baseRgb, circlePath]);
 
   useEffect(() => {
     buildGrid();
@@ -200,11 +233,11 @@ const DotGrid: React.FC<DotGridProps> = ({
       let vx = (dx / dt) * 1000;
       let vy = (dy / dt) * 1000;
       let speed = Math.hypot(vx, vy);
-      if (speed > maxSpeed) {
-        const scale = maxSpeed / speed;
+      if (speed > optimizedProps.maxSpeed) {
+        const scale = optimizedProps.maxSpeed / speed;
         vx *= scale;
         vy *= scale;
-        speed = maxSpeed;
+        speed = optimizedProps.maxSpeed;
       }
       pr.lastTime = now;
       pr.lastX = e.clientX;
@@ -219,13 +252,13 @@ const DotGrid: React.FC<DotGridProps> = ({
 
       for (const dot of dotsRef.current) {
         const dist = Math.hypot(dot.cx - pr.x, dot.cy - pr.y);
-        if (speed > speedTrigger && dist < proximity && !dot._inertiaApplied) {
+        if (speed > speedTrigger && dist < optimizedProps.proximity && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
           gsap.killTweensOf(dot);
           const pushX = dot.cx - pr.x + vx * 0.005;
           const pushY = dot.cy - pr.y + vy * 0.005;
           gsap.to(dot, {
-            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            inertia: { xOffset: pushX, yOffset: pushY, resistance: optimizedProps.resistance },
             onComplete: () => {
               gsap.to(dot, {
                 xOffset: 0,
@@ -246,14 +279,14 @@ const DotGrid: React.FC<DotGridProps> = ({
       const cy = e.clientY - rect.top;
       for (const dot of dotsRef.current) {
         const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
-        if (dist < shockRadius && !dot._inertiaApplied) {
+        if (dist < optimizedProps.shockRadius && !dot._inertiaApplied) {
           dot._inertiaApplied = true;
           gsap.killTweensOf(dot);
-          const falloff = Math.max(0, 1 - dist / shockRadius);
-          const pushX = (dot.cx - cx) * shockStrength * falloff;
-          const pushY = (dot.cy - cy) * shockStrength * falloff;
+          const falloff = Math.max(0, 1 - dist / optimizedProps.shockRadius);
+          const pushX = (dot.cx - cx) * optimizedProps.shockStrength * falloff;
+          const pushY = (dot.cy - cy) * optimizedProps.shockStrength * falloff;
           gsap.to(dot, {
-            inertia: { xOffset: pushX, yOffset: pushY, resistance },
+            inertia: { xOffset: pushX, yOffset: pushY, resistance: optimizedProps.resistance },
             onComplete: () => {
               gsap.to(dot, {
                 xOffset: 0,
@@ -268,7 +301,7 @@ const DotGrid: React.FC<DotGridProps> = ({
       }
     };
 
-    const throttledMove = throttle(onMove, 50);
+    const throttledMove = throttle(onMove, performanceMode === 'low' ? 150 : 100);
     window.addEventListener('mousemove', throttledMove, { passive: true });
     window.addEventListener('click', onClick);
 
@@ -276,7 +309,7 @@ const DotGrid: React.FC<DotGridProps> = ({
       window.removeEventListener('mousemove', throttledMove);
       window.removeEventListener('click', onClick);
     };
-  }, [maxSpeed, speedTrigger, proximity, resistance, returnDuration, shockRadius, shockStrength]);
+  }, [optimizedProps.maxSpeed, speedTrigger, optimizedProps.proximity, optimizedProps.resistance, returnDuration, optimizedProps.shockRadius, optimizedProps.shockStrength, performanceMode]);
 
   return (
     <section className={`p-4 flex items-center justify-center h-full w-full relative ${className}`} style={style}>
