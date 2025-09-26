@@ -5,18 +5,21 @@ import HeroSection from "./components/HeroSection";
 import Process from "./components/Process";
 import Showcase from "./components/Showcase";
 import AboutSection from "./components/AboutSection";
-import ProcessSection from "./components/ProcessSection";
 import ServicesSection from "./components/ServicesSection";
 import WhyWorkWithUs from "./components/WhyWorkWithUs";
 import Footer from "./components/Footer";
 import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
+import FAQ from "./components/FAQ";
 
 export default function Home() {
   return (
     <div className="relative scroll-smooth">
       <Header />
-      <main>
+      <main
+        className="relative lg:rounded-b-[9rem] rounded-b-[4rem]"
+        style={{ boxShadow: "0 20px 50px -12px rgba(0,0,0,1), 0 50px 140px -40px rgba(0,0,0,1)" }}
+      >
         <HeroSection />
         <ServicesSection />
         <WhyWorkWithUs />
@@ -24,9 +27,14 @@ export default function Home() {
         <Testimonials />
         <Pricing />
         <AboutSection />
-        <ProcessSection />
+        <FAQ />
       </main>
-      <Footer />
+      {/* Sticky-reveal footer section for parallax-style reveal */}
+      <section className="relative h-[70vh]">
+        <div className="sticky bottom-0">
+          <Footer />
+        </div>
+      </section>
     </div>
   );
 }

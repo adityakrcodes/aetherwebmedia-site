@@ -30,11 +30,11 @@ export default function Pricing() {
       />
       <h1 className="text-7xl font-bold absolute md:top-[20%] top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2">Pricing</h1>
       <div className="flex items-center justify-center gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-32 w-full relative z-10 md:mt-0 mt-20">
+        <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 md:mt-0 mt-20">
           <CometCard className="max-w-[300px] h-[400px]">
             <button
               type="button"
-              className="my-10 flex w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
+              className="my-10 flex w-60 lg:w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
               aria-label="View invite F7RA"
               style={{
                 transformStyle: "preserve-3d",
@@ -65,7 +65,7 @@ export default function Pricing() {
           <CometCard className="max-w-[300px] h-[400px] scale-130">
             <button
               type="button"
-              className="my-10 flex w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
+              className="my-10 flex w-60 lg:w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
               aria-label="View invite F7RA"
               style={{
                 transformStyle: "preserve-3d",
@@ -96,7 +96,7 @@ export default function Pricing() {
           <CometCard className="max-w-[300px] h-[400px]">
             <button
               type="button"
-              className="my-10 flex w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
+              className="my-10 flex w-60 lg:w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
               aria-label="View invite F7RA"
               style={{
                 transformStyle: "preserve-3d",
