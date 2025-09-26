@@ -3,7 +3,7 @@ import { MetallicLiquidLogo } from '@/components/MetallicLiquidLogo';
 
 export default function Footer() {
   return (
-    <footer className="relative min-h-screen flex flex-col bg-black">
+    <footer className="relative min-h-screen flex flex-col">
       {/* Main content area */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 min-h-[80vh]">
         {/* Call to Action Section */}

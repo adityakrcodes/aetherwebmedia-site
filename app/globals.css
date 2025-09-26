@@ -130,10 +130,7 @@
     @apply bg-background text-foreground;
   }
   
-  /* Performance optimizations */
-  * {
-    will-change: auto;
-  }
+  /* Performance optimizations - simplified to prevent flickering */
   
   /* Optimize animations */
   .animate-pulse {
@@ -165,23 +162,7 @@
     -webkit-overflow-scrolling: touch;
   }
   
-  /* Additional performance optimizations */
-  .scroll-optimized {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    contain: layout style paint;
-  }
-  
-  /* Optimize repaints during scroll */
-  .scroll-optimized * {
-    will-change: auto;
-  }
-  
-  /* Reduce layout thrashing */
-  .layout-stable {
-    contain: layout;
-  }
+  /* Additional performance optimizations - removed to prevent flickering */
   
   /* Optimize text rendering */
   body {
@@ -196,9 +177,5 @@
     image-rendering: -webkit-optimize-contrast;
   }
   
-  /* Reduce paint complexity */
-  .paint-optimized {
-    contain: paint;
-    isolation: isolate;
-  }
+  /* Reduce paint complexity - removed to prevent flickering */
 }

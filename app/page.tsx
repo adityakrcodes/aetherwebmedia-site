@@ -12,34 +12,13 @@ import Testimonials from "./components/Testimonials";
 import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
 
-import { useScrollOptimization } from "@/hooks/useScrollOptimization";
-import { useEffect } from "react";
-
 export default function Home() {
-  const { throttledScrollHandler } = useScrollOptimization({
-    throttleMs: 16, // 60fps
-    passive: true,
-    enableSmoothScrolling: true
-  });
-
-  useEffect(() => {
-    // Add scroll optimization
-    const handleScroll = throttledScrollHandler(() => {
-      // Optimize scroll performance
-    });
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [throttledScrollHandler]);
 
   return (
-    <div className="relative scroll-smooth scroll-optimized">
+    <div className="relative scroll-smooth">
       <Header />
       <main
-        className="relative lg:rounded-b-[9rem] rounded-b-[4rem] scroll-optimized"
+        className="relative lg:rounded-b-[9rem] rounded-b-[4rem]"
         style={{ boxShadow: "0 20px 50px -12px rgba(0,0,0,1), 0 50px 140px -40px rgba(0,0,0,1)" }}
       >
         <HeroSection />
