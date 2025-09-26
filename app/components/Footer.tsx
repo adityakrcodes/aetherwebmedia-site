@@ -1,5 +1,5 @@
+import logo from '@/public/png/transparent.png';
 import { MetallicLiquidLogo } from '@/components/MetallicLiquidLogo';
-import logo from '@/public/transparent.svg';
 
 export default function Footer() {
   return (
@@ -30,14 +30,67 @@ export default function Footer() {
           </button>
         </div>
 
-        {/* Metallic Liquid Logo - Main */}
-        <div className="relative mb-16">
+        {/* Mobile & Tablet: Large Blurred Logo */}
+        <div className="relative mb-16 flex justify-center items-center lg:hidden">
+          <div className="relative">
+            {/* Main logo */}
+            <img 
+              src={logo.src} 
+              alt="Logo" 
+              className="w-96 h-96 md:w-[500px] md:h-[500px] object-contain"
+            />
+            
+            {/* Blurred background effect */}
+            <div 
+              className="absolute inset-0 -z-10"
+              style={{
+                background: `url(${logo.src})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                filter: 'blur(40px)',
+                transform: 'scale(1.2)',
+                opacity: 0.6
+              }}
+            />
+            
+            {/* Additional glow layers */}
+            <div 
+              className="absolute inset-0 -z-20"
+              style={{
+                background: `url(${logo.src})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                filter: 'blur(80px)',
+                transform: 'scale(1.5)',
+                opacity: 0.3
+              }}
+            />
+            
+            <div 
+              className="absolute inset-0 -z-30"
+              style={{
+                background: `url(${logo.src})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                filter: 'blur(120px)',
+                transform: 'scale(2)',
+                opacity: 0.2
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Desktop: Metallic Liquid Logo */}
+        <div className="relative mb-16 hidden lg:flex justify-center items-center">
           <MetallicLiquidLogo 
             svgSource={logo}
-            size={384}
+            size={600}
             params={{
               liquid: 0.1,
-              speed: 0.5,
+              speed: 0.2,
               edge: 0.3
             }}
           />  
