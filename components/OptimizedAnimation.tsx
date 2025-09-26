@@ -60,7 +60,7 @@ export default function OptimizedAnimation({
 
   return (
     <div
-      ref={ref}
+      ref={ref as React.RefObject<HTMLDivElement>}
       className={`scroll-optimized ${className}`}
       style={{
         ...getAnimationStyles(),
