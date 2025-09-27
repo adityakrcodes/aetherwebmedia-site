@@ -32,7 +32,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 w-[70%] rounded-md mt-5 mx-auto backdrop-blur-lg bg-neutral-950/80  hidden md:block">
       <div className="max-w-8xl md:px-12 mr-auto ml-auto pr-8 pl-8">
         <div className="flex pt-6 pb-6 items-center justify-between">
-          <a href="#" className="hidden md:flex items-center">
+          <a href="/" className="hidden md:flex items-center">
             <Image
                 src={logo}
                 alt="Logo"
