@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Nikhil from "@/public/profile/nikhil.jpeg";
+import Aditya from "@/public/profile/aditya.jpg"
 
 export default function AboutSection() {
   return (
@@ -9,7 +10,7 @@ export default function AboutSection() {
         <div className="flex flex-col gap-12 md:flex-row items-start">
           <div className="ring-1 ring-white/10 overflow-hidden bg-neutral-900/50 rounded-lg md:w-1/2 w-full">
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <Image src="https://hoirqrkdgbmvpwutwuwj-all.supabase.co/storage/v1/object/public/assets/assets/b59bad79-703a-4c05-8ed2-fafcc49a7b51_800w.jpg" alt="Professional portrait" width={1400} height={1050} className="h-full w-full object-cover grayscale" loading="lazy" />
+              <Image src={Aditya} alt="Professional portrait" width={1400} height={1050} className="h-full w-full object-cover grayscale-75 hover:grayscale-0 transition-all duration-300" loading="lazy" />
             </div>
           </div>
           <div className="md:w-1/2 w-full">
@@ -40,7 +41,7 @@ export default function AboutSection() {
         <div className="flex flex-col gap-12 md:flex-row items-start">
           <div className="ring-1 ring-white/10 overflow-hidden bg-neutral-900/50 rounded-lg md:w-1/2 w-full">
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <Image src={Nikhil} alt="Professional portrait" width={1400} height={1050} className="h-full w-full object-cover grayscale" loading="lazy" />
+              <Image src={Nikhil} alt="Professional portrait" width={1400} height={1050} className="h-full w-full object-cover grayscale-75 hover:grayscale-0 transition-all duration-300" loading="lazy" />
             </div>
           </div>
           <div className="md:w-1/2 w-full">
