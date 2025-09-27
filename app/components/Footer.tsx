@@ -30,13 +30,19 @@ export default function Footer() {
         </div>
 
         {/* Logo Video */}
-        <div className="absolute bottom-0 z-10 flex justify-center items-center">
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-center items-end overflow-hidden" style={{ height: '60vh' }}>
           <video
             autoPlay
             loop
             muted
             playsInline
             className="w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] object-contain"
+            style={{ 
+              transform: 'translateY(30%)',
+              maxHeight: '100%',
+              filter: 'blur(3px)',
+              opacity: 0.7
+            }}
           >
             <source src="/logo.mov" type="video/quicktime" />
             <source src="/logo.mp4" type="video/mp4" />
@@ -47,25 +53,25 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="border-t border-white/10 px-4 py-8 mt-auto">
+      <div className=" border-white/10 px-4 py-8 mt-auto relative z-20">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-white text-sm space-y-4 md:space-y-0">
           {/* Copyright */}
-          <div className="order-2 md:order-1">
+          <div className="order-2 md:order-1 font-poppins">
             ©2025 PORTX.DESIGN
           </div>
 
           {/* Social Links */}
-          <div className="order-1 md:order-2 space-x-6">
-            <span className="hover:text-gray-300 cursor-pointer">DRIBBLE</span>
-            <span className="hover:text-gray-300 cursor-pointer">IG</span>
-            <span className="hover:text-gray-300 cursor-pointer">X</span>
-            <span className="hover:text-gray-300 cursor-pointer">BE</span>
-            <span className="hover:text-gray-300 cursor-pointer">IN</span>
-          </div>
+          {/* <div className="order-1 md:order-2 space-x-6">
+            <span className="hover:text-gray-300 cursor-pointer font-poppins">DRIBBLE</span>
+            <span className="hover:text-gray-300 cursor-pointer font-poppins">IG</span>
+            <span className="hover:text-gray-300 cursor-pointer font-poppins">X</span>
+            <span className="hover:text-gray-300 cursor-pointer font-poppins">BE</span>
+            <span className="hover:text-gray-300 cursor-pointer font-poppins">IN</span>
+          </div> */}
 
           {/* Back to Top */}
           <button
-            className="order-3 uppercase hover:underline transition-colors duration-200"
+            className="order-3 uppercase hover:underline transition-colors duration-200 font-poppins"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             BACK TO TOP
