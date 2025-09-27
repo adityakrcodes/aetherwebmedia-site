@@ -433,9 +433,9 @@ export interface MetallicLiquidLogoProps {
 
 const defaultParams: ShaderParams = {
   patternScale: 1.2,
-  refraction: 0.008,
-  edge: 0.4,
-  patternBlur: 0.01,
+  refraction: 0.012,
+  edge: 0.7,
+  patternBlur: 0.05,
   liquid: 0.03,
   speed: 0.15,
 };
@@ -493,7 +493,7 @@ export function MetallicLiquidLogo({
   const totalAnimationTime = useRef(0);
   const lastRenderTime = useRef(0);
 
-  // Adjust parameters based on performance mode - more aggressive optimization
+  // Adjust parameters based on performance mode - much smoother edges
   const getOptimizedParams = () => {
     const baseParams = { ...defaultParams, ...params };
     
@@ -502,7 +502,9 @@ export function MetallicLiquidLogo({
         return {
           ...baseParams,
           patternScale: 0.8,
-          refraction: 0.003,
+          refraction: 0.005,
+          edge: 0.6,
+          patternBlur: 0.04,
           liquid: 0.01,
           speed: 0.05,
         };
@@ -510,7 +512,9 @@ export function MetallicLiquidLogo({
         return {
           ...baseParams,
           patternScale: 1.0,
-          refraction: 0.005,
+          refraction: 0.008,
+          edge: 0.65,
+          patternBlur: 0.045,
           liquid: 0.02,
           speed: 0.08,
         };
@@ -518,7 +522,9 @@ export function MetallicLiquidLogo({
         return {
           ...baseParams,
           patternScale: 1.1,
-          refraction: 0.006,
+          refraction: 0.01,
+          edge: 0.7,
+          patternBlur: 0.05,
           liquid: 0.025,
           speed: 0.1,
         };
