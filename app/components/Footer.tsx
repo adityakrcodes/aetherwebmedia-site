@@ -2,7 +2,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="relative min-h-screen flex flex-col">
+    <footer className="relative min-h-screen flex flex-col bg-[#060606]">
       {/* Main content area */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-32 min-h-[80vh]">
         {/* Call to Action Section */}
@@ -38,13 +38,12 @@ export default function Footer() {
             playsInline
             className="w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] object-contain"
             style={{ 
-              transform: 'translateY(30%)',
+              transform: 'translateY(25%)',
               maxHeight: '100%',
-              filter: 'blur(3px)',
-              opacity: 0.7
+              filter: 'blur(2px)',
+              opacity: 0.5
             }}
           >
-            <source src="/logo.mov" type="video/quicktime" />
             <source src="/logo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -57,7 +56,7 @@ export default function Footer() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-white text-sm space-y-4 md:space-y-0">
           {/* Copyright */}
           <div className="order-2 md:order-1 font-poppins">
-            ©2025 PORTX.DESIGN
+            ©2025 Aether Web Media
           </div>
 
           {/* Social Links */}
