@@ -71,7 +71,7 @@ export default function ServicesSection() {
                 />
             </motion.div>
             <div className="my-5 p-2 md:p-0">
-                <BentoGrid className="max-w-8/12 mx-auto mt-2">
+                <BentoGrid className="max-w-11/12 md:max-w-8/12 mx-auto mt-2">
                     {saas.map((item, i) => (
                         <BentoGridItem
                         key={i}
@@ -83,7 +83,7 @@ export default function ServicesSection() {
                         />
                     ))}
                 </BentoGrid>
-                <BentoGrid className="max-w-8/12 mx-auto mt-2">
+                <BentoGrid className="max-w-11/12 md:max-w-8/12 mx-auto mt-2">
                     {items.map((item, i) => (
                         <BentoGridItem
                         key={i}
@@ -95,7 +95,7 @@ export default function ServicesSection() {
                         />
                     ))}
                 </BentoGrid>
-                <BentoGrid className="max-w-8/12 mx-auto mt-2">
+                <BentoGrid className="max-w-11/12 md:max-w-8/12 mx-auto mt-2">
                     {items2.map((item, i) => (
                         <BentoGridItem
                         key={i}
