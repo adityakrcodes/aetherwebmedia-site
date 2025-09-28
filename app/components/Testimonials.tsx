@@ -40,7 +40,7 @@ export default function Testimonials(){
         },
       ];
       return(
-        <div className="relative ">
+        <div className="relative">
             <div className="absolute inset-0 z-0 pointer-events-none">
             <DotGrid
                 dotSize={3}
@@ -54,7 +54,7 @@ export default function Testimonials(){
                 returnDuration={1.0}
                 />
             </div>
-            <div className="relative z-10 mx-auto text-center top-0 flex flex-col items-center justify-center h-screen p-2 md:p-4 w-screen">
+            <div className="relative z-10 mx-auto text-center top-0 flex flex-col items-center justify-center h-6/12 p-2 md:p-4 w-screen">
                 <h2 className="text-4xl md:text-5xl lg:text-7xl tracking-tight text-white font-manrope font-medium">Testimonials</h2>
                 <AnimatedTestimonials testimonials={testimonials} />
             </div>
