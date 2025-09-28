@@ -2,7 +2,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="relative min-h-screen flex flex-col bg-[#0A0B0B]">
+    <footer className="relative min-h-screen flex flex-col">
       {/* Main content area */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-32 min-h-[80vh]">
         {/* Call to Action Section */}
@@ -41,7 +41,7 @@ export default function Footer() {
               transform: 'translateY(25%)',
               maxHeight: '100%',
               filter: 'blur(2px)',
-              opacity: 0.5
+              opacity: 1,
             }}
           >
             <source src="/logo.mp4" type="video/mp4" />
