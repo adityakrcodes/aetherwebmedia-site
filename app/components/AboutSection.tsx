@@ -122,7 +122,7 @@ export default function AboutSection() {
             {/* Socials */}
                 <div className="mt-6 flex gap-4">
                 <a
-                    href="https://github.com/aditya"
+                    href="https://github.com/nikhilcodes0"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 text-neutral-200 hover:bg-white/10 transition-all duration-200"
@@ -131,7 +131,7 @@ export default function AboutSection() {
                     <Github size={22} />
                 </a>
                 <a
-                    href="https://linkedin.com/in/aditya"
+                    href="https://www.linkedin.com/in/nikhil-kumar-408758202/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 text-neutral-200 hover:bg-white/10 transition-all duration-200"
@@ -140,7 +140,7 @@ export default function AboutSection() {
                     <Linkedin size={22} />
                 </a>
                 <a
-                    href="https://instagram.com/aditya"
+                    href="https://www.instagram.com/_._h4wk_._/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 text-neutral-200 hover:bg-white/10 transition-all duration-200"
@@ -149,7 +149,7 @@ export default function AboutSection() {
                     <Instagram size={22} />
                 </a>
                 <a
-                    href="https://x.com/aditya"
+                    href="https://x.com/nikhil__codes"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 text-neutral-200 hover:bg-white/10 transition-all duration-200"
