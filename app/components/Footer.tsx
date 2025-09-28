@@ -1,3 +1,7 @@
+import { LineShadowText } from "@/components/ui/line-shadow-text"
+
+
+
 export default function Footer() {
 
 
@@ -13,8 +17,10 @@ export default function Footer() {
           </div>
 
           {/* Main Heading */}
-          <h2 className="text-4xl md:text-6xl lg:text-[11rem] font-bold text-white uppercase tracking-wider mb-6 font-poppins">
-            READY TO SHIP?
+          <h2 className="text-4xl md:text-6xl lg:text-[11rem] font-extrabold text-white uppercase tracking-wider mb-6 font-poppins">
+            READY TO <LineShadowText className="italic" shadowColor="#fff">
+              SHIP
+            </LineShadowText> ?
           </h2>
 
           {/* Subtext */}
@@ -37,7 +43,7 @@ export default function Footer() {
             muted
             playsInline
             className="w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] object-contain"
-            style={{ 
+            style={{
               transform: 'translateY(25%)',
               maxHeight: '100%',
               filter: 'blur(2px)',

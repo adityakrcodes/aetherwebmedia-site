@@ -51,6 +51,15 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --animate-line-shadow: line-shadow 15s linear infinite;
+  @keyframes line-shadow {
+  0% {
+    background-position: 0 0;
+    }
+  100% {
+    background-position: 100% -100%;
+    }
+  }
 }
 
 :root {
@@ -129,14 +138,14 @@
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Performance optimizations - simplified to prevent flickering */
-  
+
   /* Optimize animations */
   .animate-pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
-  
+
   /* Reduce motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -148,34 +157,34 @@
       scroll-behavior: auto !important;
     }
   }
-  
+
   /* GPU acceleration for heavy elements */
   .gpu-accelerated {
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
   }
-  
+
   /* Optimize scrolling */
   .scroll-smooth {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   /* Additional performance optimizations - removed to prevent flickering */
-  
+
   /* Optimize text rendering */
   body {
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   /* Optimize images */
   img {
     image-rendering: optimizeSpeed;
     image-rendering: -webkit-optimize-contrast;
   }
-  
+
   /* Reduce paint complexity - removed to prevent flickering */
 }

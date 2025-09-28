@@ -62,17 +62,17 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="relative flex min-h-[100vh] justify-center space-x-2 [@media(min-width:350px)]:space-x-4 md:space-x-6 lg:space-x-10 rounded-md p-2 [@media(min-width:350px)]:p-4 md:p-6 lg:p-10 w-full [&::-webkit-scrollbar]:hidden"
+      className="relative flex min-h-[80vh] justify-center items-start space-x-6 [@media(min-width:350px)]:space-x-8 md:space-x-12 lg:space-x-40 xl:space-x-52 rounded-md p-2 [@media(min-width:350px)]:p-4 md:p-6 lg:p-10 w-full [&::-webkit-scrollbar]:hidden"
       ref={ref}
       style={{
         scrollbarWidth: 'none',
         msOverflowStyle: 'none'
       }}
     >
-      <div className="div relative flex items-start px-1 [@media(min-width:350px)]:px-2 md:px-4">
+      <div className="div relative flex items-start px-1 [@media(min-width:350px)]:px-2 md:px-4 lg:w-2/4">
         <div className="max-w-[200px] [@media(min-width:350px)]:max-w-xs md:max-w-xl lg:max-w-2xl w-screen">
           {content.map((item, index) => (
-            <div key={item.title + index} className="my-12 [@media(min-width:350px)]:my-20 md:my-32 lg:my-40">
+            <div key={item.title + index} className="my-16 [@media(min-width:350px)]:my-20 md:my-32 lg:mb-40!">
               <motion.h2
                 initial={{
                   opacity: 0,
@@ -80,7 +80,7 @@ export const StickyScroll = ({
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-lg [@media(min-width:350px)]:text-xl md:text-2xl font-bold text-slate-100"
+                className="text-lg [@media(min-width:350px)]:text-xl md:text-3xl! font-bold text-slate-100"
               >
                 {item.title}
               </motion.h2>
@@ -97,13 +97,17 @@ export const StickyScroll = ({
               </motion.p>
             </div>
           ))}
-          <div className="h-80" />
+          <div className="h-40" />
         </div>
       </div>
       <div
-        style={{ background: backgroundGradient }}
+        style={{ 
+          background: backgroundGradient,
+          position: 'sticky',
+          top: '16rem'
+        }}
         className={cn(
-          "sticky top-12 [@media(min-width:350px)]:top-16 md:top-32 lg:top-56 hidden h-40 w-56 [@media(min-width:350px)]:h-48 [@media(min-width:350px)]:w-64 md:h-56 md:w-72 lg:h-60 lg:w-80 overflow-hidden rounded-md bg-white lg:block",
+          "hidden h-40 w-56 [@media(min-width:350px)]:h-48 [@media(min-width:350px)]:w-64 md:h-56 md:w-72 lg:h-60 lg:w-80 overflow-hidden rounded-md bg-white lg:block",
           contentClassName,
         )}
       >
