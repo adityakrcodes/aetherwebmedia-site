@@ -6,7 +6,7 @@ import { WobbleCard } from "@/components/ui/wobble-card";
 export default function WhyWorkWithUs() {
     return (
         <section id="why-work-with-us" className="relative mt-45">
-            <div className="max-w-8/12 mr-auto ml-auto pt-12 pb-32">
+            <div className="max-w-11/12 md:max-w-8/12 mr-auto ml-auto pt-12 pb-32">
                 <div className="mx-auto max-w-4xl text-center">
                     <h2 className="text-4xl md:text-5xl tracking-tight text-white font-manrope font-medium">Why Work With Us</h2>
                 </div>
