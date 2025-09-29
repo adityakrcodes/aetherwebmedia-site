@@ -46,17 +46,53 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const [open, setOpen] = useState(false);
   const openRef = useRef(false);
 
-  // Disable scrolling when menu is open
+  // Disable background scrolling when menu is open (robust on iOS)
   useEffect(() => {
+    const body = document.body as HTMLBodyElement & { dataset: { scrollY?: string } };
+    const html = document.documentElement as HTMLElement & { style: CSSStyleDeclaration };
+
     if (open) {
-      document.body.style.overflow = 'hidden';
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      body.dataset.scrollY = String(scrollY);
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollY}px`;
+      body.style.left = '0';
+      body.style.right = '0';
+      body.style.width = '100%';
+      body.style.overflow = 'hidden';
+      (body.style as any).touchAction = 'none';
+      (html.style as any).overscrollBehavior = 'none';
     } else {
-      document.body.style.overflow = 'unset';
+      const stored = Number(body.dataset.scrollY || 0);
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      body.style.width = '';
+      body.style.overflow = '';
+      (body.style as any).touchAction = '';
+      (html.style as any).overscrollBehavior = '';
+      if (stored) {
+        window.scrollTo(0, stored);
+      }
+      delete body.dataset.scrollY;
     }
-    
+
     // Cleanup on unmount
     return () => {
-      document.body.style.overflow = 'unset';
+      const stored = Number((document.body as any).dataset?.scrollY || 0);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      (document.body.style as any).touchAction = '';
+      (document.documentElement.style as any).overscrollBehavior = '';
+      if (stored) {
+        window.scrollTo(0, stored);
+      }
+      delete (document.body as any).dataset?.scrollY;
     };
   }, [open]);
 
@@ -387,18 +423,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
+          className="staggered-menu-header top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20 sticky"
           aria-label="Main navigation header"
         >
-          <div className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Logo">
-            <img
-              src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
-              alt="Logo"
-              className="sm-logo-img block h-8 w-auto object-contain"
-              draggable={false}
-              width={110}
-              height={24}
-            />
+          <div className="sm-logo flex items-center select-none pointer-events-auto invert" aria-label="Logo">
+            <a href="/">
+                <img
+                src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
+                alt="Logo"
+                className="sm-logo-img block h-8 w-auto object-contain"
+                draggable={false}
+                width={110}
+                height={24}
+                />
+            </a>
           </div>
 
           <button
@@ -523,10 +561,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
 .sm-scope .sm-line { display: none !important; }
 .sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; }
+.sm-scope .staggered-menu-wrapper:not([data-open]) .staggered-menu-panel { visibility: hidden; }
+.sm-scope .staggered-menu-wrapper[data-open] .staggered-menu-panel { visibility: visible; }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: -5rem; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }
 .sm-scope [data-position='left'] .sm-prelayers { right: auto; left: 0; }
 .sm-scope .sm-prelayer { position: absolute; top: 0; right: 0; height: 100%; width: 100%; transform: translateX(0); }
+.sm-scope .staggered-menu-wrapper:not([data-open]) .sm-prelayer { visibility: hidden; }
+.sm-scope .staggered-menu-wrapper[data-open] .sm-prelayer { visibility: visible; }
 .sm-scope .sm-panel-inner { flex: 1; display: flex; flex-direction: column; gap: 1.25rem; }
 .sm-scope .sm-socials { margin-top: auto; padding-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .sm-scope .sm-socials-title { margin: 0; font-size: 1rem; font-weight: 500; color: var(--sm-accent, #ff0000); }
@@ -546,9 +588,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
-@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 10rem; right: 0; } .sm-scope .sm-socials-link { font-size: 0.9rem; } .sm-scope .sm-panel-itemLabel { font-size: 3rem; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 400px) { .sm-scope .sm-prelayer { width: 40%; }  .sm-scope .staggered-menu-panel { width: 100%; left: 4rem; right: 0; } .sm-scope .sm-panel-itemLabel { font-size: 2.5rem; }  }
+@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } }
+@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 10rem; right: 0; } .sm-scope .sm-socials-link { font-size: 0.9rem; } .sm-scope .sm-panel-itemLabel { font-size: 3rem; } .sm-scope .staggered-menu-header { position: sticky; top: 0; } }
+@media (max-width: 400px) { .sm-scope .sm-prelayer { width: 40%; }  .sm-scope .staggered-menu-panel { width: 100%; left: 4rem; right: 0; } .sm-scope .sm-panel-itemLabel { font-size: 2.5rem; } .sm-scope .staggered-menu-header { position: sticky; top: 0; } }
       `}</style>
     </div>
   );
