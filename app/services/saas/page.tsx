@@ -5,6 +5,12 @@ import Footer from "@/app/components/Footer";
 import DotGrid from "@/components/DotGrid";
 import { SaasBentoGrid, SaasBentoGridItem } from "@/components/ui/saas-bento-grid";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import CardSwap, { Card } from '@/components/CardSwap'
+import image1 from '@/public/image1.png'
+import image2 from '@/public/image2.png'
+import image3 from '@/public/image3.png'
+import image4 from '@/public/image.png'
+
 
 export default function Saas() {
   const outcomes = [
@@ -93,19 +99,21 @@ export default function Saas() {
 
   const stack = ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "tRPC/REST", "Stripe", "Clerk/Auth.js", "Vercel/AWS", "Sentry", "PostHog"];
 
+  const stackImages = [image1, image2, image3, image4];
+
   return (
-    <div className="relative scroll-smooth">
+    <div className="relative scroll-smooth ">
       <Header />
       <section className="relative pt-32 md:pt-36">
         <div className="absolute inset-0 -z-10 h-screen w-screen">
           <DotGrid dotSize={5} gap={12} baseColor="#060405" activeColor="#79757A" proximity={170} shockRadius={200} shockStrength={5} resistance={750} returnDuration={1.5} />
         </div>
-        <div className="max-w-7xl mr-auto ml-auto px-6 md:px-10">
+        <div className="max-w-[85rem] mr-auto ml-auto px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
             <span className="text-sm font-normal text-neutral-200 font-sans">SaaS MVP Development</span>
           </div>
-          <div className="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="mt-6 flex justify-between gap-[11rem] items-center flex-wrap">
             <div className="lg:col-span-7 space-y-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl tracking-tight text-white font-poppins font-light leading-[1.08]">
                 Build only what's needed to prove what matters
@@ -121,21 +129,32 @@ export default function Saas() {
                 </a>
               </div>
             </div>
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-neutral-900/70 ring-1 ring-white/10 p-6 grid grid-cols-2 gap-4">
-                {stack.slice(0, 8).map((s) => (
-                  <div key={s} className="text-sm text-neutral-200 bg-white/5 rounded-lg ring-1 ring-white/10 px-3 py-2 text-center">
-                    {s}
-                  </div>
+            <div className="relative lg:h-[475px] h-[200px] md:w-[500px] w-[200px] md:left-80 left-10">
+
+              <CardSwap
+                
+                cardDistance={60}
+                verticalDistance={70}
+                delay={3000}
+                pauseOnHover={false}
+                skewAmount={0}
+               >
+
+                {stackImages.map((s) => (
+                  <Card key={s.src} className="md:w-[300px] w-[600px]!">
+                    <img src={s.src} alt="Stack" className="w-full h-full object-cover rounded-lg" />
+                  </Card>
                 ))}
-              </div>
+
+              </CardSwap>
+
             </div>
           </div>
         </div>
       </section>
 
       {/* Outcomes */}
-      <section id="outcomes" className="relative py-16 md:py-24">
+      <section id="outcomes" className="relative py-16 md:py-24 mt-26">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center">Outcomes over features</h2>
           <p className="text-neutral-300 mt-4 text-center max-w-2xl mx-auto">What you can expect within the first release window.</p>
@@ -156,8 +175,8 @@ export default function Saas() {
       {/* Roadmap with Sticky Scroll Reveal */}
       <section id="roadmap" className="relative py-16 ">
         <div className="mx-auto w-screen pointer-events-auto">
-          <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center">MVP Roadmap</h2>
-            <StickyScroll content={roadmapContent} />
+          <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center mb-10">MVP Roadmap</h2>
+          <StickyScroll content={roadmapContent} />
         </div>
       </section>
 
@@ -191,7 +210,7 @@ export default function Saas() {
       </section>
 
       {/* CTA */}
-      <section id="contact" className="relative py-20">
+      <section id="contact" className="relative py-20 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ boxShadow: "0 60px 60px -12px rgba(0,0,0,1), 0 60px 0px -40px rgba(0,0,0,1)" }}>
         <div className="mx-auto max-w-5xl text-center px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>

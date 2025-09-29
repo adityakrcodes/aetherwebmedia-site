@@ -44,7 +44,7 @@ const sedgwickAve = Sedgwick_Ave({
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
   display: 'swap',
   preload: true,
 });
