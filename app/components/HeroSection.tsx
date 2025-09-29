@@ -11,8 +11,8 @@ export default function HeroSection() {
         })();
       }, [])
     return (
-        <section className="relative pt-24 h-screen">
-            <div className="w-full h-full absolute top-0 left-0">
+        <section className="relative pt-24 h-screen z-0">
+            <div className="w-full h-full absolute top-0 left-0 pointer-events-none z-0">
 
                 <Beams
                     beamWidth={2.5}
@@ -26,7 +26,7 @@ export default function HeroSection() {
                 />
 
             </div>
-            <div className="flex items-center h-full relative z-10">
+            <div className="flex items-center h-full relative z-20">
                 <div className="max-w-7xl md:px-8 md:pt-24 md:pb-28 mr-auto ml-auto pt-10 pr-6 pb-10 pl-6">
                     <div className="mx-auto mb-6 flex w-full items-center justify-center">
                         <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
