@@ -395,7 +395,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
 
   return (
-    <div className="sm-scope w-full h-full">
+    <div className="sm-scope w-full h-full ">
       <div
         className={(className ? className + ' ' : '') + 'staggered-menu-wrapper relative w-full h-full z-40 pointer-events-none'}
         style={accentColor ? ({ ['--sm-accent' as any]: accentColor } as React.CSSProperties) : undefined}
@@ -548,9 +548,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       </div>
 
       <style>{`
-.sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; pointer-events: none; }
-.sm-scope .staggered-menu-wrapper[data-open] { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 2147483600; }
-.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; pointer-events: none; z-index: 20; }
+.sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; pointer-events: none; justify-content: center; }
+.sm-scope .staggered-menu-wrapper[data-open] { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 2147483600;}
+.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 90%; display: flex; align-items: center; justify-content: space-between; pointer-events: none; z-index: 20; }
 .sm-scope .staggered-menu-wrapper[data-open] .staggered-menu-header { z-index: 2147483602; position: absolute; pointer-events: auto; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
