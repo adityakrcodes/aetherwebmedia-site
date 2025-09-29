@@ -104,7 +104,7 @@ export default function Saas() {
   return (
     <div className="relative scroll-smooth ">
       <Header />
-      <section className="relative pt-32 md:pt-36">
+      <section className="relative pt-32 md:pt-52">
         <div className="absolute inset-0 -z-10 h-screen w-screen">
           <DotGrid dotSize={5} gap={12} baseColor="#060405" activeColor="#79757A" proximity={170} shockRadius={200} shockStrength={5} resistance={750} returnDuration={1.5} />
         </div>
@@ -113,7 +113,7 @@ export default function Saas() {
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
             <span className="text-sm font-normal text-neutral-200 font-sans">SaaS MVP Development</span>
           </div>
-          <div className="mt-6 flex justify-between gap-[11rem] items-center flex-wrap">
+          <div className="mt-6 flex justify-between gap-[11rem] items-center flex-wrap lg:flex-nowrap">
             <div className="lg:col-span-7 space-y-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl tracking-tight text-white font-poppins font-light leading-[1.08]">
                 Build only what's needed to prove what matters
@@ -129,7 +129,7 @@ export default function Saas() {
                 </a>
               </div>
             </div>
-            <div className="relative lg:h-[475px] h-[200px] md:w-[500px] w-[200px] md:left-80 left-10">
+            <div className="relative lg:h-[441px] lg:bottom-[3rem] h-[200px] md:w-[500px] w-[200px] md:left-80 left-10">
 
               <CardSwap
                 
