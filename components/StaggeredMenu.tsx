@@ -387,18 +387,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20"
+          className="staggered-menu-header top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20 sticky"
           aria-label="Main navigation header"
         >
-          <div className="sm-logo flex items-center select-none pointer-events-auto" aria-label="Logo">
-            <img
-              src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
-              alt="Logo"
-              className="sm-logo-img block h-8 w-auto object-contain"
-              draggable={false}
-              width={110}
-              height={24}
-            />
+          <div className="sm-logo flex items-center select-none pointer-events-auto invert" aria-label="Logo">
+            <a href="/">
+                <img
+                src={logoUrl || '/src/assets/logos/reactbits-gh-white.svg'}
+                alt="Logo"
+                className="sm-logo-img block h-8 w-auto object-contain"
+                draggable={false}
+                width={110}
+                height={24}
+                />
+            </a>
           </div>
 
           <button
@@ -546,8 +548,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-item:hover { color: var(--sm-accent, #ff0000); }
 .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after { counter-increment: smItem; content: counter(smItem, decimal-leading-zero); position: absolute; top: 0.1em; right: 3.2em; font-size: 18px; font-weight: 400; color: var(--sm-accent, #ff0000); letter-spacing: 0; pointer-events: none; user-select: none; opacity: var(--sm-num-opacity, 0); }
-@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
-@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 10rem; right: 0; } .sm-scope .sm-socials-link { font-size: 0.9rem; } .sm-scope .sm-panel-itemLabel { font-size: 3rem; } .sm-scope .staggered-menu-wrapper[data-open] .sm-logo-img { filter: invert(100%); } }
+@media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .staggered-menu-wrapper[data-open]  }
+@media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 10rem; right: 0; } .sm-scope .sm-socials-link { font-size: 0.9rem; } .sm-scope .sm-panel-itemLabel { font-size: 3rem; } .sm-scope .staggered-menu-wrapper[data-open] }
 @media (max-width: 400px) { .sm-scope .sm-prelayer { width: 40%; }  .sm-scope .staggered-menu-panel { width: 100%; left: 4rem; right: 0; } .sm-scope .sm-panel-itemLabel { font-size: 2.5rem; }  }
       `}</style>
     </div>

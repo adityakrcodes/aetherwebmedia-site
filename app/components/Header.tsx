@@ -60,15 +60,15 @@ export default function Header() {
 
       </div>
     </header>
-        <div className="md:hidden w-full h-screen px-15 absolute overflow-hidden">
-          <StaggeredMenu
+        <div className="md:hidden w-full h-screen px-15 absolute overflow-hidden ">
+        <StaggeredMenu
             position="right"
             items={menuItems}
             socialItems={socialItems}
             displaySocials={true}
             displayItemNumbering={true}
-             menuButtonColor="#fff"
-             openMenuButtonColor="#000"
+            menuButtonColor="#fff"
+            openMenuButtonColor="#000"
             changeMenuColorOnOpen={true}
             colors={['#B19EEF', '#5227FF']}
             logoUrl={logo.src}
@@ -76,7 +76,7 @@ export default function Header() {
             className="fixed inset-0 z-[60]"
             onMenuOpen={() => console.log('Menu opened')}
             onMenuClose={() => console.log('Menu closed')}
-          />
+        />
         </div>
     </>
   );
