@@ -22,11 +22,11 @@ export default function Process() {
 
                     <p className="mt-4 text-neutral-400">Understanding your vision, audience, and goals.</p>
 
-                    <span className="text-[15rem] absolute -right-2 -bottom-25 -rotate-30 text-neutral-500 z-20">
+                    <span className="text-9xl md:text-[15rem] absolute right-0 bottom-0  md:-right-2 md:-bottom-20 -rotate-30 text-neutral-500 z-20">
                         1
                     </span>
 
-                    <Image src={binoculars} alt="" width={300} height={300} className="absolute -right-10 -top-15 -rotate-30 z-10 grayscale" />
+                    <Image src={binoculars} alt="" width={300} height={300} className="absolute -right-10 -top-15 -rotate-30 z-10 grayscale hidden md:block" />
 
                 </ScrollStackItem>
 
@@ -36,11 +36,11 @@ export default function Process() {
 
                     <p className="mt-4 text-neutral-400">Mapping out solutions with wireframes, roadmaps, and design mockups.</p>
 
-                    <span className="text-[15rem] absolute right-2 -bottom-25 -rotate-30 text-neutral-500 z-20">
+                    <span className="text-9xl md:text-[15rem] absolute -right-3 -bottom-2  md:-right-2 md:-bottom-12 -rotate-30 text-neutral-500 z-20">
                         2
                     </span>
 
-                    <Image src={planning} alt="" width={300} height={300} className="absolute -right-15 -top-23 rotate-30 z-10 grayscale" />
+                    <Image src={planning} alt="" width={300} height={300} className="absolute -right-15 -top-23 rotate-30 z-10 grayscale hidden md:block" />
 
                 </ScrollStackItem>
 
@@ -50,11 +50,11 @@ export default function Process() {
 
                     <p className="mt-4 text-neutral-400">Bringing concepts to life with creativity and code.</p>
 
-                    <span className="text-[15rem] absolute -right-2 -bottom-25 -rotate-30 text-neutral-500 z-20">
+                    <span className="text-9xl md:text-[15rem] absolute -right-0 -bottom-6  md:-right-2 md:-bottom-12 -rotate-30 text-neutral-500 z-20">
                         3
                     </span>
 
-                    <Image src={development} alt="" width={300} height={300} className="absolute -right-10 -top-15 -rotate-30 z-10 invert-25" />
+                    <Image src={development} alt="" width={300} height={300} className="absolute -right-10 -top-15 -rotate-30 z-10 invert-25 hidden md:block" />
 
                 </ScrollStackItem>
 
@@ -64,11 +64,11 @@ export default function Process() {
 
                     <p className="mt-4 text-neutral-400">Ensuring flawless performance before going live.</p>
 
-                    <span className="text-[15rem] absolute -right-2 -bottom-25 -rotate-30 text-neutral-500 z-20">
+                    <span className="text-9xl md:text-[15rem] absolute -right-0 -bottom-2  md:-right-2 md:-bottom-12 -rotate-30 text-neutral-500 z-20">
                         4
                     </span>
 
-                    <Image src={testing} alt="" width={200} height={200} className="absolute -right-10 -top-10 rotate-38 z-10 opacity-50" />
+                    <Image src={testing} alt="" width={200} height={200} className="absolute -right-10 -top-10 rotate-38 z-10 opacity-50 hidden md:block" />
 
                 </ScrollStackItem>
 
@@ -78,11 +78,11 @@ export default function Process() {
 
                     <p className="mt-4 text-neutral-400">Continuous optimization, marketing, and scaling.</p>
 
-                    <span className="text-[15rem] absolute -right-2 -bottom-25 -rotate-30 text-neutral-500 z-20">
+                    <span className="text-9xl md:text-[15rem] absolute -right-0 -bottom-2  md:-right-2 md:-bottom-12 -rotate-30 text-neutral-500 z-20">
                         5
                     </span>
 
-                    <Image src={growth} alt="" width={200} height={200} className="absolute -right-5 -top-15 rotate-30 z-10 opacity-50" />
+                    <Image src={growth} alt="" width={200} height={200} className="absolute -right-5 -top-15 rotate-30 z-10 opacity-50 hidden md:block" />
 
                 </ScrollStackItem>
 
