@@ -115,10 +115,10 @@ export default function Saas() {
           </div>
           <div className="mt-6 flex justify-between gap-[11rem] items-center flex-wrap lg:flex-nowrap">
             <div className="lg:col-span-7 space-y-6">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl tracking-tight text-white font-poppins font-light leading-[1.08]">
+              <h1 className="text-4xl md:text-6xl xl:text-7xl tracking-tight text-white font-poppins font-light leading-[1.08]">
                 Build only what's needed to prove what matters
               </h1>
-              <p className="text-neutral-300 md:text-lg max-w-2xl">
+              <p className="text-neutral-300 md:text-base max-w-2xl">
                 We design and ship focused MVPs that validate your thesis quickly — with real users, clean code, and a runway to scale.
               </p>
               <div className="flex gap-3 flex-wrap">
@@ -129,7 +129,7 @@ export default function Saas() {
                 </a>
               </div>
             </div>
-            <div className="relative lg:h-[441px] lg:bottom-[3rem] h-[200px] md:w-[500px] w-[200px] md:left-80 left-10">
+            <div className="relative lg:h-[441px] lg:bottom-[3rem] h-[200px] md:w-[500px] w-[200px] md:left-[16rem] left-10">
 
               <CardSwap
                 
