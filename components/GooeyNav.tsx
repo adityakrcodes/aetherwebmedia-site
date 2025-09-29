@@ -19,7 +19,7 @@ export interface GooeyNavProps {
 const GooeyNav: React.FC<GooeyNavProps> = ({
   items,
   animationTime = 600,
-  particleCount = 15,
+  particleCount = 0,
   particleDistances = [90, 10],
   particleR = 100,
   timeVariance = 300,

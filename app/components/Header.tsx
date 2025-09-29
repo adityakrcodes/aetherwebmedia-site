@@ -29,9 +29,9 @@ export default function Header() {
 
   return (
     <>
-    <header className="fixed top-0 left-0 right-0 z-50 w-[70%] rounded-md mt-5 mx-auto backdrop-blur-lg bg-neutral-950/80  hidden md:block">
-      <div className="max-w-8xl md:px-12 mr-auto ml-auto pr-8 pl-8">
-        <div className="flex pt-6 pb-6 items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 w-[92%] md:w-[85%] lg:w-[70%] rounded-md mt-5 mx-auto backdrop-blur-lg bg-neutral-950/80  hidden md:block">
+      <div className="max-w-8xl md:px-12 mr-auto ml-auto pr-6 pl-6 md:pr-8 md:pl-8">
+        <div className="flex pt-5 md:pt-6 pb-5 md:pb-6 items-center justify-between">
           <a href="/" className="hidden md:flex items-center">
             <Image
                 src={logo}
@@ -40,8 +40,10 @@ export default function Header() {
                 height={50}
                 className="invert"
             />
-            <span className="text-xl font-medium text-white tracking-tight">Aether Web Media</span>
-            <span className="text-xs mt-2 ml-2">Formerly AKC Web Media</span>
+            <div className="flex flex-col">
+                <span className="ml-2 text-sm md:text-base lg:text-xl font-medium text-white tracking-tight">Aether Web Media</span>
+                <span className="text-[10px] lg:text-xs ml-2">Formerly AKC Web Media</span>
+            </div>
           </a>
 
           <div className="hidden md:flex">
