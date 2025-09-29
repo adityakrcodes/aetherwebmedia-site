@@ -44,6 +44,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   onMenuClose
 }: StaggeredMenuProps) => {
   const [open, setOpen] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
   const openRef = useRef(false);
 
   // Disable background scrolling when menu is open (robust on iOS)
@@ -148,6 +149,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       if (toggleBtnRef.current) gsap.set(toggleBtnRef.current, { color: menuButtonColor });
     });
+    setHydrated(true);
     return () => ctx.revert();
   }, [menuButtonColor, position]);
 
@@ -399,6 +401,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         style={accentColor ? ({ ['--sm-accent' as any]: accentColor } as React.CSSProperties) : undefined}
         data-position={position}
         data-open={open || undefined}
+        data-ready={hydrated || undefined}
       >
         <div
           ref={preLayersRef}
@@ -423,7 +426,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         </div>
 
         <header
-          className="staggered-menu-header top-0 left-0 w-full flex items-center justify-between p-[2em] bg-transparent pointer-events-none z-20 sticky"
+          className="staggered-menu-header mt-3 top-0 left-0 w-full flex items-center justify-between backdrop-blur-md rounded-4xl border border-white/20 pointer-events-none z-20 sticky p-3"
           aria-label="Main navigation header"
         >
           <div className="sm-logo flex items-center select-none pointer-events-auto invert" aria-label="Logo">
@@ -546,7 +549,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       <style>{`
 .sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; }
-.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 2em; background: transparent; pointer-events: none; z-index: 20; }
+.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: space-between; pointer-events: none; z-index: 20; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-logo { display: flex; align-items: center; user-select: none; }
 .sm-scope .sm-logo-img { display: block; height: 32px; width: auto; object-fit: contain; }
@@ -561,14 +564,12 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-icon-line { position: absolute; left: 50%; top: 50%; width: 100%; height: 2px; background: currentColor; border-radius: 2px; transform: translate(-50%, -50%); will-change: transform; }
 .sm-scope .sm-line { display: none !important; }
 .sm-scope .staggered-menu-panel { position: absolute; top: 0; right: 0; width: clamp(260px, 38vw, 420px); height: 100%; background: white; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); display: flex; flex-direction: column; padding: 6em 2em 2em 2em; overflow-y: auto; z-index: 10; }
-.sm-scope .staggered-menu-wrapper:not([data-open]) .staggered-menu-panel { visibility: hidden; }
-.sm-scope .staggered-menu-wrapper[data-open] .staggered-menu-panel { visibility: visible; }
+.sm-scope .staggered-menu-wrapper:not([data-ready]) .staggered-menu-panel { visibility: hidden; }
 .sm-scope [data-position='left'] .staggered-menu-panel { right: auto; left: 0; }
 .sm-scope .sm-prelayers { position: absolute; top: 0; right: -5rem; bottom: 0; width: clamp(260px, 38vw, 420px); pointer-events: none; z-index: 5; }
 .sm-scope [data-position='left'] .sm-prelayers { right: auto; left: 0; }
 .sm-scope .sm-prelayer { position: absolute; top: 0; right: 0; height: 100%; width: 100%; transform: translateX(0); }
-.sm-scope .staggered-menu-wrapper:not([data-open]) .sm-prelayer { visibility: hidden; }
-.sm-scope .staggered-menu-wrapper[data-open] .sm-prelayer { visibility: visible; }
+.sm-scope .staggered-menu-wrapper:not([data-ready]) .sm-prelayer { visibility: hidden; }
 .sm-scope .sm-panel-inner { flex: 1; display: flex; flex-direction: column; gap: 1.25rem; }
 .sm-scope .sm-socials { margin-top: auto; padding-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .sm-scope .sm-socials-title { margin: 0; font-size: 1rem; font-weight: 500; color: var(--sm-accent, #ff0000); }
