@@ -51,7 +51,7 @@ export default function Pricing() {
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Smooth, tasteful animations</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support</li>
               </ul>
-              <a href="/services/web" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+              <a href="/services/dev/web" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
           </CometCard>
 
@@ -73,7 +73,7 @@ export default function Pricing() {
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Integrated payment systems</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />2 month free support</li>
               </ul>
-              <a href="/services/saas" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+              <a href="/services/dev/saas" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
           </CometCard>
 
@@ -98,7 +98,7 @@ export default function Pricing() {
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />App store deployment support</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support <br /> (Post-launch)</li>
               </ul>
-              <a href="/services/app" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+              <a href="/services/dev/app" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
           </CometCard>
         </div>
