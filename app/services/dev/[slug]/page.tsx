@@ -9,6 +9,8 @@ import CardSwap, { Card } from "@/components/CardSwap";
 import Image from "next/image";
 import { servicesConfig } from "../../services";
 
+export const runtime = 'edge';
+
 type PageProps = {
   params: { slug: string };
 };
