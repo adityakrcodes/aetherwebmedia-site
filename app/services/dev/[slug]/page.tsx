@@ -146,7 +146,7 @@ export default function ServicePage({ params }: PageProps) {
           <h3 className="mt-6 text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium">Tell us your idea. We’ll scope it — free.</h3>
           <p className="mt-4 text-neutral-300 max-w-2xl mx-auto">Get a timeline, budget range, and recommended stack. No obligation.</p>
           <div className="mt-8">
-            <a href="mailto:hello@novalume.studio" className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+            <a href="mailto:aetherwebmedia@gmail.com" className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
               <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
               <span className="relative z-10 block bg-gray-950 rounded-xl px-6 py-3 text-sm">Email Us</span>
             </a>
