@@ -5,7 +5,7 @@ import { CometCard } from "@/components/ui/comet-card";
 
 export default function Pricing() {
   return (
-    <div className="w-full h-[126rem] md:h-screen relative">
+    <div className="w-full h-[126rem] md:h-screen relative" id="pricing">
 
       <DotGrid
 
@@ -40,15 +40,16 @@ export default function Pricing() {
               <h3 className="mt-4 text-[22px] font-medium text-white">Launch‑ready website</h3>
               <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Fast, accessible, SEO‑friendly site with CMS.</p>
               <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-4xl font-semibold">$4,900</span>
+                <span className="text-4xl font-semibold">$500</span>
                 <span className="text-xs text-neutral-400">starting</span>
               </div>
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Up to 8 pages, mobile‑friendly</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Reusable sections for easy updates</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Up to 5 pages, mobile‑friendly</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Modern, responsive website design</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Edit content yourself + traffic insights</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Smooth, tasteful animations</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support</li>
               </ul>
               <a href="/services/web" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
@@ -61,15 +62,16 @@ export default function Pricing() {
               <h3 className="mt-4 text-[22px] font-medium text-white">MVP to revenue</h3>
               <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Core product, auth, billing, and dashboard.</p>
               <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-4xl font-semibold">$18,000</span>
+                <span className="text-4xl font-semibold">$2,000</span>
                 <span className="text-xs text-neutral-400">starting</span>
               </div>
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Secure sign‑in and team roles</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Subscriptions and payments</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Product analytics built‑in</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Deployed to secure cloud</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />End-to-end SaaS MVP development</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Authentication & user management</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Scalable backend architecture</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Integrated payment systems</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />2 month free support</li>
               </ul>
               <a href="/services/saas" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
@@ -84,15 +86,16 @@ export default function Pricing() {
               <h3 className="mt-4 text-[22px] font-medium text-white">Prototype to store</h3>
               <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Cross‑platform app with core flows and analytics.</p>
               <div className="mt-5 flex items-baseline gap-2">
-                <span className="text-4xl font-semibold">$12,000</span>
+                <span className="text-4xl font-semibold">$1,000</span>
                 <span className="text-xs text-neutral-400">starting</span>
               </div>
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Works on iOS and Android</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Works even with spotty internet</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Custom UI/UX design</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Login, notifications, and analytics</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Store‑ready automated builds</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />API integrations</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support</li>
               </ul>
               <a href="/services/app" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>

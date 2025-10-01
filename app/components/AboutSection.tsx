@@ -6,7 +6,8 @@ import { Github, Linkedin, Instagram } from "lucide-react";
 
 export default function AboutSection() {
   return (
-    <section className="relative md:mt-32 ">
+    <section className="relative md:mt-32 " id="team">
+      
       {/* ADITYA */}
       <div className="w-10/12 md:px-12 mr-auto ml-auto pt-12 pr-8 pb-2 pl-8 ">
         <div className="flex flex-col gap-12 md:flex-row items-center justify-center">
