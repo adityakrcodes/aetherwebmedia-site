@@ -7,7 +7,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="relative min-h-screen flex flex-col">
+    <footer className="relative min-h-screen flex flex-col" style={{ backgroundColor: '#060606' }}>
       {/* Main content area */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-32 min-h-[80vh]">
         {/* Call to Action Section */}
@@ -37,7 +37,7 @@ export default function Footer() {
         </div>
 
         {/* Logo Video */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-center items-end overflow-hidden" style={{ height: '60vh' }}>
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-center items-end overflow-hidden" style={{ height: '60vh', backgroundColor: '#060606' }}>
           <video
             autoPlay
             loop
@@ -60,9 +60,9 @@ export default function Footer() {
 
       {/* Footer Bottom */}
       <div className=" border-white/10 px-4 py-8 mt-auto relative z-20">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center text-white text-sm space-y-4 md:space-y-0">
+        <div className="max-w-6xl mx-auto flex flex-row md:flex-row justify-between items-center text-white text-sm md:space-y-0">
           {/* Copyright */}
-          <div className="order-2 md:order-1 font-poppins">
+          <div className="font-poppins bg-black/20 backdrop-blur-md p-2 rounded-md">
             ©2025 Aether Web Media
           </div>
 
@@ -77,7 +77,7 @@ export default function Footer() {
 
           {/* Back to Top */}
           <button
-            className="order-3 uppercase hover:underline transition-colors duration-200 font-poppins"
+            className="uppercase hover:underline transition-colors duration-200 font-poppins bg-black/20 backdrop-blur-md p-2 rounded-md"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             BACK TO TOP
