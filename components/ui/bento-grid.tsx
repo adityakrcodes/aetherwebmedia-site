@@ -26,18 +26,30 @@ export const BentoGridItem = ({
   description,
   header,
   url,
+  calLink,
 }: {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
   header?: React.ReactNode;
   url?: string | null;
+  calLink?: string | null;
 }) => {
   const Container: any = url ? Link : 'div';
   const containerProps = url ? { href: url } : {};
+  
+  // Add Cal.com data attributes if calLink is provided
+  const calProps = calLink ? {
+    'data-cal-namespace': 'schedule-a-call',
+    'data-cal-link': calLink,
+    'data-cal-config': '{"layout":"month_view"}',
+    style: { cursor: 'pointer' }
+  } : {};
+  
   return (
     <Container
       {...containerProps}
+      {...calProps}
       className={cn(
         "group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border  p-4 transition duration-200  border-white/[0.2] bg-black",
         className,

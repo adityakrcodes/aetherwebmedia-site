@@ -3,8 +3,9 @@
 import { LayoutTextFlip } from "@/components/ui/layout-text-flip";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useEffect } from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { getCalApi } from "@calcom/embed-react";
 import {
   IconArrowWaveRightUp,
   IconBoxAlignRightFilled,
@@ -26,6 +27,13 @@ import adImage from "@/public/png/services/ad.png";
 import placeholderImage from "@/public/png/transparent.png";
 
 export default function ServicesSection() {
+    useEffect(() => {
+        (async function () {
+          const cal = await getCalApi({"namespace":"schedule-a-call"});
+          cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+        })();
+      }, [])
+
     interface SkeletonProps {
         mobileImg?: StaticImageData;
         desktopImg?: StaticImageData;
@@ -76,19 +84,19 @@ export default function ServicesSection() {
           description:
             "Creative, impactful designs that elevate your brand's identity.",
           header: <Skeleton mobileImg={designImage} desktopImg={designImage}/>,
-          url: "/services/design",
+          calLink: "aetherwebmedia/request-for-designing-service",
         },
         {
           title: "Branding and Marketing",
           description: "We shape brands that connect, engage, and grow.",
           header: <Skeleton mobileImg={brandingImage} desktopImg={brandingImage}/>,
-          url: "/services/branding",
+          calLink: "aetherwebmedia/request-for-branding-and-marketing-service",
         },
         {
           title: "Ad Campaigns",
           description: "Targeted campaigns that drive measurable results and ROI.",
           header: <Skeleton mobileImg={adImage} desktopImg={adImage}/>,
-          url: "/services/ad",
+          calLink: "aetherwebmedia/request-for-advertising-service",
         },
       ];
     return (
@@ -132,7 +140,7 @@ export default function ServicesSection() {
                             description={item.description}
                             header={item.header}
                             className={i === 3 || i === 5 ? "md:col-span-3" : ""}
-                            url={item.url}
+                            calLink={item.calLink}
                         />
                     ))}
                 </BentoGrid>
