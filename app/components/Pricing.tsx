@@ -28,66 +28,73 @@ export default function Pricing() {
         returnDuration={1.5}
 
       />
-      <h1 className="text-7xl font-bold absolute md:top-[20%] top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2">Pricing</h1>
+      <h1 className="text-5xl md:text-7xl tracking-tight font-semibold text-white absolute md:top-[18%] top-[7%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+        Pricing
+      </h1>
       <div className="flex items-center justify-center gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 md:mt-0 mt-20">
+        <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 mt-60">
           {/* Web Dev Bundle */}
-          <CometCard className="max-w-[300px] h-[460px]">
-            <div className="my-10 flex w-60 lg:w-80 flex-col rounded-[16px] bg-[#1F2121] p-4 text-white">
-              <div className="px-2 py-1 rounded-full bg-white/10 ring-1 ring-white/10 w-max text-xs">Web Dev Bundle</div>
-              <h3 className="mt-3 text-2xl font-semibold">Launch-ready website</h3>
-              <p className="mt-1 text-sm text-neutral-300">Fast, accessible, SEO‑friendly site with CMS.</p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-3xl font-bold">$4,900</span>
+          <CometCard className="max-w-[320px] h-[520px]" rotateDepth={3} translateDepth={3}>
+            <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
+              <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">Web Dev Bundle</div>
+              <h3 className="mt-4 text-[22px] font-medium text-white">Launch‑ready website</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Fast, accessible, SEO‑friendly site with CMS.</p>
+              <div className="mt-5 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold">$4,900</span>
                 <span className="text-xs text-neutral-400">starting</span>
               </div>
-              <ul className="mt-4 space-y-2 text-sm text-neutral-200">
-                <li>• 5‑8 pages, responsive</li>
-                <li>• Component library</li>
-                <li>• CMS + analytics</li>
-                <li>• Basic animations</li>
+              <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Up to 8 pages, mobile‑friendly</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Reusable sections for easy updates</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Edit content yourself + traffic insights</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Smooth, tasteful animations</li>
               </ul>
-              <a href="/services/web" className="mt-6 inline-flex items-center justify-center rounded-lg bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 transition">Explore Web</a>
-            </div>
-          </CometCard>
-
-          {/* App Dev Bundle */}
-          <CometCard className="max-w-[300px] h-[480px] scale-130">
-            <div className="my-10 flex w-60 lg:w-80 flex-col rounded-[16px] bg-[#1F2121] p-4 text-white">
-              <div className="px-2 py-1 rounded-full bg-white/10 ring-1 ring-white/10 w-max text-xs">App Dev Bundle</div>
-              <h3 className="mt-3 text-2xl font-semibold">Prototype to store</h3>
-              <p className="mt-1 text-sm text-neutral-300">Cross‑platform app with core flows and analytics.</p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-3xl font-bold">$12,000</span>
-                <span className="text-xs text-neutral-400">starting</span>
-              </div>
-              <ul className="mt-4 space-y-2 text-sm text-neutral-200">
-                <li>• iOS + Android</li>
-                <li>• Offline‑first data</li>
-                <li>• Auth, push, analytics</li>
-                <li>• CI/CD setup</li>
-              </ul>
-              <a href="/services/app" className="mt-6 inline-flex items-center justify-center rounded-lg bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 transition">Explore App</a>
+              <a href="/services/web" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
           </CometCard>
 
           {/* SaaS Bundle */}
-          <CometCard className="max-w-[300px] h-[460px]">
-            <div className="my-10 flex w-60 lg:w-80 flex-col rounded-[16px] bg-[#1F2121] p-4 text-white">
-              <div className="px-2 py-1 rounded-full bg-white/10 ring-1 ring-white/10 w-max text-xs">SaaS Bundle</div>
-              <h3 className="mt-3 text-2xl font-semibold">MVP to revenue</h3>
-              <p className="mt-1 text-sm text-neutral-300">Core product, auth, billing, and dashboard.</p>
-              <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-3xl font-bold">$18,000</span>
+          <CometCard className="max-w-[320px] h-[520px] scale-130 mt-16 lg:mt-0" rotateDepth={3} translateDepth={3}>
+            <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
+              <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">SaaS Bundle</div>
+              <h3 className="mt-4 text-[22px] font-medium text-white">MVP to revenue</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Core product, auth, billing, and dashboard.</p>
+              <div className="mt-5 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold">$18,000</span>
                 <span className="text-xs text-neutral-400">starting</span>
               </div>
-              <ul className="mt-4 space-y-2 text-sm text-neutral-200">
-                <li>• Auth + RBAC</li>
-                <li>• Subscriptions (Stripe)</li>
-                <li>• Analytics + events</li>
-                <li>• Production deployment</li>
+              <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Secure sign‑in and team roles</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Subscriptions and payments</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Product analytics built‑in</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Deployed to secure cloud</li>
               </ul>
-              <a href="/services/saas" className="mt-6 inline-flex items-center justify-center rounded-lg bg-white text-black px-4 py-2 text-sm font-medium hover:bg-white/90 transition">Explore SaaS</a>
+              <a href="/services/saas" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+            </div>
+          </CometCard>
+
+          {/* App Dev Bundle */}
+          
+
+          <CometCard className="max-w-[320px] h-[540px] " rotateDepth={5} translateDepth={5}>
+            <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
+              <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">App Dev Bundle</div>
+              <h3 className="mt-4 text-[22px] font-medium text-white">Prototype to store</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Cross‑platform app with core flows and analytics.</p>
+              <div className="mt-5 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold">$12,000</span>
+                <span className="text-xs text-neutral-400">starting</span>
+              </div>
+              <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Works on iOS and Android</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Works even with spotty internet</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Login, notifications, and analytics</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Store‑ready automated builds</li>
+              </ul>
+              <a href="/services/app" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
           </CometCard>
         </div>
