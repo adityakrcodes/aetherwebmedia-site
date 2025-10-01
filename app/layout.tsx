@@ -102,7 +102,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${qwigley.variable} ${moonDance.variable} ${poppins.variable} ${sedgwickAve.variable} antialiased bg-neutral-950 text-neutral-200`}
       >
         {children}
-        <PerformanceMonitor />
+        {/* <PerformanceMonitor /> */}
       </body>
     </html>
   );
