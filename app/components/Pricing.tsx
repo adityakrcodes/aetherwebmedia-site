@@ -84,7 +84,7 @@ export default function Pricing() {
             <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
               <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">App Dev Bundle</div>
               <h3 className="mt-4 text-[22px] font-medium text-white">Prototype to store</h3>
-              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Cross‑platform app with core flows and analytics.</p>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Cross-platform app with core flows and analytics.</p>
               <div className="mt-5 flex items-baseline gap-2">
                 <span className="text-4xl font-semibold">$1,000</span>
                 <span className="text-xs text-neutral-400">starting</span>
@@ -95,7 +95,8 @@ export default function Pricing() {
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Custom UI/UX design</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Login, notifications, and analytics</li>
                 <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />API integrations</li>
-                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />App store deployment support</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support <br /> (Post-launch)</li>
               </ul>
               <a href="/services/app" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
             </div>
