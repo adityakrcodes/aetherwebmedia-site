@@ -5,101 +5,26 @@ import Footer from "@/app/components/Footer";
 import DotGrid from "@/components/DotGrid";
 import { SaasBentoGrid, SaasBentoGridItem } from "@/components/ui/saas-bento-grid";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
-import CardSwap, { Card } from '@/components/CardSwap'
-import image1 from '@/public/image1.png'
-import image2 from '@/public/image2.png'
-import image3 from '@/public/image3.png'
-import image4 from '@/public/image.png'
+import CardSwap, { Card } from "@/components/CardSwap";
+import Image from "next/image";
+import { servicesConfig } from "../../services";
 
+type PageProps = {
+  params: { slug: string };
+};
 
-export default function Saas() {
-  const outcomes = [
-    { title: "Ship in Weeks", desc: "A usable MVP in 4–6 weeks, scoping only what matters." },
-    { title: "Market Validation", desc: "Analytics, feedback loops, and A/B hooks built-in." },
-    { title: "Ownable Codebase", desc: "Readable, typed code designed to be extended by any team." },
-    { title: "Security First", desc: "Best practices for auth, RBAC, and data protection from day one." },
-    { title: "Payments & Plans", desc: "Stripe subscriptions, trials, and metered billing ready." },
-    { title: "Cloud Native", desc: "Deployed with observability, error tracking, and rollbacks." },
-  ];
+export default function ServicePage({ params }: PageProps) {
+  const service = servicesConfig[params.slug];
 
-  const roadmapContent = [
-    {
-      title: "01 · Scope",
-      description: "Define MVP goals, success metrics, and non-negotiables. We'll map your core user journey and identify the minimum feature set needed to validate your hypothesis.",
-      content: (
-        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--cyan-500),var(--emerald-500))] text-white rounded-xl">
-          <div className="text-center">
-            <div className="text-4xl mb-2">🎯</div>
-            <div className="text-lg font-semibold">Scope Definition</div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "02 · UX Draft",
-      description: "Wireframes and flows focused on activation. We'll design the user experience that gets users to their first 'aha moment' as quickly as possible.",
-      content: (
-        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--orange-500),var(--yellow-500))] text-white rounded-xl">
-          <div className="text-center">
-            <div className="text-4xl mb-2">✏️</div>
-            <div className="text-lg font-semibold">UX Design</div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "03 · Build",
-      description: "Core features only, production quality. We'll build your MVP with clean, typed code that's ready for real users from day one.",
-      content: (
-        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--purple-500),var(--pink-500))] text-white rounded-xl">
-          <div className="text-center">
-            <div className="text-4xl mb-2">⚡</div>
-            <div className="text-lg font-semibold">Development</div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "04 · Integrate",
-      description: "Auth, billing, email, analytics, and ops. We'll connect all the essential services your SaaS needs to function and scale.",
-      content: (
-        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--blue-500),var(--cyan-500))] text-white rounded-xl">
-          <div className="text-center">
-            <div className="text-4xl mb-2">🔗</div>
-            <div className="text-lg font-semibold">Integration</div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "05 · Validate",
-      description: "Dogfood, QA, and closed-beta with fast fixes. We'll test everything thoroughly and iterate quickly based on real user feedback.",
-      content: (
-        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--green-500),var(--emerald-500))] text-white rounded-xl">
-          <div className="text-center">
-            <div className="text-4xl mb-2">🧪</div>
-            <div className="text-lg font-semibold">Testing</div>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "06 · Launch",
-      description: "Ship, measure, iterate — with a clear v1.1 plan. We'll deploy your MVP and set up the feedback loops you need to grow.",
-      content: (
-        <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(to_bottom_right,var(--red-500),var(--orange-500))] text-white rounded-xl">
-          <div className="text-center">
-            <div className="text-4xl mb-2">🚀</div>
-            <div className="text-lg font-semibold">Launch</div>
-          </div>
-        </div>
-      ),
-    },
-  ];
+  if (!service) {
+    return (
+      <div className="min-h-screen text-white flex items-center justify-center">
+        <p>Service not found.</p>
+      </div>
+    );
+  }
 
-  const stack = ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "tRPC/REST", "Stripe", "Clerk/Auth.js", "Vercel/AWS", "Sentry", "PostHog"];
-
-  const stackImages = [image1, image2, image3, image4];
+  const { badgeLabel, headline, subtext, outcomes, roadmap, stack, stackImages } = service;
 
   return (
     <div className="relative scroll-smooth ">
@@ -111,15 +36,15 @@ export default function Saas() {
         <div className="max-w-[85rem] mr-auto ml-auto px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-            <span className="text-sm font-normal text-neutral-200 font-sans">SaaS MVP Development</span>
+            <span className="text-sm font-normal text-neutral-200 font-sans">{badgeLabel}</span>
           </div>
           <div className="mt-6 flex justify-between gap-[11rem] items-center flex-wrap lg:flex-nowrap">
             <div className="lg:col-span-7 space-y-6">
               <h1 className="text-4xl md:text-6xl xl:text-7xl tracking-tight text-white font-poppins font-light leading-[1.08]">
-                Build only what's needed to prove what matters
+                {headline}
               </h1>
               <p className="text-neutral-300 md:text-base max-w-2xl">
-                We design and ship focused MVPs that validate your thesis quickly — with real users, clean code, and a runway to scale.
+                {subtext}
               </p>
               <div className="flex gap-3 flex-wrap">
                 <a href="#roadmap" className="inline-flex items-center gap-2 ring-1 ring-white/15 hover:bg-white/10 transition text-sm font-medium text-white bg-white/5 rounded-xl px-5 py-3 backdrop-blur-lg">See the roadmap</a>
@@ -130,30 +55,19 @@ export default function Saas() {
               </div>
             </div>
             <div className="relative lg:h-[441px] lg:bottom-[3rem] h-[200px] md:w-[500px] w-[200px] md:left-[16rem] left-10">
-
-              <CardSwap
-                
-                cardDistance={60}
-                verticalDistance={70}
-                delay={3000}
-                pauseOnHover={false}
-                skewAmount={0}
-               >
-
-                {stackImages.map((s) => (
-                  <Card key={s.src} className="md:w-[300px] w-[600px]!">
-                    <img src={s.src} alt="Stack" className="w-full h-full object-cover rounded-lg" />
+              <CardSwap cardDistance={60} verticalDistance={70} delay={3000} pauseOnHover={false} skewAmount={0}>
+                {stackImages.map((src) => (
+                  <Card key={src} className="md:w-[300px] w-[600px]!">
+                    {/* Using next/image for optimization but allowing string src */}
+                    <Image src={src} alt="Stack" fill className="object-cover rounded-lg" />
                   </Card>
                 ))}
-
               </CardSwap>
-
             </div>
           </div>
         </div>
       </section>
 
-      {/* Outcomes */}
       <section id="outcomes" className="relative py-16 md:py-24 mt-26">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center">Outcomes over features</h2>
@@ -172,15 +86,28 @@ export default function Saas() {
         </div>
       </section>
 
-      {/* Roadmap with Sticky Scroll Reveal */}
       <section id="roadmap" className="relative py-16 ">
         <div className="mx-auto w-screen pointer-events-auto">
-          <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center mb-10">MVP Roadmap</h2>
-          <StickyScroll content={roadmapContent} />
+          <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center mb-10">Roadmap</h2>
+          <StickyScroll
+            content={roadmap.map((r) => ({
+              title: r.stepTitle,
+              description: r.description,
+              content: (
+                <div className={`flex h-full w-full items-center justify-center text-white rounded-xl`} style={{
+                  background: `linear-gradient(to bottom right, ${r.gradientFrom}, ${r.gradientTo})`
+                }}>
+                  <div className="text-center">
+                    <div className="text-4xl mb-2">{r.emoji}</div>
+                    <div className="text-lg font-semibold">{r.stepTitle}</div>
+                  </div>
+                </div>
+              )
+            }))}
+          />
         </div>
       </section>
 
-      {/* Stack */}
       <section id="stack" className="relative py-16">
         <div className="mx-auto max-w-6xl px-6 md:px-10">
           <h2 className="text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium text-center">Stack we love</h2>
@@ -195,12 +122,11 @@ export default function Saas() {
         </div>
       </section>
 
-      {/* Mini Case Study */}
       <section id="work" className="relative py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-6 md:px-10 grid md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
-            <h3 className="text-2xl md:text-4xl tracking-tight text-white font-manrope font-medium">From idea to paid users in 5 weeks</h3>
-            <p className="mt-3 text-neutral-300">We partnered with a B2B team to ship a focused MVP with auth, billing, and a dashboard. They closed 12 trial signups in week one and converted 4 to paid by week four.</p>
+            <h3 className="text-2xl md:text-4xl tracking-tight text-white font-manrope font-medium">From idea to production quickly</h3>
+            <p className="mt-3 text-neutral-300">We partner with teams to ship focused releases with the right integrations for measurable outcomes.</p>
             <a href="#contact" className="mt-5 inline-flex items-center gap-2 ring-1 ring-white/15 hover:bg-white/10 transition text-sm font-medium text-white bg-white/5 rounded-xl px-5 py-3 backdrop-blur-lg">View details</a>
           </div>
           <div className="order-1 md:order-2">
@@ -209,14 +135,13 @@ export default function Saas() {
         </div>
       </section>
 
-      {/* CTA */}
       <section id="contact" className="relative py-20 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ boxShadow: "0 60px 60px -12px rgba(0,0,0,1), 0 60px 0px -40px rgba(0,0,0,1)" }}>
         <div className="mx-auto max-w-5xl text-center px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
             <span className="text-sm font-normal text-neutral-200 font-sans">Let’s move fast</span>
           </div>
-          <h3 className="mt-6 text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium">Tell us your idea. We’ll scope your MVP — free.</h3>
+          <h3 className="mt-6 text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium">Tell us your idea. We’ll scope it — free.</h3>
           <p className="mt-4 text-neutral-300 max-w-2xl mx-auto">Get a timeline, budget range, and recommended stack. No obligation.</p>
           <div className="mt-8">
             <a href="mailto:hello@novalume.studio" className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
@@ -227,7 +152,6 @@ export default function Saas() {
         </div>
       </section>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

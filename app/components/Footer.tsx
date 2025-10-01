@@ -2,6 +2,7 @@ import { LineShadowText } from "@/components/ui/line-shadow-text"
 
 
 
+
 export default function Footer() {
 
 
