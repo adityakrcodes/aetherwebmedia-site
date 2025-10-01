@@ -60,23 +60,23 @@ export default function Header() {
 
       </div>
     </header>
-        <div className="md:hidden w-full h-full px-15 pointer-events-none fixed top-0 left-0 right-0 z-20 transition-all duration-300">
-        <StaggeredMenu
-            position="right"
-            items={menuItems}
-            socialItems={socialItems}
-            displaySocials={true}
-            displayItemNumbering={true}
-            menuButtonColor="#fff"
-            openMenuButtonColor="#000"
-            changeMenuColorOnOpen={true}
-            colors={['#B19EEF', '#5227FF']}
-            logoUrl={logo.src}
-            accentColor="#ff6b6b"
-            className=""
-            onMenuOpen={() => console.log('Menu opened')}
-            onMenuClose={() => console.log('Menu closed')}
-        />
+        <div className="md:hidden w-full h-full pointer-events-none fixed top-0 z-20 transition-all duration-300 flex items-center justify-center">
+            <StaggeredMenu
+                position="right"
+                items={menuItems}
+                socialItems={socialItems}
+                displaySocials={true}
+                displayItemNumbering={true}
+                menuButtonColor="#fff"
+                openMenuButtonColor="#000"
+                changeMenuColorOnOpen={true}
+                colors={['#B19EEF', '#5227FF']}
+                logoUrl={logo.src}
+                accentColor="#ff6b6b"
+                className=""
+                onMenuOpen={() => console.log('Menu opened')}
+                onMenuClose={() => console.log('Menu closed')}
+            />
         </div>
     </>
   );
