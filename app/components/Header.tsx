@@ -11,15 +11,15 @@ export default function Header() {
 
   const menuItems = [
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
-    { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
-    { label: 'Services', ariaLabel: 'View our services', link: '/services' },
-    { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
+    // { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+    { label: 'Services', ariaLabel: 'View our services', link: '#services' },
+    { label: 'Contact', ariaLabel: 'Get in touch', link: 'mailto:info@aetherwebmedia.com' }
   ];
 
   const socialItems = [
-    { label: 'Twitter', link: 'https://twitter.com' },
-    { label: 'GitHub', link: 'https://github.com' },
-    { label: 'LinkedIn', link: 'https://linkedin.com' }
+    { label: 'Twitter', link: 'https://twitter.com/aetherwebmedia' },
+    { label: 'Instagram', link: 'https://instagram.com/aetherwebmedia' },
+    { label: 'LinkedIn', link: 'https://linkedin.com/aetherwebmedia' }
   ];
 
   useEffect(() => {
@@ -50,9 +50,9 @@ export default function Header() {
             <GooeyNav
               items={[
                 { label: "Services", href: "#services" },
-                { label: "Work", href: "#work" },
-                { label: "Insights", href: "#insights" },
-                { label: "Contact", href: "#contact" },
+                { label: "Pricing", href: "#pricing" },
+                { label: "Team", href: "#team" },
+                { label: "Contact", href: "mailto:info@aetherwebmedia.com" },
               ]}
             />
           </div>
