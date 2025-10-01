@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Qwigley, Moon_Dance, Sedgwick_Ave, Poppins } from "n
 import "./globals.css";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aetherwebmedia.com";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -50,32 +52,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Aether Web Media",
   description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
   keywords: "aetherwebmedia, akcwebmedia, saas, saas development, web development, app development, startup solution, custom software development, custom software solutions, custom software development company, custom software development services, custom software development agency",
   authors: [{ name: "Aether Web Media" }],
   openGraph: {
     type: "website",
-    url: "https://aetherwebmedia.com",
+    url: siteUrl,
     title: "Aether Web Media",
     description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
-    images: [
-      {
-        url: "/public/png/logo.png",
-        alt: "Aether Web Media Logo",
-      },
-    ],
+    images: "/png/logo.png",
   },
   twitter: {
     card: "summary_large_image",
     title: "Aether Web Media",
     description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
-    images: [
-      {
-        url: "/public/png/banner.png",
-        alt: "Aether Web Media Banner",
-      },
-    ],
+    images: "/png/banner.png",
   },
   other: {
     copyright: "Aether Web Media",
