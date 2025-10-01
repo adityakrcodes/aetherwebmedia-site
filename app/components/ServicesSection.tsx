@@ -24,7 +24,7 @@ export default function ServicesSection() {
           title: "SaaS MVP Development",
           description: "We help startups launch quickly with lean, functional MVPs that validate ideas fast, attract users, and set the foundation for scalable SaaS products.",
           header: <Skeleton />,
-          url: "/services/saas",
+          url: "/services/dev/saas",
         },
     ]
     const items = [
@@ -32,13 +32,13 @@ export default function ServicesSection() {
           title: "Web Development",
           description: "Websites that work harder, load faster, and scale smarter.",
           header: <Skeleton />,
-          url: "/services/web",
+          url: "/services/dev/web",
         },
         {
           title: "App Development",
           description: "Our team builds intuitive, fast, and user-friendly mobile apps that deliver seamless experiences across devices, turning your idea into a tool people love to use.",
           header: <Skeleton />,
-          url: "/services/app",
+          url: "/services/dev/app",
         },
     ]
     const items2 = [
