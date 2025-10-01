@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Nikhil from "@/public/profile/nikhil.jpeg";
+import Nikhil from "@/public/profile/nikhil.png";
 import Aditya from "@/public/profile/aditya.jpg";
 import X from "@/public/svg/x-logo.svg"
 import { Github, Linkedin, Instagram } from "lucide-react";
@@ -96,13 +96,13 @@ export default function AboutSection() {
         <div className="flex flex-col gap-12 md:flex-row items-center justify-center">
           <div className="ring-1 ring-white/10 overflow-hidden bg-neutral-900/50 rounded-lg md:w-1/4 w-full">
             <div className="aspect-[4/3] w-full overflow-hidden">
-              <Image src={Nikhil} alt="Professional portrait" width={1400} height={1050} className="h-full w-full object-cover grayscale-75 hover:grayscale-0 transition-all duration-300" loading="lazy" />
+              <Image src={Nikhil} alt="Professional portrait" width={1400} height={1050} className="h-full w-full object-cover grayscale-75 hover:grayscale-0 transition-all duration-300" style={{ objectPosition: "center 20%" }} loading="lazy" />
             </div>
           </div>
           <div className="md:w-2/4 w-full">
             <h2 className="md:text-7xl text-5xl font-light text-white tracking-tight font-manrope">Meet Nikhil</h2>
             <p className="mt-6 text-base md:text-lg text-neutral-300 font-sans">
-              I'm Alex, a creative Digital Product Designer and Front-end Developer based in San Francisco. I specialize in creating seamless user experiences and innovative digital solutions that bridge design and technology to drive business growth.
+              I'm Nikhil, a creative Digital Product Designer and Front-end Developer based in San Francisco. I specialize in creating seamless user experiences and innovative digital solutions that bridge design and technology to drive business growth.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {[

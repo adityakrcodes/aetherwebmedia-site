@@ -28,101 +28,74 @@ export default function Pricing() {
         returnDuration={1.5}
 
       />
-      <h1 className="text-7xl font-bold absolute md:top-[20%] top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2">Pricing</h1>
+      <h1 className="text-5xl md:text-7xl tracking-tight font-semibold text-white absolute md:top-[18%] top-[7%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+        Pricing
+      </h1>
       <div className="flex items-center justify-center gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 md:mt-0 mt-20">
-          <CometCard className="max-w-[300px] h-[400px]">
-            <button
-              type="button"
-              className="my-10 flex w-60 lg:w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
-              aria-label="View invite F7RA"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: "none",
-                opacity: 1,
-              }}
-            >
-              <div className="mx-2 flex-1">
-                <div className="relative mt-2 aspect-[3/4] w-full">
-                  <img
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover contrast-75"
-                    alt="Invite background"
-                    src="https://images.unsplash.com/photo-1505506874110-6a7a69069a08?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    style={{
-                      boxShadow: "rgba(0, 0, 0, 0.05) 0px 5px 6px 0px",
-                      opacity: 1,
-                    }}
-                  />
-                </div>
+        <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 mt-60">
+          {/* Web Dev Bundle */}
+          <CometCard className="max-w-[320px] h-[520px]" rotateDepth={3} translateDepth={3}>
+            <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
+              <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">Web Dev Bundle</div>
+              <h3 className="mt-4 text-[22px] font-medium text-white">Launch‑ready website</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Fast, accessible, SEO‑friendly site with CMS.</p>
+              <div className="mt-5 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold">$4,900</span>
+                <span className="text-xs text-neutral-400">starting</span>
               </div>
-              <div className="mt-2 flex flex-shrink-0 items-center justify-between p-4 font-mono text-white">
-                <div className="text-xs">Comet Invitation</div>
-                <div className="text-xs text-gray-300 opacity-50">#F7RA</div>
-              </div>
-            </button>
+              <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Up to 8 pages, mobile‑friendly</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Reusable sections for easy updates</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Edit content yourself + traffic insights</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Smooth, tasteful animations</li>
+              </ul>
+              <a href="/services/web" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+            </div>
           </CometCard>
-          <CometCard className="max-w-[300px] h-[400px] scale-130">
-            <button
-              type="button"
-              className="my-10 flex w-60 lg:w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
-              aria-label="View invite F7RA"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: "none",
-                opacity: 1,
-              }}
-            >
-              <div className="mx-2 flex-1">
-                <div className="relative mt-2 aspect-[3/4] w-full">
-                  <img
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover contrast-75"
-                    alt="Invite background"
-                    src="https://images.unsplash.com/photo-1505506874110-6a7a69069a08?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    style={{
-                      boxShadow: "rgba(0, 0, 0, 0.05) 0px 5px 6px 0px",
-                      opacity: 1,
-                    }}
-                  />
-                </div>
+
+          {/* SaaS Bundle */}
+          <CometCard className="max-w-[320px] h-[520px] scale-130 mt-16 lg:mt-0" rotateDepth={3} translateDepth={3}>
+            <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
+              <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">SaaS Bundle</div>
+              <h3 className="mt-4 text-[22px] font-medium text-white">MVP to revenue</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Core product, auth, billing, and dashboard.</p>
+              <div className="mt-5 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold">$18,000</span>
+                <span className="text-xs text-neutral-400">starting</span>
               </div>
-              <div className="mt-2 flex flex-shrink-0 items-center justify-between p-4 font-mono text-white">
-                <div className="text-xs">Comet Invitation</div>
-                <div className="text-xs text-gray-300 opacity-50">#F7RA</div>
-              </div>
-            </button>
+              <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Secure sign‑in and team roles</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Subscriptions and payments</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Product analytics built‑in</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Deployed to secure cloud</li>
+              </ul>
+              <a href="/services/saas" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+            </div>
           </CometCard>
-          <CometCard className="max-w-[300px] h-[400px]">
-            <button
-              type="button"
-              className="my-10 flex w-60 lg:w-80 cursor-pointer flex-col items-stretch rounded-[16px] border-0 bg-[#1F2121] p-2 saturate-0 md:my-20 md:p-4 z-10"
-              aria-label="View invite F7RA"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: "none",
-                opacity: 1,
-              }}
-            >
-              <div className="mx-2 flex-1">
-                <div className="relative mt-2 aspect-[3/4] w-full">
-                  <img
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover contrast-75"
-                    alt="Invite background"
-                    src="https://images.unsplash.com/photo-1505506874110-6a7a69069a08?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    style={{
-                      boxShadow: "rgba(0, 0, 0, 0.05) 0px 5px 6px 0px",
-                      opacity: 1,
-                    }}
-                  />
-                </div>
+
+          {/* App Dev Bundle */}
+          
+
+          <CometCard className="max-w-[320px] h-[540px] " rotateDepth={5} translateDepth={5}>
+            <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
+              <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">App Dev Bundle</div>
+              <h3 className="mt-4 text-[22px] font-medium text-white">Prototype to store</h3>
+              <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Cross‑platform app with core flows and analytics.</p>
+              <div className="mt-5 flex items-baseline gap-2">
+                <span className="text-4xl font-semibold">$12,000</span>
+                <span className="text-xs text-neutral-400">starting</span>
               </div>
-              <div className="mt-2 flex flex-shrink-0 items-center justify-between p-4 font-mono text-white">
-                <div className="text-xs">Comet Invitation</div>
-                <div className="text-xs text-gray-300 opacity-50">#F7RA</div>
-              </div>
-            </button>
+              <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Works on iOS and Android</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Works even with spotty internet</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Login, notifications, and analytics</li>
+                <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Store‑ready automated builds</li>
+              </ul>
+              <a href="/services/app" className="mt-6 inline-flex items-center justify-center rounded-xl bg-white text-black px-4 py-2.5 text-sm font-medium shadow-[0_0_0_1px_rgba(255,255,255,0.15)] hover:bg-white/90 active:scale-[0.99] transition">Explore More</a>
+            </div>
           </CometCard>
         </div>
       </div>
