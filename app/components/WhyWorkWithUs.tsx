@@ -70,7 +70,11 @@ export default function WhyWorkWithUs() {
                                 Projects that don't just look good,<br /> but also deliver measurable growth.
                             </p>
                         </div>
-                        <div className="md:hidden relative w-full max-h-[20rem] md:max-h-[20rem] rounded-2xl bg-black  flex items-center justify-center overflow-hidden mt-2">
+                        <div className="md:hidden relative w-full max-h-[20rem] md:max-h-[20rem] rounded-2xl bg-black/20 backdrop-blur-md flex items-center justify-center overflow-hidden mt-2">
+                            {/* Top blur overlay */}
+                            <div className="pointer-events-none absolute top-0 left-0 w-full h-10 z-10 bg-gradient-to-b from-black/60 via-black/10 to-transparent blur-md" />
+                            {/* Bottom blur overlay */}
+                            <div className="pointer-events-none absolute bottom-0 left-0 w-full h-10 z-10 bg-gradient-to-t from-black/60 via-black/10 to-transparent blur-md" />
                             <InfiniteScroll
                                 width="100%"
                                 items={items}
