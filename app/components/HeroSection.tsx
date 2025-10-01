@@ -7,7 +7,7 @@ import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button
 export default function HeroSection() {
     useEffect(() => {
         (async function () {
-          const cal = await getCalApi({"namespace":"schedule-a-free-call"});
+          const cal = await getCalApi({"namespace":"schedule-a-call"});
           cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
         })();
       }, [])
@@ -45,7 +45,7 @@ export default function HeroSection() {
                         </p>
 
                         <div className="flex flex-col gap-3 sm:flex-row mt-8 items-center justify-center">
-                            <button data-cal-namespace="schedule-a-free-call" data-cal-link="aetherwebmedia/schedule-a-free-call" data-cal-config='{"layout":"month_view"}' className="group relative inline-block p-px font-semibold leading-6  shadow-2xl cursor-pointer rounded-xl transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95 dark">
+                            <button data-cal-namespace="schedule-a-call" data-cal-link="aetherwebmedia/schedule-a-call" data-cal-config='{"layout":"month_view"}' className="group relative inline-block p-px font-semibold leading-6  shadow-2xl cursor-pointer rounded-xl transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95 dark">
                                 
                                     <div className="relative z-10 flex items-center space-x-2">
                                         <InteractiveHoverButton>Book a Call</InteractiveHoverButton>
