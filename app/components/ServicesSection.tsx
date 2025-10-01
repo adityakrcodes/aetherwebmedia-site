@@ -20,9 +20,9 @@ import saasImage from "@/public/png/services/saas.png";
 import saasImageUW from "@/public/png/services/saas-uw.png";
 import webImage from "@/public/png/services/web.png";
 import appImage from "@/public/png/services/app.png";
-import designImage from "@/public/png/design.png";
-import brandingImage from "@/public/png/branding.png";
-import adImage from "@/public/png/ad.png";
+import designImage from "@/public/png/services/designing.png";
+import brandingImage from "@/public/png/services/branding.png";
+import adImage from "@/public/png/services/ad.png";
 import placeholderImage from "@/public/png/transparent.png";
 
 export default function ServicesSection() {
@@ -53,7 +53,7 @@ export default function ServicesSection() {
             title: "SaaS MVP Development",
             description: "We help startups launch quickly with lean, functional MVPs that validate ideas fast, attract users, and set the foundation for scalable SaaS products.",
             header: <Skeleton mobileImg={saasImage} desktopImg={saasImageUW} />,
-            url: "/services/saas",
+            url: "/services/dev/saas",
         },
     ];
     const items = [
@@ -61,13 +61,13 @@ export default function ServicesSection() {
           title: "Web Development",
           description: "Websites that work harder, load faster, and scale smarter.",
           header: <Skeleton mobileImg={webImage} desktopImg={webImage}/>,
-          url: "/services/web",
+          url: "/services/dev/web",
         },
         {
           title: "App Development",
           description: "Our team builds intuitive, fast, and user-friendly mobile apps that deliver seamless experiences across devices, turning your idea into a tool people love to use.",
           header: <Skeleton mobileImg={appImage} desktopImg={appImage}/>,
-          url: "/services/app",
+          url: "/services/dev/app",
         },
     ]
     const items2 = [
@@ -75,19 +75,19 @@ export default function ServicesSection() {
           title: "Designing",
           description:
             "Creative, impactful designs that elevate your brand's identity.",
-          header: <Skeleton />,
+          header: <Skeleton mobileImg={designImage} desktopImg={designImage}/>,
           url: "/services/design",
         },
         {
           title: "Branding and Marketing",
           description: "We shape brands that connect, engage, and grow.",
-          header: <Skeleton />,
+          header: <Skeleton mobileImg={brandingImage} desktopImg={brandingImage}/>,
           url: "/services/branding",
         },
         {
           title: "Ad Campaigns",
           description: "Targeted campaigns that drive measurable results and ROI.",
-          header: <Skeleton />,
+          header: <Skeleton mobileImg={adImage} desktopImg={adImage}/>,
           url: "/services/ad",
         },
       ];
