@@ -18,21 +18,18 @@ export default function AboutSection() {
           <div className="md:w-2/4 w-full">
             <h2 className="md:text-7xl text-5xl font-light text-white tracking-tight font-manrope">Meet Aditya</h2>
             <p className="mt-6 text-base md:text-lg text-neutral-300 font-sans">
-              I'm Alex, a creative Digital Product Designer and Front-end Developer based in San Francisco. I specialize in creating seamless user experiences and innovative digital solutions that bridge design and technology to drive business growth.
+                I'm Aditya Kumar, the founder of Aether Web Media. As a web developer, 
+                I'm passionate about transforming bold ideas into scalable SaaS products. 
+                With over 5+ years of experience, I craft digital solutions that fuse creativity with technology.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            {/* <div className="mt-5 flex flex-wrap gap-2">
               {[
-                "UI/UX Design",
-                "React Development",
-                "Design Systems",
-                "Prototyping",
-                "Web Development",
-                "TypeScript",
-                "Figma",
+                "Full Stack Development",
+                "AWS"
               ].map((s) => (
                 <span key={s} className="inline-flex items-center rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5 text-xs md:text-sm text-neutral-200 font-sans">{s}</span>
               ))}
-            </div>
+            </div> */}
             <div className="mt-6 h-px bg-white/10"></div>
             <div>
             {/* Socials */}
@@ -102,21 +99,18 @@ export default function AboutSection() {
           <div className="md:w-2/4 w-full">
             <h2 className="md:text-7xl text-5xl font-light text-white tracking-tight font-manrope">Meet Nikhil</h2>
             <p className="mt-6 text-base md:text-lg text-neutral-300 font-sans">
-              I'm Nikhil, a creative Digital Product Designer and Front-end Developer based in San Francisco. I specialize in creating seamless user experiences and innovative digital solutions that bridge design and technology to drive business growth.
+                Hi, I'm Nikhil! I'm a co-founder at Aether Web Media, where we focus on building 
+                super clean and responsive web applications. Honestly, I just love the process of 
+                taking a great idea and turning it into something real and impactful online.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            {/* <div className="mt-5 flex flex-wrap gap-2">
               {[
-                "UI/UX Design",
-                "React Development",
+                "Full Stack Development",
                 "Design Systems",
-                "Prototyping",
-                "Web Development",
-                "TypeScript",
-                "Figma",
               ].map((s) => (
                 <span key={s} className="inline-flex items-center rounded-full bg-white/5 ring-1 ring-white/10 px-3 py-1.5 text-xs md:text-sm text-neutral-200 font-sans">{s}</span>
               ))}
-            </div>
+            </div> */}
             <div className="mt-6 h-px bg-white/10"></div>
             <div>
             {/* Socials */}
