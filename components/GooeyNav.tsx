@@ -13,7 +13,7 @@ export interface GooeyNavProps {
   particleR?: number;
   timeVariance?: number;
   colors?: number[];
-  initialActiveIndex?: number;
+  initialActiveIndex?: number | null;
 }
 
 const GooeyNav: React.FC<GooeyNavProps> = ({
@@ -24,13 +24,13 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
   particleR = 100,
   timeVariance = 300,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
-  initialActiveIndex = 0
+  initialActiveIndex = null
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const filterRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
-  const [activeIndex, setActiveIndex] = useState<number>(initialActiveIndex);
+  const [activeIndex, setActiveIndex] = useState<number | null>(initialActiveIndex ?? null);
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
   const getXY = (distance: number, pointIndex: number, totalPoints: number): [number, number] => {
@@ -130,13 +130,14 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     }
   };
   useEffect(() => {
-    if (!navRef.current || !containerRef.current) return;
+    if (!navRef.current || !containerRef.current || activeIndex == null) return;
     const activeLi = navRef.current.querySelectorAll('li')[activeIndex] as HTMLElement;
     if (activeLi) {
       updateEffectPosition(activeLi);
       textRef.current?.classList.add('active');
     }
     const resizeObserver = new ResizeObserver(() => {
+      if (activeIndex == null) return;
       const currentActiveLi = navRef.current?.querySelectorAll('li')[activeIndex] as HTMLElement;
       if (currentActiveLi) {
         updateEffectPosition(currentActiveLi);
