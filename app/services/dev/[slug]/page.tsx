@@ -8,6 +8,8 @@ import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import CardSwap, { Card } from "@/components/CardSwap";
 import Image from "next/image";
 import { servicesConfig } from "../../services";
+import { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
 
 export const runtime = 'edge';
 
@@ -17,6 +19,13 @@ type PageProps = {
 
 export default function ServicePage({ params }: PageProps) {
   const service = servicesConfig[params.slug];
+
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({"namespace":"schedule-a-call"});
+      cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    })();
+  }, [])
 
   if (!service) {
     return (
@@ -50,10 +59,15 @@ export default function ServicePage({ params }: PageProps) {
               </p>
               <div className="flex gap-3 flex-wrap">
                 <a href="#roadmap" className="inline-flex items-center gap-2 ring-1 ring-white/15 hover:bg-white/10 transition text-sm font-medium text-white bg-white/5 rounded-xl px-5 py-3 backdrop-blur-lg">See the roadmap</a>
-                <a href="#contact" className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
+                <div 
+                  data-cal-namespace="schedule-a-call" 
+                  data-cal-link="aetherwebmedia/schedule-a-call" 
+                  data-cal-config='{"layout":"month_view"}' 
+                  className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
+                >
                   <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                   <span className="relative z-10 block bg-gray-950 rounded-xl px-6 py-3 text-sm">Book a Call</span>
-                </a>
+                </div>
               </div>
             </div>
             <div className="relative lg:h-[441px] lg:bottom-[3rem] h-[200px] md:w-[500px] w-[200px] md:left-[16rem] left-10">
