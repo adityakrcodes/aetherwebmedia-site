@@ -11,7 +11,7 @@ export const SaasBentoGrid = ({
   return (
     <div
       className={cn(
-        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[18rem] md:grid-cols-3 lg:grid-cols-4",
+        "mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[8rem] md:grid-cols-3 lg:grid-cols-4",
         className,
       )}
     >
@@ -43,7 +43,7 @@ export const SaasBentoGridItem = ({
         className,
       )}
     >
-      {header}
+      {/* {header} */}
       <div className="transition duration-200 group-hover/bento:translate-x-2 flex-1 flex flex-col justify-between">
         <div className="mt-2 mb-2 font-sans text-xl font-bold text-neutral-300">
           {title}
