@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
     images: [
       {
-        url: "@/public/png/logo.png",
+        url: "/public/png/logo.png",
         alt: "Aether Web Media Logo",
       },
     ],
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
     images: [
       {
-        url: "@/public/png/banner.png",
+        url: "/public/png/banner.png",
         alt: "Aether Web Media Banner",
       },
     ],
