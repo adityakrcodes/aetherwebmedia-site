@@ -31,7 +31,12 @@ export default function Footer() {
           </div>
 
           {/* Contact Button */}
-          <button className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition-all duration-300 font-medium">
+          <button
+            data-cal-namespace="schedule-a-call"
+            data-cal-link="aetherwebmedia/schedule-a-call"
+            data-cal-config='{"layout":"month_view"}'
+            className="border border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-black transition-all duration-300 font-medium"
+          >
             CONTACT NOW
           </button>
         </div>
