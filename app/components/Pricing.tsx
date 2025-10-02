@@ -80,7 +80,7 @@ export default function Pricing() {
           {/* App Dev Bundle */}
           
 
-          <CometCard className="max-w-[320px] h-[540px] " rotateDepth={5} translateDepth={5}>
+          <CometCard className="max-w-[320px] h-[540px] mt-16 lg:mt-0" rotateDepth={5} translateDepth={5}>
             <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
               <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">App Dev Bundle</div>
               <h3 className="mt-4 text-[22px] font-medium text-white">Prototype to store</h3>
