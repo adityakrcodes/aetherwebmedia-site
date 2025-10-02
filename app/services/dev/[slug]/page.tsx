@@ -179,11 +179,12 @@ export default function ServicePage({ params }: PageProps) {
                 </div>
                 <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[0].features[0]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Modern, responsive website design</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[0].features[2]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[0].features[3]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[0].features[4]}</li>
+                  {pricing[0].features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                      {feature}
+                    </li>
+                  ))}
                 </ul>
                 <div
                     data-cal-namespace="schedule-a-call"
@@ -207,11 +208,12 @@ export default function ServicePage({ params }: PageProps) {
                 </div>
                 <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[1].features[0]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />Authentication & user management</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[1].features[2]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[1].features[3]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[1].features[4]}</li>
+                  {pricing[1].features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                      {feature}
+                    </li>
+                  ))}
                 </ul>
                   <div
                     data-cal-namespace="schedule-a-call"
@@ -235,11 +237,12 @@ export default function ServicePage({ params }: PageProps) {
                 </div>
                 <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[2].features[0]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[2].features[1]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[2].features[2]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[2].features[3]}</li>
-                  <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />{pricing[2].features[4]}</li>
+                  {pricing[2].features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
+                      {feature}
+                    </li>
+                  ))}
                   <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white/60" />1 month free support <br /> (Post-launch)</li>
                 </ul>
                 <div
