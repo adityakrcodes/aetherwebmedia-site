@@ -87,7 +87,6 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="mt-10 h-px bg-white/10"></div>
       </div>
       {/* NIKHIL */}
       <div className="w-10/12 md:px-12 mr-auto ml-auto pt-12 pr-8 pb-32 pl-8">
@@ -168,7 +167,6 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="mt-10 h-px bg-white/10"></div>
       </div>
     </section>
   );
