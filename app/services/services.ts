@@ -12,6 +12,7 @@ export type ServiceConfig = {
   }[];
   stack: string[];
   stackImages: string[]; // public path strings
+  pricing: { badgeLabel: string; title: string; subtitle: string; price: string; features: string[] }[];
 };
 
 export const servicesConfig: Record<string, ServiceConfig> = {
@@ -53,7 +54,49 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       "/image2.png",
       "/image3.png",
       "/image.png"
-    ]
+    ],
+    pricing: [
+      {
+        badgeLabel: "AI-Built Product",
+        title: "Finish Your AI-Built Product",
+        subtitle: "For founders who already experimented with AI-made websites and want it turned into a real, production-ready MVP.", price: "$1000",
+        features: [
+          "Transform AI-generated prototypes into functional SaaS",
+          "Optimize codebase & remove AI-generated bloat",
+          "Responsive & scalable deployment",
+          " 1 week of support & fixes",
+          "Perfect for: Cost-conscious founders testing fast"
+        ]
+      },
+      {
+        badgeLabel: "MVP Development",
+        title: "SaaS MVP Development",
+        subtitle: "Our most popular option — build your SaaS MVP from scratch.",
+        price: "$2,000",
+        features: [
+          " Full-stack MVP tailored to your idea",
+          "Scalable backend & database architecture",
+          "Authentication, payments, and core integrations",
+          "Custom UI/UX design for SaaS",
+          "1 month of dedicated support & iteration",
+          "Perfect for: Founders validating with first real users & investors"
+        ]
+      },
+      {
+        badgeLabel: "Custom Build",
+        title: "Custom Solutions",
+        subtitle: "When your startup needs beyond-MVP capabilities and heavy customization.",
+        price: "$5,000",
+        features: [
+          "Everything in MVP Development",
+          "Fully tailored workflows & advanced features",
+          "Complex integrations (AI/ML, APIs, automation)",
+          "Multi-role access, dashboards & team features",
+          "2+ months support & long-term iteration roadmap",
+          "Perfect for: Startups gearing for rapid scale & fundraising"
+        ]
+      }
+    ],
   },
   web: {
     badgeLabel: "Web App Development",
@@ -93,7 +136,51 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       "/png/works/apex.png",
       "/png/works/maestro.png",
       "/png/works/imperial.png"
-    ]
+    ],
+    pricing: [
+      { 
+        badgeLabel: "Plan A", 
+        title: "Landing Page Development", 
+        subtitle: "For businesses and startups who just need a stunning online presence.", 
+        price: "$500", 
+        features: [
+          "Built with Framer or Webflow", 
+          "Clean, responsive design", 
+          "SEO-friendly structure",
+          "Fast deployment & handover",
+          "1 week of support",
+          "Perfect for: Startups, portfolios, and product launches"
+        ] 
+      },
+      { 
+        badgeLabel: "Plan B", 
+        title: "Full-Fledged Web App", 
+        subtitle: "For founders who want a scalable web application (beyond a website).", 
+        price: "$1,000", 
+        features: [
+          "Custom web app development (E-commerce, Social Media, SaaS dashboards, etc.)", 
+          "Secure backend & database setup", 
+          "User authentication, payments & integrations",
+          "Responsive UI/UX tailored to your brand",
+          "1 month of support & iteration",
+          "Perfect for: Startups ready to onboard real users"
+        ] 
+      },
+      { 
+        badgeLabel: "Plan C", 
+        title: "Custom Build", 
+        subtitle: "For complex ideas and startups aiming to scale.", 
+        price: "$2,500", 
+        features: [
+          "Everything in Full-Fledged Web App", 
+          "Fully tailored workflows & advanced features", 
+          "AI/ML integrations, APIs & automation",
+          "CI/CD deployment for continuous updates",
+          " 2+ months support + roadmap",
+          "Perfect for: Startups moving toward funding & scaling"
+        ] 
+      }
+    ],
   },
   app: {
     badgeLabel: "App Development",
@@ -132,9 +219,50 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       "/app/image2.png",
       "/app/image3.png",
       "/app/image4.png"
-    ]
+    ],
+    pricing: [
+      {
+        badgeLabel: "Plan A",
+        title: "Starter App",
+        subtitle: "For founders who need a functional first version.",
+        price: "$1000",
+        features: [
+          " Mobile app with clean UI",
+          " Core features + smooth animations",
+          "Responsive design for iOS & Android",
+          "Cloud deployment ready",
+          "2 weeks of support"
+        ]
+      },
+      {
+        badgeLabel: "Plan B",
+        title: "MVP App",
+        subtitle: "For startups validating with first users & investors.",
+        price: "$2,500",
+        features: [
+          "User app + admin dashboard",
+          " Custom UI/UX for your brand",
+          "Scalable backend system",
+          "App Store & Play Store publishing",
+          "1 month of support & iteration"
+        ]
+      },
+      {
+        badgeLabel: "Plan C",
+        title: "Full Cycle App",
+        subtitle: "For startups aiming to scale fast with complete solutions.",
+        price: "$4,500",
+        features: [
+          "User app, business app & admin dashboard",
+          "Premium custom design",
+          "Advanced integrations (payments, APIs, automation)",
+          "Thorough QA & performance optimization",
+          "2+ months of support & growth roadmap"
+        ]
+      }
+    ],
   },
-  
+
 };
 
 export const serviceSlugs = Object.keys(servicesConfig);
