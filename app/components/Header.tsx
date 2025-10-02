@@ -49,9 +49,9 @@ export default function Header() {
           <div className="hidden md:flex">
             <GooeyNav
               items={[
-                { label: "Services", href: "#services" },
+                { label: "Services", href: "/#services" },
                 { label: "Pricing", href: "#pricing" },
-                { label: "Team", href: "#team" },
+                { label: "Team", href: "/#team" },
                 { label: "Contact", href: "mailto:info@aetherwebmedia.com" },
               ]}
             />
