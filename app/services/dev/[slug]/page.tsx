@@ -196,7 +196,7 @@ export default function ServicePage({ params }: PageProps) {
             </CometCard>
 
             {/* Middle Pack */}
-            <CometCard className="max-w-[320px] h-[520px] md:scale-130 mt-16 lg:mt-0" rotateDepth={3} translateDepth={3}>
+            <CometCard className="max-w-[320px] h-[520px] md:scale-130 lg:mt-0" rotateDepth={3} translateDepth={3}>
               <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
                 <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">{pricing[1].badgeLabel}</div>
                 <h3 className="mt-4 text-[22px] font-medium text-white">{pricing[1].title}</h3>
@@ -268,7 +268,7 @@ export default function ServicePage({ params }: PageProps) {
         </div>
       </section> */}
 
-      <section id="contact" className="relative py-20 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ boxShadow: "0 60px 60px -12px rgba(0,0,0,1), 0 60px 0px -40px rgba(0,0,0,1)" }}>
+      <section id="contact" className="relative py-30 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ boxShadow: "0 60px 60px -12px rgba(0,0,0,1), 0 60px 0px -40px rgba(0,0,0,1)" }}>
         <div className="mx-auto max-w-5xl text-center px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
