@@ -41,13 +41,11 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative py-24 md:py-32 rounded-b-3xl"
+      className="relative py-24 md:py-32 rounded-b-[4rem] md:rounded-b-[9rem] border-b-[1px] border-white/10 bg-[#0a0a0a] min-h-screen"
       style={{
-        boxShadow: "0 20px 50px -12px rgba(0,0,0,1), 0 50px 140px -40px rgba(0,0,0,1)",
-        borderRadius: "99px",
-        bottom: "-6rem",
+        boxShadow: "0 100px 200px -100px rgba(255,255,255,0.15)",
+        bottom: "-10rem",
         zIndex: "1",
-        backgroundColor: "#030304",
       }}
     >
       <div className="absolute inset-0 z-0 pointer-events-none">
