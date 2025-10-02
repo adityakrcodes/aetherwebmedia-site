@@ -166,7 +166,7 @@ export default function ServicePage({ params }: PageProps) {
           Pricing
         </h1>
         <div className="flex items-center justify-center gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 mt-60">
+          <div className="flex flex-col md:flex-row items-center justify-center lg:gap-42 gap-16 w-full relative z-10 mt-60">
             {/* First Bundle */}
             <CometCard className="max-w-[320px] h-[520px]" rotateDepth={3} translateDepth={3}>
               <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
@@ -226,7 +226,7 @@ export default function ServicePage({ params }: PageProps) {
             </CometCard>
 
             {/* Big Bundle */}
-            <CometCard className="max-w-[320px] h-[540px] " rotateDepth={5} translateDepth={5}>
+            <CometCard className="max-w-[320px] h-[540px] mt-16" rotateDepth={5} translateDepth={5}>
               <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
                 <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">{pricing[2].badgeLabel}</div>
                 <h3 className="mt-4 text-[22px] font-medium text-white">{pricing[2].title}</h3>
@@ -271,7 +271,12 @@ export default function ServicePage({ params }: PageProps) {
         </div>
       </section> */}
 
-      <section id="contact" className="relative py-30 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ boxShadow: "0 60px 60px -12px rgba(0,0,0,1), 0 60px 0px -40px rgba(0,0,0,1)" }}>
+      <section id="contact" className="relative py-30 mt-32 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ 
+        boxShadow: "0 100px 100px -100px rgba(255,255,255,0.15)",
+        bottom: "-6rem",
+        zIndex: "1",
+        background: 'linear-gradient(to bottom, #0a0a0a 0%, #030304 100%)'
+      }}>
         <div className="mx-auto max-w-5xl text-center px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
