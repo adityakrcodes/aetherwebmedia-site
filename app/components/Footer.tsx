@@ -7,7 +7,7 @@ export default function Footer() {
 
 
   return (
-    <footer className="relative min-h-screen flex flex-col" style={{ backgroundColor: '#060606' }}>
+    <footer className="relative min-h-screen flex flex-col bg-black" >
       {/* Main content area */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 pt-32 min-h-[80vh]">
         {/* Call to Action Section */}
@@ -42,7 +42,7 @@ export default function Footer() {
         </div>
 
         {/* Logo Video */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-center items-end overflow-hidden" style={{ height: '60vh', backgroundColor: '#060606' }}>
+        <div className="absolute bottom-0 left-0 right-0 z-10 flex justify-center items-end overflow-hidden" style={{ height: '60vh'}}>
           <video
             autoPlay
             loop
