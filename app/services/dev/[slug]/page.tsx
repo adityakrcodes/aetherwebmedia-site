@@ -134,11 +134,11 @@ export default function ServicePage({ params }: PageProps) {
               </span>
             ))}
           </div>
-          <p className="mt-4 text-center text-neutral-400 text-sm">We’ll choose pragmatically based on your problem, not trends.</p>
+          <p className="mt-4 text-center text-neutral-400 text-sm">We'll choose pragmatically based on your problem, not trends.</p>
         </div>
       </section>
 
-      <section id="work" className="relative py-16 md:py-24">
+      {/* <section id="work" className="relative py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-6 md:px-10 grid md:grid-cols-2 gap-8 items-center">
           <div className="order-2 md:order-1">
             <h3 className="text-2xl md:text-4xl tracking-tight text-white font-manrope font-medium">From idea to production quickly</h3>
@@ -149,15 +149,15 @@ export default function ServicePage({ params }: PageProps) {
             <div className="aspect-[16/10] rounded-2xl bg-neutral-900/70 ring-1 ring-white/10" />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="contact" className="relative py-20 lg:rounded-b-[9rem] rounded-b-[4rem]" style={{ boxShadow: "0 60px 60px -12px rgba(0,0,0,1), 0 60px 0px -40px rgba(0,0,0,1)" }}>
         <div className="mx-auto max-w-5xl text-center px-6 md:px-10">
           <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 ring-1 ring-white/10 backdrop-blur">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
-            <span className="text-sm font-normal text-neutral-200 font-sans">Let’s move fast</span>
+            <span className="text-sm font-normal text-neutral-200 font-sans">Let's move fast</span>
           </div>
-          <h3 className="mt-6 text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium">Tell us your idea. We’ll scope it — free.</h3>
+          <h3 className="mt-6 text-3xl md:text-5xl tracking-tight text-white font-manrope font-medium">Tell us your idea. We'll scope it — free.</h3>
           <p className="mt-4 text-neutral-300 max-w-2xl mx-auto">Get a timeline, budget range, and recommended stack. No obligation.</p>
           <div className="mt-8">
             <a href="mailto:aetherwebmedia@gmail.com" className="group relative inline-block p-px font-semibold leading-6 text-white bg-gray-800 shadow-2xl cursor-pointer rounded-xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
