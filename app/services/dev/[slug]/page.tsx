@@ -167,7 +167,7 @@ export default function ServicePage({ params }: PageProps) {
         </h1>
         <div className="flex items-center justify-center gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <div className="flex flex-col md:flex-row items-center justify-center lg:gap-32 gap-16 w-full relative z-10 mt-60">
-            {/* Web Dev Bundle */}
+            {/* First Bundle */}
             <CometCard className="max-w-[320px] h-[520px]" rotateDepth={3} translateDepth={3}>
               <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
                 <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">{pricing[0].badgeLabel}</div>
@@ -195,8 +195,8 @@ export default function ServicePage({ params }: PageProps) {
               </div>
             </CometCard>
 
-            {/* SaaS Bundle */}
-            <CometCard className="max-w-[320px] h-[520px] scale-130 mt-16 lg:mt-0" rotateDepth={3} translateDepth={3}>
+            {/* Middle Pack */}
+            <CometCard className="max-w-[320px] h-[520px] md:scale-130 mt-16 lg:mt-0" rotateDepth={3} translateDepth={3}>
               <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
                 <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">{pricing[1].badgeLabel}</div>
                 <h3 className="mt-4 text-[22px] font-medium text-white">{pricing[1].title}</h3>
@@ -223,9 +223,7 @@ export default function ServicePage({ params }: PageProps) {
               </div>
             </CometCard>
 
-            {/* App Dev Bundle */}
-
-
+            {/* Big Bundle */}
             <CometCard className="max-w-[320px] h-[540px] " rotateDepth={5} translateDepth={5}>
               <div className="group my-10 flex w-64 lg:w-80 flex-col rounded-2xl bg-[rgba(12,12,12,0.6)] p-5 text-white ring-1 ring-white/10 backdrop-blur-md hover:ring-white/20 transition">
                 <div className="px-2 py-1 rounded-full bg-white/5 ring-1 ring-white/10 w-max text-[11px] tracking-wide uppercase text-neutral-200">{pricing[2].badgeLabel}</div>
