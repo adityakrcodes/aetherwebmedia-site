@@ -41,7 +41,7 @@ export default function ServicePage({ params }: PageProps) {
   return (
     <div className="relative ">
       <Header />
-      <section className="relative pt-32 md:pt-52">
+      <section className="relative pt-32 md:pt-52 overflow-hidden">
         <div className="absolute inset-0 -z-10 h-screen w-screen">
           <DotGrid dotSize={5} gap={12} baseColor="#060405" activeColor="#79757A" proximity={170} shockRadius={200} shockStrength={5} resistance={750} returnDuration={1.5} />
         </div>
