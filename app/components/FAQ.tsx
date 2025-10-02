@@ -43,7 +43,11 @@ export default function FAQ() {
       id="faq"
       className="relative py-24 md:py-32 rounded-b-3xl"
       style={{
-        boxShadow: "0 24px 60px -12px rgba(0,0,0,0.45)",
+        boxShadow: "0 20px 50px -12px rgba(0,0,0,1), 0 50px 140px -40px rgba(0,0,0,1)",
+        borderRadius: "99px",
+        bottom: "-6rem",
+        zIndex: "1",
+        backgroundColor: "#030304",
       }}
     >
       <div className="absolute inset-0 z-0 pointer-events-none">

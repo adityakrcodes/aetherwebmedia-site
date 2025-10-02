@@ -42,7 +42,7 @@ export default function Home() {
       <Header />
       <main
         className="relative lg:rounded-b-[9rem] rounded-b-[4rem]"
-        style={{ boxShadow: "0 20px 50px -12px rgba(0,0,0,1), 0 50px 140px -40px rgba(0,0,0,1)" }}
+        style={{  }}
       >
         <HeroSection />
         
