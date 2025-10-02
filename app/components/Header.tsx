@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <>
-    <header className="fixed top-0 left-0 right-0 z-50 w-[92%] md:w-[85%] lg:w-[70%] rounded-md mt-5 mx-auto backdrop-blur-lg bg-neutral-950/80  hidden md:block">
+    <header className="fixed top-0 left-0 right-0 z-50 w-[92%] md:w-[85%] lg:w-[60%] rounded-4xl mt-5 mx-auto backdrop-blur-lg bg-neutral-950/80 hidden md:block border-2 border-white/25">
       <div className="max-w-8xl md:px-12 mr-auto ml-auto pr-6 pl-6 md:pr-8 md:pl-8">
         <div className="flex pt-5 md:pt-6 pb-5 md:pb-6 items-center justify-between">
           <a href="/" className="hidden md:flex items-center">
