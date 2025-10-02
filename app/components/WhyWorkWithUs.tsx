@@ -5,15 +5,15 @@ import swirlBg from "@/public/jpg/swirl-1.jpg"
 import InfiniteScroll from "@/components/InfiniteScroll";
 import apex from "@/public/png/works/apex.png"
 import abnb from "@/public/png/works/abnb.png"
-import imperial from "@/public/png/works/imperial.png"
-import maestro from "@/public/png/works/maestro.png"
+import imperial from "@/public/png/works/imperial-wwwu.png"
+import maestro from "@/public/png/works/maestro-wwws.png"
 
 export default function WhyWorkWithUs() {
     const items = [
-        { content: <div><Image src={apex} alt="apex" width={350}/></div> },
-        { content: <div><Image src={abnb} alt="abnb" width={350}/></div> },
-        { content: <div><Image src={imperial} alt="imperial" width={350}/></div> },
-        { content: <div><Image src={maestro} alt="maestro" width={350}/></div> },
+        { content: <div className="py-5"><Image src={apex} alt="apex" width={350}/></div> },
+        { content: <div className="py-5"><Image src={abnb} alt="abnb" width={350}/></div> },
+        { content: <div className="py-5"><Image src={imperial} alt="imperial" width={350}/></div> },
+        { content: <div className="py-5"><Image src={maestro} alt="maestro" width={350}/></div> },
       ];
     return (
         <section id="why-work-with-us" className="relative mt-45">
@@ -99,7 +99,7 @@ export default function WhyWorkWithUs() {
                                 autoplayDirection="up"
                                 pauseOnHover={true}
                                 itemMinHeight={100}
-                                negativeMargin="0.5rem"
+                                negativeMargin="1 rem"
                             />
                         </div>
                     </WobbleCard>
