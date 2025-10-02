@@ -39,7 +39,7 @@ export default function ServicePage({ params }: PageProps) {
   const { badgeLabel, headline, subtext, outcomes, roadmap, stack, stackImages, pricing } = service;
 
   return (
-    <div className="relative scroll-smooth ">
+    <div className="relative ">
       <Header />
       <section className="relative pt-32 md:pt-52">
         <div className="absolute inset-0 -z-10 h-screen w-screen">

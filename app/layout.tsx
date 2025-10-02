@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Qwigley, Moon_Dance, Sedgwick_Ave, Poppins } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
+import LenisProvider from "@/components/LenisProvider";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aetherwebmedia.com";
 
@@ -101,7 +102,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${qwigley.variable} ${moonDance.variable} ${poppins.variable} ${sedgwickAve.variable} antialiased bg-neutral-950 text-neutral-200`}
       >
-        {children}
+        <LenisProvider>
+          {children}
+        </LenisProvider>
         {/* <PerformanceMonitor /> */}
       </body>
     </html>
