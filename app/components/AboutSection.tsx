@@ -2,7 +2,7 @@ import Image from "next/image";
 import Nikhil from "@/public/profile/nikhil.png";
 import Aditya from "@/public/profile/aditya.jpg";
 import X from "@/public/svg/x-logo.svg"
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -83,6 +83,15 @@ export default function AboutSection() {
                       />
                     </svg>                
                 </a>
+                <a
+                    href="mailto:aditya@aetherwebmedia.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 text-neutral-200 hover:bg-white/10 transition-all duration-200"
+                    aria-label="Email"
+                >
+                    <Mail size={22} />
+                </a>
                 </div>
             </div>
           </div>
@@ -162,6 +171,15 @@ export default function AboutSection() {
                         fill="white"
                       />
                     </svg>
+                </a>
+                <a
+                    href="mailto:nikhil@aetherwebmedia.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/5 ring-1 ring-white/10 text-neutral-200 hover:bg-white/10 transition-all duration-200"
+                    aria-label="Email"
+                >
+                    <Mail size={22} />
                 </a>
                 </div>
             </div>

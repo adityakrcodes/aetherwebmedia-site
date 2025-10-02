@@ -41,7 +41,7 @@ export default function Pricing() {
               <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Fast, accessible, SEO‑friendly site with CMS.</p>
               <div className="mt-5 flex items-baseline gap-2">
                 <span className="text-4xl font-semibold">$500</span>
-                <span className="text-xs text-neutral-400">starting</span>
+                <span className="text-xs text-neutral-400">onwards</span>
               </div>
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
@@ -63,7 +63,7 @@ export default function Pricing() {
               <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Core product, auth, billing, and dashboard.</p>
               <div className="mt-5 flex items-baseline gap-2">
                 <span className="text-4xl font-semibold">$2,000</span>
-                <span className="text-xs text-neutral-400">starting</span>
+                <span className="text-xs text-neutral-400">onwards</span>
               </div>
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
@@ -87,7 +87,7 @@ export default function Pricing() {
               <p className="mt-1.5 text-[13px] leading-relaxed text-neutral-300">Cross-platform app with core flows and analytics.</p>
               <div className="mt-5 flex items-baseline gap-2">
                 <span className="text-4xl font-semibold">$1,000</span>
-                <span className="text-xs text-neutral-400">starting</span>
+                <span className="text-xs text-neutral-400">onwards</span>
               </div>
               <div className="mt-5 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
               <ul className="mt-4 space-y-2 text-[13px] text-neutral-200">
