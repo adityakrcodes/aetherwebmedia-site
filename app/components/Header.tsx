@@ -17,7 +17,7 @@ export default function Header() {
   ];
 
   const socialItems = [
-    { label: 'Twitter', link: 'https://twitter.com/aetherwebmedia' },
+    { label: 'X', link: 'https://x.com/aetherwebmedia' },
     { label: 'Instagram', link: 'https://instagram.com/aetherwebmedia' },
     { label: 'LinkedIn', link: 'https://linkedin.com/aetherwebmedia' }
   ];
