@@ -49,7 +49,7 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       "PostHog"
     ],
     stackImages: [
-      "/image1.png",
+      "/png/works/purple-night.png",
       "/image2.png",
       "/image3.png",
       "/image.png"
