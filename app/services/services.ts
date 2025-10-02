@@ -89,10 +89,10 @@ export const servicesConfig: Record<string, ServiceConfig> = {
       "PostHog"
     ],
     stackImages: [
-      "/image1.png",
-      "/image2.png",
-      "/image3.png",
-      "/image.png"
+      "/png/works/abnb.png",
+      "/png/works/apex.png",
+      "/png/works/maestro.png",
+      "/png/works/imperial.png"
     ]
   },
   app: {
