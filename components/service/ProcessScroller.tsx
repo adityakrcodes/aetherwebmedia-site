@@ -61,7 +61,7 @@ export default function ProcessScroller({
         {/* On mobile the whole wrapper sticks; on desktop the inner panel does. */}
         <div className="sticky top-0 z-10 -mx-4 bg-paper px-4 pb-4 pt-[4.75rem] sm:-mx-6 sm:px-6 lg:static lg:order-2 lg:col-span-7 lg:mx-0 lg:bg-transparent lg:px-0 lg:pb-0 lg:pt-0">
           <div className="lg:sticky lg:top-24">
-            <div className="relative h-[46dvh] min-h-[19rem] overflow-hidden rounded-card bg-furnace text-ember shadow-[0_30px_60px_-30px_rgb(0_0_0/0.5)] ring-1 ring-inset ring-ember-line lg:h-[min(calc(100dvh-8rem),40rem)]">
+            <div data-anim className="relative h-[46dvh] min-h-[19rem] overflow-hidden rounded-card bg-furnace text-ember shadow-[0_30px_60px_-30px_rgb(0_0_0/0.5)] ring-1 ring-inset ring-ember-line lg:h-[min(calc(100dvh-8rem),40rem)]">
               <div className="dot-grid absolute inset-0 text-ember opacity-60" aria-hidden />
               <div className="absolute inset-x-4 top-4 z-20 flex items-center justify-between gap-4 sm:inset-x-6 sm:top-5">
                 <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-ember-2" aria-live="polite">

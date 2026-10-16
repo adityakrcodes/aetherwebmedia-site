@@ -138,26 +138,32 @@
     background: radial-gradient(130% 160% at 25% 60%, #3b3b3b 0%, #0c0c0c 62%);
     isolation: isolate;
   }
+  /* The softness is baked into the gradient (no filter), so each streak is a cached texture that only moves. */
   .ember-pill > i {
     position: absolute;
-    inset: 38% -40% 30%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, transparent, #fff 42%, #fff 58%, transparent);
-    filter: blur(3px);
+    inset: calc(38% - 6px) -40% calc(30% - 6px);
+    background: radial-gradient(closest-side, #fff, rgb(255 255 255 / 0.8) 35%, rgb(255 255 255 / 0.35) 68%, transparent);
     opacity: 0.9;
     animation: ember-streak 2.6s var(--ease-expo) infinite;
   }
   .ember-pill > i:nth-child(2) {
-    inset: 62% -30% 14%;
+    inset: calc(62% - 6px) -30% calc(14% - 6px);
     opacity: 0.55;
     animation-duration: 3.4s;
     animation-delay: -1.1s;
   }
   .ember-pill > i:nth-child(3) {
-    inset: 12% -50% 64%;
+    inset: calc(12% - 6px) -50% calc(64% - 6px);
     opacity: 0.4;
     animation-duration: 4.2s;
     animation-delay: -2.3s;
+  }
+  /* On buttons the pill holds still until hovered, so an idle page (header included) stops rendering frames. */
+  .ember-pill[data-still] > i {
+    animation-play-state: paused;
+  }
+  .group:is(:hover, :focus-visible) .ember-pill[data-still] > i {
+    animation-play-state: running;
   }
 
   /* Image capsule used inline inside display type. */
@@ -172,7 +178,11 @@
     border-radius: 999px;
   }
 
-  /* Soft streaks of light used as card backgrounds. */
+  /*
+    Soft streaks of light used as card backgrounds.
+    Each band is pre-blurred with a radial gradient that extends `--soft` past the band, instead of
+    filter: blur(), which the GPU would have to recompute on every frame of the drift.
+  */
   .streaks {
     position: absolute;
     inset: 0;
@@ -180,30 +190,38 @@
     pointer-events: none;
   }
   .streaks > i {
+    --soft: 44px;
     position: absolute;
     left: -30%;
     width: 160%;
-    height: 18%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, transparent 0%, rgb(255 255 255 / 0.95) 45%, rgb(255 255 255 / 0.6) 60%, transparent 100%);
-    filter: blur(22px);
+    top: calc(var(--top) - var(--soft));
+    height: calc(var(--band) + 2 * var(--soft));
+    background: radial-gradient(
+      closest-side at 45% 50%,
+      rgb(255 255 255 / 0.8),
+      rgb(255 255 255 / 0.71) 30%,
+      rgb(255 255 255 / 0.42) 55%,
+      rgb(255 255 255 / 0.12) 80%,
+      transparent
+    );
     animation: streak-drift 7s ease-in-out infinite alternate;
   }
   .streaks > i:nth-child(1) {
-    top: 30%;
+    --top: 30%;
+    --band: 18%;
     opacity: 0.55;
   }
   .streaks > i:nth-child(2) {
-    top: 48%;
-    height: 8%;
+    --top: 48%;
+    --band: 8%;
+    --soft: 20px;
     opacity: 0.85;
-    filter: blur(10px);
     animation-duration: 5.5s;
     animation-delay: -2s;
   }
   .streaks > i:nth-child(3) {
-    top: 60%;
-    height: 12%;
+    --top: 60%;
+    --band: 12%;
     opacity: 0.35;
     animation-duration: 9s;
     animation-delay: -4s;
@@ -297,49 +315,123 @@
   }
 }
 
-/* Bento: preview notifications cycle front to back. */
+/*
+  Bento: preview notifications cycle front to back.
+  Stacking comes from depth (translateZ in a 3D context) rather than an animated z-index,
+  so the whole cycle stays on the compositor.
+*/
+.notif-stack {
+  transform-style: preserve-3d;
+}
 .notif {
   animation: notif-cycle 9s var(--ease-expo) infinite;
   animation-delay: calc(var(--i) * -3s);
 }
 @keyframes notif-cycle {
   0% {
-    transform: translateY(-26px) scale(0.86);
+    transform: translate3d(0, -26px, 0) scale(0.86);
     opacity: 0;
-    z-index: 1;
   }
   6%,
   30% {
-    transform: translateY(18px) scale(1);
+    transform: translate3d(0, 18px, 2px) scale(1);
     opacity: 1;
-    z-index: 3;
   }
   36%,
   60% {
-    transform: translateY(-4px) scale(0.93);
+    transform: translate3d(0, -4px, 1px) scale(0.93);
     opacity: 0.4;
-    z-index: 2;
   }
   66%,
   100% {
-    transform: translateY(-26px) scale(0.86);
+    transform: translate3d(0, -26px, 0) scale(0.86);
     opacity: 0;
-    z-index: 1;
   }
 }
 
-/* Bento: a white ember travelling along the growth curve. */
+/*
+  Bento: a white ember travelling along the growth curve.
+  `.comet` covers the curve's 300x170 box and moves through points sampled along the path
+  (equal arc length, ease-in-out baked in), so it is a transform animation instead of a repaint.
+*/
 .comet {
-  stroke-dasharray: 0.01 200;
-  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px rgb(255 255 255 / 0.6));
-  animation: comet 5.5s ease-in-out infinite alternate;
+  animation: comet 5.5s linear infinite alternate;
+}
+.comet > i {
+  position: absolute;
+  left: -3.5px;
+  top: -3.5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow:
+    0 0 6px 1px #fff,
+    0 0 22px 6px rgb(255 255 255 / 0.32);
 }
 @keyframes comet {
-  from {
-    stroke-dashoffset: -4;
+  0% {
+    transform: translate(6.98%, 93.77%);
   }
-  to {
-    stroke-dashoffset: -99;
+  5% {
+    transform: translate(7.46%, 93.6%);
+  }
+  10% {
+    transform: translate(8.96%, 93.04%);
+  }
+  15% {
+    transform: translate(11.54%, 92.03%);
+  }
+  20% {
+    transform: translate(15.24%, 90.49%);
+  }
+  25% {
+    transform: translate(19.99%, 88.25%);
+  }
+  30% {
+    transform: translate(25.75%, 84.98%);
+  }
+  35% {
+    transform: translate(32.27%, 80.2%);
+  }
+  40% {
+    transform: translate(39.2%, 73.44%);
+  }
+  45% {
+    transform: translate(46.33%, 65.1%);
+  }
+  50% {
+    transform: translate(53.96%, 57.02%);
+  }
+  55% {
+    transform: translate(61.48%, 48.64%);
+  }
+  60% {
+    transform: translate(68.26%, 39.45%);
+  }
+  65% {
+    transform: translate(74.49%, 30.79%);
+  }
+  70% {
+    transform: translate(80.12%, 23.28%);
+  }
+  75% {
+    transform: translate(85.05%, 17.1%);
+  }
+  80% {
+    transform: translate(89.16%, 12.28%);
+  }
+  85% {
+    transform: translate(92.36%, 8.73%);
+  }
+  90% {
+    transform: translate(94.63%, 6.31%);
+  }
+  95% {
+    transform: translate(95.96%, 4.92%);
+  }
+  100% {
+    transform: translate(96.4%, 4.48%);
   }
 }
 
@@ -361,15 +453,24 @@
 }
 
 /* Process visuals */
+/* The glow is a fixed shadow on a pseudo-element; fading its opacity avoids repainting a box-shadow each frame. */
 .sprint-card {
+  position: relative;
+}
+.sprint-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 18px 0 rgb(255 255 255 / 0.25);
+  opacity: 0;
+  pointer-events: none;
   animation: sprint-glow 1.8s ease-in-out infinite alternate;
+  animation-delay: inherit;
 }
 @keyframes sprint-glow {
-  from {
-    box-shadow: 0 0 0 0 rgb(255 255 255 / 0);
-  }
   to {
-    box-shadow: 0 0 18px 0 rgb(255 255 255 / 0.25);
+    opacity: 1;
   }
 }
 .flow-line {
@@ -479,6 +580,24 @@
       }
     }
   }
+}
+
+/*
+  Decorative loops only run while they can be seen: ClientEffects sets `data-on` on [data-anim]
+  elements while they are in the viewport, and process visuals mark hidden layers `data-paused`.
+  A running animation anywhere keeps the browser rendering frames, even offscreen.
+*/
+@media (scripting: enabled) {
+  [data-anim]:not([data-on]),
+  [data-anim]:not([data-on]) *,
+  [data-anim]:not([data-on]) *::after {
+    animation-play-state: paused !important;
+  }
+}
+[data-paused],
+[data-paused] *,
+[data-paused] *::after {
+  animation-play-state: paused !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -41,11 +41,11 @@ export function ServiceHero({ s }: { s: Service }) {
           </div>
 
           <dl
-            className="rise grid h-max grid-cols-3 gap-px self-start overflow-hidden rounded-card bg-ember-line ring-1 ring-ember-line backdrop-blur-md lg:col-span-4 lg:mt-12 lg:grid-cols-1"
+            className="rise grid h-max grid-cols-3 gap-px self-start overflow-hidden rounded-card bg-ember-line ring-1 ring-ember-line lg:col-span-4 lg:mt-12 lg:grid-cols-1"
             style={{ "--d": 4 } as React.CSSProperties}
           >
             {s.facts.map((f) => (
-              <div key={f.label} className="bg-furnace/80 p-4 sm:p-5">
+              <div key={f.label} className="bg-furnace/90 p-4 sm:p-5">
                 <dt className="text-xs text-ember-3 sm:text-sm">{f.label}</dt>
                 <dd className="mt-1 text-lg font-medium tracking-[-0.03em] sm:text-2xl">{f.value}</dd>
               </div>
@@ -182,7 +182,7 @@ export function Plans({ s }: { s: Service }) {
                 )}
               >
                 {p.featured && (
-                  <div aria-hidden className="streaks opacity-25">
+                  <div aria-hidden data-anim className="streaks opacity-25">
                     <i />
                     <i />
                     <i />

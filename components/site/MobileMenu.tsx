@@ -43,7 +43,7 @@ export default function MobileMenu({ nav, services }: { nav: Item[]; services: I
         {open ? <IconX size={20} stroke={1.75} /> : <IconMenu2 size={20} stroke={1.75} />}
       </button>
 
-      {/* Portalled to <body>: the header's backdrop-filter would otherwise trap position: fixed. */}
+      {/* Portalled to <body> so nothing on the header (a filter, transform or clip) can ever trap position: fixed. */}
       {mounted &&
         createPortal(
           <div

@@ -5,10 +5,10 @@ export function Mark({ className }: { className?: string }) {
   return <span aria-hidden className={cn("mark h-6", className)} />;
 }
 
-/** Inline capsule of moving light, sized to the surrounding type. */
-export function EmberPill() {
+/** Inline capsule of moving light, sized to the surrounding type. `still` only moves while its `.group` is hovered. */
+export function EmberPill({ still }: { still?: boolean }) {
   return (
-    <span aria-hidden className="ember-pill">
+    <span aria-hidden data-anim data-still={still || undefined} className="ember-pill">
       <i />
       <i />
       <i />

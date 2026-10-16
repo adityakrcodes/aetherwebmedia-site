@@ -20,11 +20,108 @@ type Props = {
 // Low heat to high heat. Index 0 is never drawn.
 const RAMP = " .:-=+*xX#";
 const MAX = 36;
-const FRAME_MS = 46; // about 22fps, plenty for fire and cheap on battery
+// 20fps: plenty for fire, cheap on battery, and a whole number of 60Hz and 120Hz frames.
+// Driven by a timer rather than requestAnimationFrame, so the page is not woken on every vsync.
+const FRAME_MS = 50;
+// Glyph to draw for each heat value (0 = nothing), so drawing is a lookup.
+const LEVEL = Uint8Array.from({ length: MAX + 1 }, (_, h) =>
+  h < 3 ? 0 : Math.min(RAMP.length - 1, 1 + (((h / MAX) * (RAMP.length - 1)) | 0)),
+);
+
+const VERTEX = "attribute vec2 p; void main() { gl_Position = vec4(p, 0.0, 1.0); }";
+
+// Each pixel finds its cell, reads that cell's glyph from the grid texture,
+// and copies the matching pixel of that glyph from the atlas.
+const FRAGMENT = `
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform sampler2D grid;
+uniform sampler2D atlas;
+uniform vec2 cell;
+uniform vec2 size;
+void main() {
+  vec2 px = vec2(gl_FragCoord.x, size.y * cell.y - gl_FragCoord.y);
+  vec2 c = floor(px / cell);
+  float glyph = floor(texture2D(grid, (c + 0.5) / size).r * 255.0 + 0.5);
+  vec2 o = px - c * cell;
+  gl_FragColor = glyph < 0.5 ? vec4(0.0) : texture2D(atlas, vec2((glyph * cell.x + o.x) / (cell.x * ${RAMP.length}.0), o.y / cell.y));
+}`;
+
+/**
+ * Paints a whole frame in one draw call: the glyph for every cell goes up as a tiny texture
+ * and the shader copies pixels from the glyph atlas. A few thousand 2D drawImage calls per frame
+ * cost about three times as much CPU, almost all of it per-call overhead.
+ */
+function createGlRenderer(gl: WebGLRenderingContext) {
+  const program = gl.createProgram();
+  if (!program) return null;
+  for (const [type, source] of [
+    [gl.VERTEX_SHADER, VERTEX],
+    [gl.FRAGMENT_SHADER, FRAGMENT],
+  ] as const) {
+    const shader = gl.createShader(type);
+    if (!shader) return null;
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+    gl.attachShader(program, shader);
+  }
+  gl.bindAttribLocation(program, 0, "p");
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return null;
+  gl.useProgram(program);
+
+  // One quad covering the canvas.
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+  const texture = (unit: number, name: string) => {
+    gl.activeTexture(gl.TEXTURE0 + unit);
+    gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.uniform1i(gl.getUniformLocation(program, name), unit);
+  };
+  texture(1, "atlas");
+  texture(0, "grid"); // left active, so each frame's upload goes to the grid
+  gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+  gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+
+  const cellAt = gl.getUniformLocation(program, "cell");
+  const sizeAt = gl.getUniformLocation(program, "size");
+  let cols = 0;
+  let rows = 0;
+
+  return {
+    atlas(source: HTMLCanvasElement) {
+      gl.activeTexture(gl.TEXTURE1);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, source);
+      gl.activeTexture(gl.TEXTURE0);
+    },
+    resize(c: number, r: number, cw: number, ch: number) {
+      cols = c;
+      rows = r;
+      gl.viewport(0, 0, cols * cw, rows * ch);
+      gl.uniform2f(cellAt, cw, ch);
+      gl.uniform2f(sizeAt, cols, rows);
+    },
+    draw(glyphs: Uint8Array) {
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, cols, rows, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, glyphs);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    },
+  };
+}
 
 /**
  * Monochrome ASCII fire, rendered to a canvas with the classic "spread fire" automaton.
- * Glyphs are pre-rendered into an atlas once, so a frame is just a few thousand drawImage calls.
+ * Glyphs are pre-rendered into an atlas once and painted with WebGL in a single draw per frame
+ * (2D canvas drawImage where WebGL is unavailable). Rows above the tallest flame are skipped.
  * It only animates while on screen, and renders one still frame under reduced motion.
  */
 export default function AsciiFire({ className, reach = 0.6, spread = "wide", cell = 14, interactive = true }: Props) {
@@ -33,8 +130,11 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
   useEffect(() => {
     const canvas = ref.current;
     const host = canvas?.parentElement;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !host || !ctx) return;
+    if (!canvas || !host) return;
+    const gl = canvas.getContext("webgl", { antialias: false, depth: false, stencil: false, powerPreference: "low-power" });
+    let gpu = gl && createGlRenderer(gl);
+    const ctx = gl ? null : canvas.getContext("2d");
+    if (!gpu && !ctx) return;
 
     const reduceQuery = matchMedia("(prefers-reduced-motion: reduce)");
     const darkQuery = matchMedia("(prefers-color-scheme: dark)");
@@ -46,9 +146,13 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
     let ch = 0;
     let decayRange = 2;
     let heat = new Uint8Array(0);
+    let glyphs = new Uint8Array(0); // what the WebGL grid texture holds
+    // Every row above `top` is cold. `drawnTop` is the highest row painted in the last frame.
+    let top = 0;
+    let drawnTop = 0;
     let atlas: HTMLCanvasElement | null = null;
-    let raf = 0;
-    let last = 0;
+    let timer = 0;
+    let rand = (Math.random() * 0x7fffffff) | 1;
     let t = Math.random() * 100;
     let onScreen = false;
     let pointer: { x: number; y: number } | null = null;
@@ -70,6 +174,7 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
         g.fillText(RAMP[i], i * cw + cw / 2, ch / 2 + 1);
       }
       atlas = a;
+      gpu?.atlas(a);
     };
 
     const resize = () => {
@@ -83,6 +188,10 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
       canvas.width = cols * cw;
       canvas.height = rows * ch;
       heat = new Uint8Array(cols * rows);
+      glyphs = new Uint8Array(cols * rows);
+      top = rows;
+      drawnTop = rows;
+      gpu?.resize(cols, rows, cw, ch);
       // average decay per row so flames climb to roughly `reach` of the height
       decayRange = Math.max(1.2, ((MAX / Math.max(4, rows * reach)) * 2) + 1);
       buildAtlas();
@@ -106,6 +215,7 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
         const f = profile(x / cols);
         heat[base + x] = f > 0.28 ? Math.min(MAX, Math.round(f * MAX)) : 0;
       }
+      top = Math.min(top, rows - 1);
       if (pointer) {
         const px = Math.round(pointer.x);
         const py = Math.round(pointer.y);
@@ -114,38 +224,64 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
             const x = px + dx;
             if (x >= 0 && x < cols) heat[py * cols + x] = MAX - Math.abs(dx) * 6;
           }
+          top = Math.min(top, py);
         }
       }
     };
 
     const spreadFire = () => {
+      // Rows above `top` are cold, so they would only copy zeros upward.
+      const from = Math.max(1, top);
+      // xorshift32: one cheap random number per burning cell drives both the drift and the decay.
+      let s = rand;
       for (let x = 0; x < cols; x++) {
-        for (let y = 1; y < rows; y++) {
+        for (let y = from; y < rows; y++) {
           const src = y * cols + x;
           const h = heat[src];
           if (h === 0) {
             heat[src - cols] = 0;
             continue;
           }
-          let dx = x - ((Math.random() * 3) | 0) + 1;
+          s ^= s << 13;
+          s ^= s >>> 17;
+          s ^= s << 5;
+          let dx = x - ((s >>> 0) % 3) + 1;
           if (dx < 0) dx = 0;
           else if (dx >= cols) dx = cols - 1;
-          const d = (Math.random() * decayRange) | 0;
+          const d = ((((s >>> 8) & 0xffff) * decayRange) / 0x10000) | 0;
           heat[(y - 1) * cols + dx] = h > d ? h - d : 0;
         }
       }
+      rand = s;
+      // Heat climbs at most one row per tick, so the new top is at or just above the old one.
+      let next = from - 1;
+      while (next < rows) {
+        const row = next * cols;
+        let x = 0;
+        while (x < cols && heat[row + x] === 0) x++;
+        if (x < cols) break;
+        next++;
+      }
+      top = next;
     };
 
     const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Only the band that held or now holds flames has changed.
+      const from = Math.min(drawnTop, top);
+      drawnTop = top;
+      if (gpu) {
+        for (let i = from * cols; i < glyphs.length; i++) glyphs[i] = LEVEL[heat[i]];
+        gpu.draw(glyphs);
+        return;
+      }
+      if (!ctx) return;
+      ctx.clearRect(0, from * ch, canvas.width, canvas.height - from * ch);
       if (!atlas) return;
-      for (let y = 0; y < rows; y++) {
+      for (let y = top; y < rows; y++) {
         const row = y * cols;
         for (let x = 0; x < cols; x++) {
-          const h = heat[row + x];
-          if (h < 3) continue;
-          const lvl = Math.min(levels - 1, 1 + (((h / MAX) * (levels - 1)) | 0));
-          ctx.drawImage(atlas, lvl * cw, 0, cw, ch, x * cw, y * ch, cw, ch);
+          const glyph = LEVEL[heat[row + x]];
+          if (glyph) ctx.drawImage(atlas, glyph * cw, 0, cw, ch, x * cw, y * ch, cw, ch);
         }
       }
     };
@@ -158,25 +294,24 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
 
     function still() {
       heat.fill(0);
+      top = rows;
       for (let i = 0; i < rows * 2; i++) tick();
       draw();
     }
 
-    const loop = (now: number) => {
-      raf = requestAnimationFrame(loop);
-      if (now - last < FRAME_MS) return;
-      last = now;
+    const loop = () => {
+      timer = window.setTimeout(loop, FRAME_MS);
       tick();
       draw();
     };
 
     const start = () => {
-      if (raf || reduceQuery.matches || !onScreen || document.hidden) return;
-      raf = requestAnimationFrame(loop);
+      if (timer || reduceQuery.matches || !onScreen || document.hidden) return;
+      loop();
     };
     const stop = () => {
-      cancelAnimationFrame(raf);
-      raf = 0;
+      clearTimeout(timer);
+      timer = 0;
     };
 
     const io = new IntersectionObserver(([entry]) => {
@@ -198,6 +333,17 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
     };
     const onLeave = () => (pointer = null);
 
+    // The GPU can drop the context (driver reset, memory pressure); rebuild it when it returns.
+    const onContextLost = (e: Event) => {
+      e.preventDefault();
+      stop();
+    };
+    const onContextRestored = () => {
+      gpu = gl && createGlRenderer(gl);
+      resize();
+      start();
+    };
+
     resize();
     document.fonts?.ready.then(buildAtlas);
     io.observe(canvas);
@@ -205,6 +351,8 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
     document.addEventListener("visibilitychange", onVisibility);
     reduceQuery.addEventListener("change", onMotion);
     darkQuery.addEventListener("change", buildAtlas);
+    canvas.addEventListener("webglcontextlost", onContextLost);
+    canvas.addEventListener("webglcontextrestored", onContextRestored);
     if (interactive) {
       host.addEventListener("pointermove", onMove, { passive: true });
       host.addEventListener("pointerleave", onLeave);
@@ -217,6 +365,8 @@ export default function AsciiFire({ className, reach = 0.6, spread = "wide", cel
       document.removeEventListener("visibilitychange", onVisibility);
       reduceQuery.removeEventListener("change", onMotion);
       darkQuery.removeEventListener("change", buildAtlas);
+      canvas.removeEventListener("webglcontextlost", onContextLost);
+      canvas.removeEventListener("webglcontextrestored", onContextRestored);
       host.removeEventListener("pointermove", onMove);
       host.removeEventListener("pointerleave", onLeave);
     };

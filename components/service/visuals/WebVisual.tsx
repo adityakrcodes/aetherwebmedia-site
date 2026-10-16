@@ -118,7 +118,7 @@ export default function WebVisual() {
           <Layer
             show={a === 3}
             hidden="translate-x-full"
-            className="inset-y-0 right-0 w-[62%] border-l border-ember-line bg-furnace/95 p-4 backdrop-blur"
+            className="inset-y-0 right-0 w-[62%] border-l border-ember-line bg-furnace/95 p-4"
           >
             <pre className="font-mono text-[10px] leading-[1.7] text-ember-2 sm:text-[11px]">
               {[
@@ -147,7 +147,7 @@ export default function WebVisual() {
           </Layer>
 
           {/* 4. Launch checks */}
-          <Layer show={a >= 4} className="bottom-4 right-4 rounded-xl bg-furnace/95 p-3 ring-1 ring-ember-line backdrop-blur">
+          <Layer show={a >= 4} className="bottom-4 right-4 rounded-xl bg-furnace/95 p-3 ring-1 ring-ember-line">
             <div className="flex gap-3">
               {["Speed", "A11y", "Best", "SEO"].map((label, i) => (
                 <div key={label} className="flex flex-col items-center gap-1.5">
@@ -174,7 +174,7 @@ export default function WebVisual() {
           </Layer>
 
           {/* 5. Growth */}
-          <Layer show={a >= 5} className="left-4 top-4 w-44 rounded-xl bg-furnace/95 p-3 ring-1 ring-ember-line backdrop-blur">
+          <Layer show={a >= 5} className="left-4 top-4 w-44 rounded-xl bg-furnace/95 p-3 ring-1 ring-ember-line">
             <div className="flex items-center justify-between text-[11px] text-ember-2">
               Visitors <IconTrendingUp size={14} className="text-ember" />
             </div>

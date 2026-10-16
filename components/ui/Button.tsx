@@ -12,6 +12,7 @@ const base =
 /**
  * The one primary CTA on the site. Opens the Cal.com modal, or the booking page without JS.
  * `tone="ember"` is for dark stages, `tone="ink"` for the paper canvas.
+ * Its ember pill only moves on hover: a loop that is always on screen keeps the browser rendering every frame.
  */
 export function BookCall({
   tone = "ink",
@@ -40,7 +41,7 @@ export function BookCall({
       )}
     >
       <span className="text-[2.35rem] leading-none transition-transform duration-500 ease-expo group-hover:scale-110">
-        <EmberPill />
+        <EmberPill still />
       </span>
       {label}
     </a>

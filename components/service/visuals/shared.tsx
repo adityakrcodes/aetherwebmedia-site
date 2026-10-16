@@ -11,7 +11,7 @@ export function Canvas({ children, className }: { children: React.ReactNode; cla
   );
 }
 
-/** A layer that eases in when `show` is true. */
+/** A layer that eases in when `show` is true. Animations inside it are paused while it is hidden. */
 export function Layer({
   show,
   className,
@@ -28,6 +28,7 @@ export function Layer({
   return (
     <div
       style={style}
+      data-paused={show ? undefined : ""}
       className={cn(
         "absolute transition-[opacity,transform,filter] duration-700 ease-expo",
         show ? "opacity-100" : cn("pointer-events-none opacity-0", hidden),

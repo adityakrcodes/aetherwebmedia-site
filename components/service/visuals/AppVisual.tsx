@@ -77,7 +77,7 @@ export default function AppVisual() {
           </Layer>
 
           {/* 3. push notification + payment sheet */}
-          <Layer show={a === 3} hidden="-translate-y-8" className="inset-x-2 top-7 z-20 flex items-center gap-2 rounded-xl bg-furnace-3/95 p-2.5 ring-1 ring-ember-line backdrop-blur">
+          <Layer show={a === 3} hidden="-translate-y-8" className="inset-x-2 top-7 z-20 flex items-center gap-2 rounded-xl bg-furnace-3/95 p-2.5 ring-1 ring-ember-line">
             <span className="grid size-7 place-items-center rounded-lg bg-ember text-furnace">
               <IconBell size={14} />
             </span>

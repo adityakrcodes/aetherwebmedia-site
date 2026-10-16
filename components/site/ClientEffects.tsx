@@ -22,6 +22,7 @@ function loadCal() {
  * Site-wide behaviour that needs the browser:
  * - any link with `data-cal="team/event"` opens the Cal.com booking modal (falls back to the plain link)
  * - any element with `data-reveal` fades up when it scrolls into view
+ * - any element with `data-anim` only runs its CSS animations while it is on screen
  */
 export default function ClientEffects() {
   const pathname = usePathname();
@@ -67,6 +68,26 @@ export default function ClientEffects() {
         }
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [pathname]);
+
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>("[data-anim]");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((el) => (el.dataset.on = ""));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) el.dataset.on = "";
+          else delete el.dataset.on;
+        }
+      },
+      { rootMargin: "120px 0px" },
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();

@@ -126,7 +126,8 @@ export default function SoftwareVisual() {
                       key={card}
                       className={cn(
                         "rounded-md bg-furnace-3 px-2 py-1.5 text-[11px]",
-                        c === 1 && "sprint-card ring-1 ring-ember/40",
+                        // the ring only shows when the glow animation is off
+                        c === 1 && "sprint-card motion-reduce:ring-1 motion-reduce:ring-ember/40",
                       )}
                       style={{ animationDelay: `${k * 200}ms` }}
                     >

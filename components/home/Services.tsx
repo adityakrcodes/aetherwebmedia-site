@@ -27,7 +27,7 @@ const moreStyles: Record<string, { card: string; offset: string; art: React.Reac
     card: "bg-furnace-2 text-ember",
     offset: "lg:mt-20",
     art: (
-      <div className="streaks">
+      <div data-anim className="streaks">
         <i />
         <i />
         <i />
@@ -101,7 +101,7 @@ export default function Services() {
               </div>
             ) : (
               <div aria-hidden className="absolute inset-0 -z-10">
-                <div className="streaks opacity-70">
+                <div data-anim className="streaks opacity-70">
                   <i />
                   <i />
                   <i />

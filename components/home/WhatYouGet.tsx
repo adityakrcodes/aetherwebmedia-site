@@ -59,7 +59,7 @@ export default function WhatYouGet() {
         What you get <span className="text-ink-3">when you work with us.</span>
       </h2>
 
-      <div className="mt-14 grid gap-3 md:grid-cols-6">
+      <div data-anim className="mt-14 grid gap-3 md:grid-cols-6">
         {/* Built to convert: growth bars */}
         <Card
           className="md:col-span-3 lg:col-span-2"
@@ -126,30 +126,27 @@ export default function WhatYouGet() {
           title="Scales as you grow"
           body="Clean, typed code and solid hosting that keep up with your traffic and your team."
         >
-          <div aria-hidden className="relative h-44">
+          <div aria-hidden className="relative h-44 [container-type:size]">
             <div className="absolute inset-x-0 top-1/2 flex justify-between font-mono text-[11px] text-ember-3/60">
               {["10", "100", "1k", "10k", "100k"].map((n) => (
                 <span key={n}>{n}</span>
               ))}
             </div>
-            <svg viewBox="0 0 300 170" className="absolute inset-0 h-full w-full overflow-visible">
-              <path
-                d="M8 162 C 70 150, 96 140, 128 118 S 168 96, 196 74 S 250 30, 292 6"
-                fill="none"
-                stroke="currentColor"
-                strokeOpacity="0.35"
-                strokeWidth="1.5"
-              />
-              <path
-                className="comet"
-                d="M8 162 C 70 150, 96 140, 128 118 S 168 96, 196 74 S 250 30, 292 6"
-                fill="none"
-                stroke="white"
-                strokeWidth="7"
-                strokeLinecap="round"
-                pathLength={100}
-              />
-            </svg>
+            {/* The curve's 300x170 box, fitted like the SVG's default "meet", so the comet can move across it in % */}
+            <div className="absolute left-1/2 top-1/2 h-[min(100cqh,100cqw*170/300)] w-[min(100cqw,100cqh*300/170)] -translate-x-1/2 -translate-y-1/2">
+              <svg viewBox="0 0 300 170" className="absolute inset-0 h-full w-full overflow-visible">
+                <path
+                  d="M8 162 C 70 150, 96 140, 128 118 S 168 96, 196 74 S 250 30, 292 6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeOpacity="0.35"
+                  strokeWidth="1.5"
+                />
+              </svg>
+              <span className="comet absolute inset-0">
+                <i />
+              </span>
+            </div>
           </div>
         </Card>
 

@@ -8,7 +8,7 @@ import { services } from "@/lib/services";
 export default function Header() {
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
-      <div className="pointer-events-auto mx-auto flex h-14 max-w-[1120px] items-center justify-between gap-4 rounded-full border border-line bg-paper/90 pl-4 pr-1.5 shadow-[0_8px_30px_-18px_rgb(0_0_0/0.35)] backdrop-blur-xl backdrop-saturate-150 sm:pl-5">
+      <div className="pointer-events-auto mx-auto flex h-14 max-w-[1120px] items-center justify-between gap-4 rounded-full border border-line bg-paper pl-4 pr-1.5 shadow-[0_8px_30px_-18px_rgb(0_0_0/0.35)] sm:pl-5">
         <Link href="/" className="flex items-center gap-2.5" aria-label={`${site.name} home`}>
           <Mark className="h-6" />
           <span className="text-[0.95rem] font-semibold tracking-[-0.02em]">{site.short}</span>
