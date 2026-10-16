@@ -155,15 +155,15 @@ export function Included({ s }: { s: Service }) {
 
 export function Plans({ s }: { s: Service }) {
   return (
-    <section id="pricing" aria-labelledby="plans-heading" className="container-x pb-28 md:pb-40">
+    <section id="packages" aria-labelledby="plans-heading" className="container-x pb-28 md:pb-40">
       <h2 id="plans-heading" data-reveal className="max-w-3xl text-[clamp(2.2rem,4.6vw,4.25rem)] font-medium leading-[1] tracking-[-0.05em]">
         {s.plans ? (
           <>
-            Plans that start <span className="text-ink-3">where you are.</span>
+            Packages that start <span className="text-ink-3">where you are.</span>
           </>
         ) : (
           <>
-            Priced for <span className="text-ink-3">your scope.</span>
+            Shaped to <span className="text-ink-3">your scope.</span>
           </>
         )}
       </h2>
@@ -193,10 +193,6 @@ export function Plans({ s }: { s: Service }) {
                   {p.featured && <span className="chip chip-muted text-ember-2">Most chosen</span>}
                 </div>
                 <p className={cn("relative mt-3 leading-relaxed", p.featured ? "text-ember-2" : "text-ink-2")}>{p.summary}</p>
-                <p className="relative mt-8 flex items-baseline gap-2">
-                  <span className="text-5xl font-medium tracking-[-0.05em]">{p.price}</span>
-                  <span className={cn("text-sm", p.featured ? "text-ember-3" : "text-ink-3")}>starting</span>
-                </p>
                 <ul className={cn("relative mt-8 space-y-3 border-t pt-8", p.featured ? "border-ember-line" : "border-line")}>
                   {p.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-[0.95rem]">
@@ -213,7 +209,7 @@ export function Plans({ s }: { s: Service }) {
             ))}
           </ul>
           <p data-reveal className="mt-10 text-center text-sm text-ink-2">
-            Prices are starting points. Your proposal shows the exact scope and price before anything begins.
+            Every package is tailored after a free call. Your proposal sets out the exact scope and timeline before anything begins.
           </p>
         </>
       ) : (

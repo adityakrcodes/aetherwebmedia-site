@@ -87,7 +87,7 @@ export default function GrowthVisual() {
         <div className="col-span-3 rounded-xl bg-furnace-2 p-4 ring-1 ring-ember-line">
           <p className="font-mono text-[10px] text-ember-3">Sponsored, yourbrand.com</p>
           <p className="mt-1.5 text-sm font-medium">Get a quote in 24 hours</p>
-          <p className="mt-1 text-[11px] leading-snug text-ember-2">Clear pricing, fast turnaround and a team that picks up the phone.</p>
+          <p className="mt-1 text-[11px] leading-snug text-ember-2">Fast turnaround, honest advice and a team that picks up the phone.</p>
         </div>
         <div className="col-span-2 overflow-hidden rounded-xl bg-furnace-2 ring-1 ring-ember-line">
           <div className="relative aspect-square bg-furnace-3">

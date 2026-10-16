@@ -5,7 +5,6 @@ import Services from "@/components/home/Services";
 import WhatYouGet from "@/components/home/WhatYouGet";
 import Work from "@/components/home/Work";
 import Process from "@/components/home/Process";
-import Pricing from "@/components/home/Pricing";
 import Team from "@/components/home/Team";
 import Faq from "@/components/site/Faq";
 import { CtaStage } from "@/components/site/Stage";
@@ -21,7 +20,7 @@ const faqs = [
   },
   {
     q: "How much does a project cost?",
-    a: "Landing pages start at $500, software and mobile apps at $1,000. After a free call you get a written proposal with the exact scope, timeline and price.",
+    a: "Every project is quoted individually, based on its scope. After a free call you get a written proposal with the exact scope, timeline and cost before any work starts.",
   },
   {
     q: "How long does it take?",
@@ -50,7 +49,6 @@ export default function Home() {
       <WhatYouGet />
       <Work />
       <Process />
-      <Pricing />
       <Team />
       <Faq faqs={faqs} />
       <CtaStage />

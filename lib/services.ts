@@ -1,6 +1,6 @@
 /**
  * Every service page is generated from this file.
- * Prices come from the previous site. Timelines marked "typical" are estimates: adjust freely.
+ * Timelines marked "typical" are estimates: adjust freely.
  */
 
 export type IconKey =
@@ -35,7 +35,6 @@ export type VisualKey = "web" | "software" | "app" | "design" | "brand" | "growt
 
 export type Plan = {
   name: string;
-  price: string;
   summary: string;
   features: string[];
   bestFor: string;
@@ -80,12 +79,12 @@ export const services: Service[] = [
     summary: "Marketing sites, stores and web apps that load fast and turn visitors into customers.",
     metaTitle: "Web Development Agency | Fast websites that convert",
     metaDescription:
-      "Custom websites, landing pages, e-commerce stores and web apps built for speed, SEO and conversion. Starting at $500, launched in weeks.",
+      "Custom websites, landing pages, e-commerce stores and web apps built for speed, SEO and conversion. Launched in weeks.",
     headline: ["Websites that load fast", "and sell harder."],
     intro: "Custom marketing sites, stores and web apps, engineered for speed, search and conversion.",
     facts: [
-      { label: "Starting at", value: "$500" },
       { label: "Typical launch", value: "2-6 weeks" },
+      { label: "Previews", value: "Every week" },
       { label: "Code ownership", value: "100% yours" },
     ],
     builds: [
@@ -158,7 +157,6 @@ export const services: Service[] = [
     plans: [
       {
         name: "Landing page",
-        price: "$500",
         summary: "A sharp, fast single page for launches, campaigns and early-stage brands.",
         features: [
           "Built in Framer, Webflow or Next.js",
@@ -171,7 +169,6 @@ export const services: Service[] = [
       },
       {
         name: "Full web app",
-        price: "$1,000",
         summary: "A scalable web application for founders who need more than a website.",
         features: [
           "Custom web app (store, community, SaaS dashboard)",
@@ -185,7 +182,6 @@ export const services: Service[] = [
       },
       {
         name: "Custom build",
-        price: "$2,500",
         summary: "For complex ideas that need tailored workflows and room to scale.",
         features: [
           "Everything in Full web app",
@@ -230,13 +226,13 @@ export const services: Service[] = [
     summary: "SaaS products, internal tools and custom platforms, from first MVP to scale.",
     metaTitle: "Custom Software and SaaS MVP Development",
     metaDescription:
-      "SaaS MVPs, internal tools, customer portals and AI features built on clean, typed code you own. Usable MVP in 4-6 weeks, from $1,000.",
+      "SaaS MVPs, internal tools, customer portals and AI features built on clean, typed code you own. Usable MVP in 4-6 weeks.",
     headline: ["Software that ships,", "then keeps shipping."],
     intro: "SaaS MVPs, internal tools and custom platforms on clean, typed code your team can own and extend.",
     facts: [
-      { label: "Starting at", value: "$1,000" },
       { label: "Usable MVP", value: "4-6 weeks" },
       { label: "Demos", value: "Every week" },
+      { label: "Code ownership", value: "100% yours" },
     ],
     builds: [
       { icon: "rocket", title: "SaaS MVPs", body: "The smallest product that proves your idea with real, paying users." },
@@ -309,7 +305,6 @@ export const services: Service[] = [
     plans: [
       {
         name: "Finish your AI-built product",
-        price: "$1,000",
         summary: "You prototyped with AI tools. We turn it into a real, production-ready MVP.",
         features: [
           "Turn AI-generated prototypes into working SaaS",
@@ -321,7 +316,6 @@ export const services: Service[] = [
       },
       {
         name: "SaaS MVP",
-        price: "$2,000",
         summary: "Our most popular option: your SaaS MVP built from scratch.",
         features: [
           "Full-stack MVP tailored to your idea",
@@ -335,7 +329,6 @@ export const services: Service[] = [
       },
       {
         name: "Custom solution",
-        price: "$5,000",
         summary: "When you need capabilities well beyond an MVP and heavy customization.",
         features: [
           "Everything in SaaS MVP",
@@ -380,12 +373,12 @@ export const services: Service[] = [
     summary: "iOS and Android apps from one codebase, designed to feel native.",
     metaTitle: "Mobile App Development for iOS and Android",
     metaDescription:
-      "Cross-platform iOS and Android apps with native feel, solid backends and store submission handled. From prototype to App Store, starting at $1,000.",
+      "Cross-platform iOS and Android apps with native feel, solid backends and store submission handled. From prototype to App Store.",
     headline: ["Mobile apps people", "keep on their home screen."],
     intro: "Cross-platform iOS and Android apps with native feel, solid backends and a smooth path through store review.",
     facts: [
-      { label: "Starting at", value: "$1,000" },
       { label: "Platforms", value: "iOS and Android" },
+      { label: "Codebase", value: "One for both" },
       { label: "Store submission", value: "Handled" },
     ],
     outcomes: [
@@ -450,7 +443,6 @@ export const services: Service[] = [
     plans: [
       {
         name: "Starter app",
-        price: "$1,000",
         summary: "A functional first version for founders who need to get in front of users.",
         features: [
           "Mobile app with a clean UI",
@@ -463,7 +455,6 @@ export const services: Service[] = [
       },
       {
         name: "MVP app",
-        price: "$2,500",
         summary: "For startups validating with first users and investors.",
         features: [
           "User app and admin dashboard",
@@ -477,7 +468,6 @@ export const services: Service[] = [
       },
       {
         name: "Full cycle app",
-        price: "$4,500",
         summary: "A complete product for startups aiming to scale fast.",
         features: [
           "User app, business app and admin dashboard",
@@ -522,7 +512,7 @@ export const services: Service[] = [
     headline: ["Interfaces that make", "the next step obvious."],
     intro: "Product and web design grounded in research, tested with real users and handed off ready to build.",
     facts: [
-      { label: "Pricing", value: "Per project" },
+      { label: "Testing", value: "With real users" },
       { label: "Files", value: "Yours in Figma" },
       { label: "Handoff", value: "Developer ready" },
     ],
@@ -587,8 +577,8 @@ export const services: Service[] = [
     ],
     stack: ["Figma", "FigJam", "Framer", "Maze", "Notion", "Lottie"],
     quote: {
-      title: "Quoted per project",
-      body: "Design work varies a lot by scope. After a short call you get a written quote with a fixed price and timeline.",
+      title: "Scoped per project",
+      body: "Design work varies a lot by scope. After a short call you get a written proposal with a clear scope and timeline.",
       examples: ["Website design", "SaaS product design", "Mobile app design", "Design system", "UX audit"],
     },
     work: ["purple-night", "maestro", "quantumpay-app"],
@@ -624,7 +614,7 @@ export const services: Service[] = [
     headline: ["Brands people remember", "after one look."],
     intro: "Strategy, logo and identity systems that give your business a clear voice and a consistent look everywhere.",
     facts: [
-      { label: "Pricing", value: "Per project" },
+      { label: "Starts with", value: "Strategy" },
       { label: "Guidelines", value: "Included" },
       { label: "Source files", value: "All yours" },
     ],
@@ -689,8 +679,8 @@ export const services: Service[] = [
     ],
     stack: ["Figma", "Illustrator", "Photoshop", "After Effects", "Notion"],
     quote: {
-      title: "Quoted per project",
-      body: "A logo refresh and a full identity are very different projects. After a short call you get a written quote with a fixed price.",
+      title: "Scoped per project",
+      body: "A logo refresh and a full identity are very different projects. After a short call you get a written proposal with a clear scope and timeline.",
       examples: ["Logo and mark", "Full identity system", "Rebrand", "Brand guidelines", "Launch kit"],
     },
     faqs: [
@@ -725,7 +715,7 @@ export const services: Service[] = [
     headline: ["Marketing that shows up", "in your revenue."],
     intro: "Technical SEO, content and paid campaigns on Google and Meta, tracked from first click to closed deal.",
     facts: [
-      { label: "Pricing", value: "Per project" },
+      { label: "Measured in", value: "Leads and revenue" },
       { label: "Channels", value: "Search and social" },
       { label: "Reporting", value: "Monthly" },
     ],
@@ -790,8 +780,8 @@ export const services: Service[] = [
     ],
     stack: ["Google Ads", "Meta Ads", "Google Search Console", "Google Analytics", "Ahrefs", "Semrush", "Looker Studio"],
     quote: {
-      title: "Quoted per project",
-      body: "Marketing depends on your goals and ad budget. After a short call you get a plan and a fixed monthly fee in writing.",
+      title: "Scoped per project",
+      body: "Marketing depends on your goals and ad budget. After a short call you get a written plan with channels, targets and reporting.",
       examples: ["SEO audit", "Monthly SEO", "Google Ads management", "Meta Ads management", "Landing page CRO"],
     },
     faqs: [

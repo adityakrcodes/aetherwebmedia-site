@@ -59,14 +59,6 @@ export default async function ServicePage({ params }: Props) {
     description: s.metaDescription,
     url: `${site.url}/services/${s.slug}`,
     provider: { "@type": "ProfessionalService", name: site.name, url: site.url },
-    ...(s.plans && {
-      offers: s.plans.map((p) => ({
-        "@type": "Offer",
-        name: p.name,
-        price: p.price.replace(/[^0-9.]/g, ""),
-        priceCurrency: "USD",
-      })),
-    }),
   };
 
   return (
