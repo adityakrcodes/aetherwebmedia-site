@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aether Web Media
 
-## Getting Started
+Marketing site for Aether Web Media (formerly AKC Web Media). Next.js 15 App Router, Tailwind v4, deployed to Cloudflare Workers through OpenNext.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm dev        # local dev server
+pnpm build      # production build (all pages are prerendered)
+pnpm preview    # build for Cloudflare and serve the Worker locally
+pnpm deploy     # build and deploy to Cloudflare
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| What | Where |
+| --- | --- |
+| Service pages content (copy, steps, plans, FAQs) | `lib/services.ts` |
+| Site name, email, Cal.com link, socials, nav | `lib/site.ts` |
+| Design tokens (colors, radii, motion) | `app/globals.css` |
+| Home page sections | `components/home/` |
+| Service page sections | `components/service/ServiceSections.tsx` |
+| Scroll-driven process visual per service | `components/service/visuals/` |
+| ASCII fire, flame video, brand mark | `components/brand/` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Adding a service: add an entry to `services` in `lib/services.ts`. Its page, sitemap entry and footer link are generated from that. Pick an existing `visual` or add a new one in `components/service/visuals/` and register it in `app/services/[slug]/page.tsx`.
 
-## Learn More
+## Notes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Booking buttons are plain links to Cal.com with `data-cal`; the Cal.com embed only loads when someone hovers, focuses or clicks one.
+- The brand is monochrome on purpose. The flame lives in the ASCII fire canvas, the chrome flame video and the light streaks, not in color.
+- `open-next.config.ts` serves prerendered pages from Workers static assets. Keep it if you keep `dynamicParams = false` on service pages, or they will 404 on Cloudflare.
+- Old URLs (`/services/dev/web`, `/services/dev/saas`, `/services/dev/app`, `/services/design`, `/services/ad`) redirect in `next.config.ts`.

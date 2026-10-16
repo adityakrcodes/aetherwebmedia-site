@@ -1,0 +1,63 @@
+import {
+  IconAccessible,
+  IconBolt,
+  IconBrush,
+  IconChartBar,
+  IconCloud,
+  IconCode,
+  IconCompass,
+  IconCreditCard,
+  IconDevices,
+  IconEdit,
+  IconEye,
+  IconFilter,
+  IconFlask,
+  IconHandFinger,
+  IconMessageCircle,
+  IconRefresh,
+  IconRocket,
+  IconSearch,
+  IconShieldCheck,
+  IconSpeakerphone,
+  IconStack2,
+  IconTarget,
+  IconTrendingUp,
+  IconUsers,
+  IconWifi,
+  IconLayersSubtract,
+} from "@tabler/icons-react";
+import type { IconKey } from "@/lib/services";
+
+const map = {
+  bolt: IconBolt,
+  search: IconSearch,
+  target: IconTarget,
+  edit: IconEdit,
+  accessible: IconAccessible,
+  stack: IconStack2,
+  rocket: IconRocket,
+  chart: IconChartBar,
+  code: IconCode,
+  shield: IconShieldCheck,
+  credit: IconCreditCard,
+  cloud: IconCloud,
+  devices: IconDevices,
+  wifi: IconWifi,
+  hand: IconHandFinger,
+  refresh: IconRefresh,
+  users: IconUsers,
+  palette: IconBrush,
+  flask: IconFlask,
+  eye: IconEye,
+  compass: IconCompass,
+  message: IconMessageCircle,
+  layers: IconLayersSubtract,
+  speaker: IconSpeakerphone,
+  trend: IconTrendingUp,
+  filter: IconFilter,
+} satisfies Record<IconKey, unknown>;
+
+export function Icon({ name, size = 22, className }: { name: IconKey; size?: number; className?: string }) {
+  const C = map[name];
+  return <C size={size} stroke={1.5} className={className} aria-hidden />;
+}

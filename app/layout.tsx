@@ -1,111 +1,104 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono, Qwigley, Moon_Dance, Sedgwick_Ave, Poppins } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PerformanceMonitor from "@/components/PerformanceMonitor";
-import LenisProvider from "@/components/LenisProvider";
+import { site } from "@/lib/site";
+import Header from "@/components/site/Header";
+import Footer from "@/components/site/Footer";
+import ClientEffects from "@/components/site/ClientEffects";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aetherwebmedia.com";
-
-const geistSans = Geist({
+const geist = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap',
-  preload: true,
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap",
   preload: false,
-});
-
-const qwigley = Qwigley({
-  variable: "--font-qwigley",
-  subsets: ["latin"],
-  weight: "400",
-  display: 'swap',
-  preload: false,
-});
-
-const moonDance = Moon_Dance({
-  variable: "--font-moon-dance",
-  subsets: ["latin"],
-  weight: "400",
-  display: 'swap',
-  preload: false,
-});
-
-const sedgwickAve = Sedgwick_Ave({
-  variable: "--font-sedgwick-ave",
-  subsets: ["latin"],
-  weight: "400",
-  display: 'swap',
-  preload: false,
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: 'swap',
-  preload: true,
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: "Aether Web Media",
-  description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
-  keywords: "aetherwebmedia, akcwebmedia, saas, saas development, web development, app development, startup solution, custom software development, custom software solutions, custom software development company, custom software development services, custom software development agency",
-  authors: [{ name: "Aether Web Media" }],
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} | Websites and software that convert`,
+    template: `%s | ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.name }],
+  keywords: [
+    "web development agency",
+    "software development company",
+    "SaaS MVP development",
+    "custom software development",
+    "website design and development",
+    "app development",
+    "Aether Web Media",
+    "AKC Web Media",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: siteUrl,
-    title: "Aether Web Media",
-    description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
-    images: "/png/logo.png",
+    siteName: site.name,
+    url: site.url,
+    title: `${site.name} | Websites and software that convert`,
+    description: site.description,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aether Web Media",
-    description: "Empowering businesses of every scale with reliable, innovative, and scalable digital solutions delivered with speed, built on trust, and designed for growth.",
-    images: "/png/banner.png",
-  },
-  other: {
-    copyright: "Aether Web Media",
+    site: "@aetherwebmedia",
+    title: `${site.name} | Websites and software that convert`,
+    description: site.description,
+    images: ["/og.png"],
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f2f2f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
 
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: site.name,
+  alternateName: site.formerly,
+  url: site.url,
+  logo: `${site.url}/apple-icon.png`,
+  email: site.email,
+  description: site.description,
+  sameAs: site.socials.map((s) => s.href),
+  founder: [
+    { "@type": "Person", name: "Aditya Kumar" },
+    { "@type": "Person", name: "Nikhil Kumar" },
+  ],
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGM9KZVHR6"></script>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+      <body className="min-h-dvh font-sans antialiased">
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+        <ClientEffects />
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-DGM9KZVHR6');
-            `,
-          }}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
         />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${qwigley.variable} ${moonDance.variable} ${poppins.variable} ${sedgwickAve.variable} antialiased bg-neutral-950 text-neutral-200`}
-      >
-        <LenisProvider>
-          {children}
-        </LenisProvider>
-        {/* <PerformanceMonitor /> */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${site.gaId}`} strategy="lazyOnload" />
+        <Script id="ga" strategy="lazyOnload">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${site.gaId}');`}
+        </Script>
       </body>
     </html>
   );
