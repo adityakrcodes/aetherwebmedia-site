@@ -74,10 +74,6 @@ const organizationLd = {
   email: site.email,
   description: site.description,
   sameAs: site.socials.map((s) => s.href),
-  founder: [
-    { "@type": "Person", name: "Aditya Kumar" },
-    { "@type": "Person", name: "Nikhil Kumar" },
-  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

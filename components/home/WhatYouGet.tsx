@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   IconBrandFigma,
   IconBrandGithub,
@@ -10,7 +9,6 @@ import {
   IconBrandStripe,
   IconBrandVercel,
   IconBrandWordpress,
-  IconPointerFilled,
 } from "@tabler/icons-react";
 import { Mark } from "@/components/brand/Mark";
 import { cn } from "@/lib/utils";
@@ -182,28 +180,23 @@ export default function WhatYouGet() {
           </ul>
         </Card>
 
-        {/* Direct line to the founders */}
+        {/* Direct line to the builders: a project channel */}
         <Card
           className="md:col-span-6 lg:col-span-3"
           d={1}
           title="A direct line to the builders"
-          body="You talk to the founders who design and write your code. No account managers in between."
+          body="You work directly with the designers and engineers on your project. No middlemen in between."
         >
-          <div aria-hidden className="relative flex h-32 items-center">
-            <div className="flex -space-x-4">
-              {[
-                { src: "/images/team/aditya.webp", ring: "ring-ember" },
-                { src: "/images/team/nikhil.webp", ring: "ring-ember-2" },
-              ].map((p) => (
-                <span key={p.src} className={cn("relative size-24 overflow-hidden rounded-full ring-2 ring-offset-4 ring-offset-furnace", p.ring)}>
-                  <Image src={p.src} alt="" fill sizes="96px" className="object-cover grayscale" />
-                </span>
-              ))}
-              <span className="size-24 rounded-full border border-dashed border-ember-3/60" />
-            </div>
-            <div className="cursor-tag absolute left-[9.5rem] top-[4.4rem] flex items-start gap-0.5">
-              <IconPointerFilled size={18} className="-rotate-12 text-ember" />
-              <span className="mt-4 rounded-full bg-ember px-2.5 py-1 text-xs font-medium text-furnace">Aditya</span>
+          <div aria-hidden className="flex max-w-md flex-col gap-2 text-sm">
+            <p className="font-mono text-[11px] text-ember-3"># your-project</p>
+            <p className="max-w-[85%] self-start rounded-2xl rounded-bl-md bg-furnace-2 px-3.5 py-2.5 ring-1 ring-ember-line">
+              Can we move the signup form above the fold?
+            </p>
+            <div className="flex items-end gap-2 self-end">
+              <p className="rounded-2xl rounded-br-md bg-ember px-3.5 py-2.5 text-furnace">Done. It&apos;s on today&apos;s preview.</p>
+              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-furnace-2 ring-1 ring-ember-line">
+                <Mark className="h-4" />
+              </span>
             </div>
           </div>
         </Card>

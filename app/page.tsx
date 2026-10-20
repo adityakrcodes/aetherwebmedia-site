@@ -5,7 +5,7 @@ import Services from "@/components/home/Services";
 import WhatYouGet from "@/components/home/WhatYouGet";
 import Work from "@/components/home/Work";
 import Process from "@/components/home/Process";
-import Team from "@/components/home/Team";
+import Fit from "@/components/home/Fit";
 import Faq from "@/components/site/Faq";
 import { CtaStage } from "@/components/site/Stage";
 
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     q: "How do we work together?",
-    a: "You talk directly with the two founders. Expect a weekly preview link, a shared board of what is in progress and quick replies on email or chat.",
+    a: "You work directly with the designers and engineers on your project. Expect a weekly preview link, a shared board of what is in progress and quick replies on email or chat.",
   },
   {
     q: "What happens after launch?",
@@ -49,7 +49,7 @@ export default function Home() {
       <WhatYouGet />
       <Work />
       <Process />
-      <Team />
+      <Fit />
       <Faq faqs={faqs} />
       <CtaStage />
     </>

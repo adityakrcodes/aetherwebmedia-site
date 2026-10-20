@@ -435,23 +435,6 @@
   }
 }
 
-/* Bento: a teammate's cursor drifting over the avatars. */
-.cursor-tag {
-  animation: cursor-drift 6s ease-in-out infinite;
-}
-@keyframes cursor-drift {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  35% {
-    transform: translate(-58px, -14px);
-  }
-  65% {
-    transform: translate(34px, 8px);
-  }
-}
-
 /* Process visuals */
 /* The glow is a fixed shadow on a pseudo-element; fading its opacity avoids repainting a box-shadow each frame. */
 .sprint-card {

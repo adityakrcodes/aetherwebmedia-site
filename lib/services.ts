@@ -352,7 +352,7 @@ export const services: Service[] = [
       },
       {
         q: "How will I know how the project is going?",
-        a: "You get a working demo every week, a shared board with what is in progress, and a direct channel to the founders building your product.",
+        a: "You get a working demo every week, a shared board with what is in progress, and a direct channel to the engineers building your product.",
       },
       {
         q: "Can you work alongside my existing developers?",

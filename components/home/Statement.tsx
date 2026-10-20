@@ -3,6 +3,17 @@ import { EmberPill, Mark } from "@/components/brand/Mark";
 
 type Segment = string | React.ReactElement;
 
+const roles = [
+  "Product strategy",
+  "UI/UX design",
+  "Front-end",
+  "Back-end",
+  "Mobile",
+  "Brand design",
+  "SEO and growth",
+  "QA and testing",
+];
+
 /** Splits text segments into words that light up in sequence as the block scrolls past. */
 function LitText({ segments }: { segments: Segment[] }) {
   const total = segments.reduce((n, s) => n + (typeof s === "string" ? s.trim().split(/\s+/).length : 1), 0);
@@ -49,9 +60,17 @@ export default function Statement() {
               ]}
             />
           </p>
-          <p className="mt-10 max-w-sm text-sm leading-relaxed text-ink-2">
-            Formerly AKC Web Media. Founded by two engineers who still design and write every line themselves.
+          <p className="mt-10 max-w-md text-sm leading-relaxed text-ink-2">
+            Formerly AKC Web Media. Strategists, designers, engineers and marketers under one roof, with a specialist on
+            every part of your project.
           </p>
+          <ul aria-label="Who works on your project" className="mt-5 flex max-w-xl flex-wrap gap-2">
+            {roles.map((r) => (
+              <li key={r} className="rounded-full bg-paper-2 px-3.5 py-2 text-sm text-ink-2">
+                {r}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

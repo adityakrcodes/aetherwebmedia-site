@@ -46,8 +46,8 @@ export default function Footer() {
                 </li>
               ))}
             <li>
-              <Link href="/#team" className="text-ink-2 transition-colors hover:text-ink">
-                Team
+              <Link href="/#fit" className="text-ink-2 transition-colors hover:text-ink">
+                Who it's for
               </Link>
             </li>
           </ul>

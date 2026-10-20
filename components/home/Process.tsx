@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { IconCheck, IconLock, IconRefresh } from "@tabler/icons-react";
 import { Mark } from "@/components/brand/Mark";
 import { BookCall } from "@/components/ui/Button";
@@ -168,7 +167,7 @@ function TileHead({ left, right }: { left: React.ReactNode; right: React.ReactNo
 
 const WAVE = [38, 64, 100, 58, 82, 44, 72, 52, 90, 34, 60, 28];
 
-/** 1. A call with the founders, the agenda ticking off. */
+/** 1. A call with the studio, the agenda ticking off. */
 function CallTile() {
   return (
     <>
@@ -183,14 +182,10 @@ function CallTile() {
       />
       <div className="mt-3 grid grid-cols-2 gap-2">
         <div className="proc-fade rounded-xl bg-furnace p-2.5 ring-1 ring-ember-line" style={dl(0)}>
-          <div className="flex -space-x-2">
-            {["/images/team/aditya.webp", "/images/team/nikhil.webp"].map((src) => (
-              <span key={src} className="relative size-7 overflow-hidden rounded-full ring-2 ring-furnace">
-                <Image src={src} alt="" fill sizes="28px" className="object-cover grayscale" />
-              </span>
-            ))}
-          </div>
-          <p className="mt-2 text-[11px] text-ember-2">Founders</p>
+          <span className="grid size-7 place-items-center rounded-full bg-furnace-2 ring-1 ring-ember-line">
+            <Mark className="h-3.5" />
+          </span>
+          <p className="mt-2 text-[11px] text-ember-2">Aether team</p>
         </div>
         <div className="proc-fade rounded-xl bg-furnace p-2.5 ring-1 ring-ember-line" style={dl(120)}>
           <div className="flex h-7 items-center gap-[3px]">

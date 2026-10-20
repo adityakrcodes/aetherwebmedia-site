@@ -19,7 +19,7 @@ export default function Hero() {
               <span className="text-ember-3">forged to convert.</span>
             </h1>
             <p className="rise mt-7 max-w-md text-lg leading-relaxed text-ember-2" style={{ "--d": 1 } as React.CSSProperties}>
-              A two-founder studio designing and engineering fast websites, SaaS products and custom software for growing businesses.
+              A team of strategists, designers and engineers building fast websites, SaaS products and custom software for growing businesses.
             </p>
             <div className="rise mt-9 flex flex-wrap items-center gap-3" style={{ "--d": 2 } as React.CSSProperties}>
               <BookCall tone="ember" />
