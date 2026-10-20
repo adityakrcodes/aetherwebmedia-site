@@ -1,6 +1,6 @@
 import { IconCheck, IconLock, IconRefresh } from "@tabler/icons-react";
 import { Mark } from "@/components/brand/Mark";
-import { BookCall } from "@/components/ui/Button";
+import { StartProject } from "@/components/ui/Button";
 
 /* Per-element delay inside a step's sequence. */
 const dl = (ms: number, extra?: Record<string, string | number>) => ({ "--dl": `${ms}ms`, ...extra }) as React.CSSProperties;
@@ -145,9 +145,9 @@ export default function Process() {
 
         <div className="relative mt-4 flex flex-col items-start gap-5 rounded-[1.5rem] bg-furnace-2/70 p-5 ring-1 ring-inset ring-ember-line sm:flex-row sm:items-center sm:justify-between sm:p-6">
           <p className="max-w-md text-lg leading-snug text-ember-2">
-            <span className="text-ember">Move one is free.</span> Thirty minutes, and you leave with a clear next step.
+            <span className="text-ember">Move one is free.</span> Send a one-minute enquiry and we&apos;ll set up the call.
           </p>
-          <BookCall tone="ember" label="Book the free call" />
+          <StartProject tone="ember" label="Request the free call" />
         </div>
       </div>
     </section>

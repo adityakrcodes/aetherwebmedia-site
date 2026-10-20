@@ -16,7 +16,7 @@ pnpm deploy     # build and deploy to Cloudflare
 | What | Where |
 | --- | --- |
 | Service pages content (copy, steps, plans, FAQs) | `lib/services.ts` |
-| Site name, email, Cal.com link, socials, nav | `lib/site.ts` |
+| Site name, email, lead form endpoint and options, socials, nav | `lib/site.ts` |
 | Design tokens (colors, radii, motion) | `app/globals.css` |
 | Home page sections | `components/home/` |
 | Service page sections | `components/service/ServiceSections.tsx` |
@@ -27,7 +27,7 @@ Adding a service: add an entry to `services` in `lib/services.ts`. Its page, sit
 
 ## Notes
 
-- Booking buttons are plain links to Cal.com with `data-cal`; the Cal.com embed only loads when someone hovers, focuses or clicks one.
+- "Start a project" buttons are links to `#enquire` (the inline form in the closing stage) with `data-lead`; with JavaScript they open the same form in a modal (`components/site/LeadDialog.tsx`). The form posts to the Aether workspace lead form API. If you change the form's fields or options in the workspace, update `leadForm` in `lib/site.ts`.
 - The brand is monochrome on purpose. The flame lives in the ASCII fire canvas, the chrome flame video and the light streaks, not in color.
 - `open-next.config.ts` serves prerendered pages from Workers static assets. Keep it if you keep `dynamicParams = false` on service pages, or they will 404 on Cloudflare.
 - Old URLs (`/services/dev/web`, `/services/dev/saas`, `/services/dev/app`, `/services/design`, `/services/ad`) redirect in `next.config.ts`.

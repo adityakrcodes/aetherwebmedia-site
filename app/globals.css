@@ -500,6 +500,18 @@
   animation-delay: calc(var(--d, 0) * 90ms + 200ms);
 }
 
+/* Enquiry modal: rises in over a plain dimmed backdrop (no backdrop-filter, the fire keeps moving behind it). */
+.lead-dialog[open] {
+  animation: rise 0.6s var(--ease-expo);
+}
+.lead-dialog[open]::backdrop {
+  animation: fade 0.4s ease;
+}
+html:has(.lead-dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
 /* Scroll reveal, toggled by RevealObserver. Content stays visible without JS. */
 [data-reveal] {
   transition:

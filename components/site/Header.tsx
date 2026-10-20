@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
 import { Mark } from "@/components/brand/Mark";
-import { BookCall } from "@/components/ui/Button";
+import { StartProject } from "@/components/ui/Button";
 import MobileMenu from "./MobileMenu";
 import { services } from "@/lib/services";
 
@@ -30,7 +30,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-1.5">
-          <BookCall className="hidden h-11 text-sm sm:inline-flex" />
+          <StartProject className="hidden h-11 text-sm sm:inline-flex" />
           <MobileMenu
             nav={nav.map(({ label, href }) => ({ label, href }))}
             services={services.map(({ slug, name }) => ({ href: `/services/${slug}`, label: name }))}

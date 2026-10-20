@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import AsciiFire from "@/components/brand/AsciiFire";
-import { BookCall } from "@/components/ui/Button";
+import LeadForm from "@/components/site/LeadForm";
 import { site } from "@/lib/site";
 
 /**
@@ -59,34 +59,49 @@ export function GiantWord({ word, className }: { word: string; className?: strin
   );
 }
 
-/** Closing call to action used at the end of every page. */
+/**
+ * Closing call to action used at the end of every page, with the enquiry form inline.
+ * The form is `#enquire`, where every StartProject button lands without JavaScript.
+ */
 export function CtaStage({
   heading = "Ready to ship?",
-  body = "Tell us what you are building. After one call you get a clear plan, a timeline and a written quote.",
-  calLink = site.calLink,
+  body = "Leave your details and we reply within 24 hours. After one call you get a clear plan, a timeline and a written quote.",
+  service,
 }: {
   heading?: string;
   body?: string;
-  calLink?: string;
+  service?: string;
 }) {
   return (
-    <Stage spread="edges" reach={0.75} className="min-h-[86dvh]" labelledBy="cta-heading">
-      <div className="container-x flex min-h-[86dvh] flex-col items-center justify-center py-28 text-center">
-        <h2
-          id="cta-heading"
-          data-reveal
-          className="max-w-4xl text-[clamp(3rem,10vw,9.5rem)] font-medium leading-[0.9] tracking-[-0.055em]"
-        >
-          {heading}
-        </h2>
-        <p data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-8 max-w-md text-lg text-ember-2">
-          {body}
-        </p>
-        <div data-reveal style={{ "--d": 2 } as React.CSSProperties} className="mt-10 flex flex-col items-center gap-5 sm:flex-row">
-          <BookCall tone="ember" calLink={calLink} />
-          <a href={`mailto:${site.email}`} className="text-sm text-ember-2 underline-offset-4 transition-colors hover:text-ember hover:underline">
-            or email {site.email}
+    <Stage spread="edges" reach={0.75} labelledBy="cta-heading">
+      <div className="container-x grid min-h-[86dvh] items-center gap-12 py-24 sm:py-28 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-5">
+          <h2
+            id="cta-heading"
+            data-reveal
+            className="text-[clamp(3rem,8vw,7.5rem)] font-medium leading-[0.9] tracking-[-0.055em]"
+          >
+            {heading}
+          </h2>
+          <p data-reveal style={{ "--d": 1 } as React.CSSProperties} className="mt-8 max-w-sm text-lg text-ember-2">
+            {body}
+          </p>
+          <a
+            data-reveal
+            style={{ "--d": 2 } as React.CSSProperties}
+            href={`mailto:${site.email}`}
+            className="mt-8 inline-block text-sm text-ember-2 underline-offset-4 transition-colors hover:text-ember hover:underline"
+          >
+            Prefer email? {site.email}
           </a>
+        </div>
+        <div
+          id="enquire"
+          data-reveal
+          style={{ "--d": 1 } as React.CSSProperties}
+          className="rounded-card bg-furnace/95 p-6 ring-1 ring-inset ring-ember-line sm:p-8 lg:col-span-7 lg:p-10 xl:col-span-6 xl:col-start-7"
+        >
+          <LeadForm service={service} />
         </div>
       </div>
     </Stage>

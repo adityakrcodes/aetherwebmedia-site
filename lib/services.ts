@@ -55,7 +55,6 @@ export type Service = {
   headline: [string, string];
   intro: string;
   facts: { label: string; value: string }[];
-  calLink?: string;
   builds?: { icon: IconKey; title: string; body: string }[];
   outcomes: { icon: IconKey; title: string; body: string }[];
   processTitle: string;
@@ -516,7 +515,6 @@ export const services: Service[] = [
       { label: "Files", value: "Yours in Figma" },
       { label: "Handoff", value: "Developer ready" },
     ],
-    calLink: "aetherwebmedia/request-for-designing-service",
     outcomes: [
       { icon: "target", title: "Fewer drop-offs", body: "Flows designed around what users came to do, not what is easy to build." },
       { icon: "layers", title: "A real design system", body: "Reusable components and tokens, so every new screen stays consistent." },
@@ -618,7 +616,6 @@ export const services: Service[] = [
       { label: "Guidelines", value: "Included" },
       { label: "Source files", value: "All yours" },
     ],
-    calLink: "aetherwebmedia/request-for-branding-and-marketing-service",
     outcomes: [
       { icon: "eye", title: "Instantly recognisable", body: "A distinctive mark and visual language people connect to you." },
       { icon: "compass", title: "Clear positioning", body: "A sharp answer to who you are for and why you are different." },
@@ -719,7 +716,6 @@ export const services: Service[] = [
       { label: "Channels", value: "Search and social" },
       { label: "Reporting", value: "Monthly" },
     ],
-    calLink: "aetherwebmedia/request-for-advertising-service",
     outcomes: [
       { icon: "search", title: "Ranked for what matters", body: "Keywords chosen for buying intent, not vanity traffic." },
       { icon: "target", title: "Ads that pay back", body: "Campaigns structured around cost per lead and return on spend." },

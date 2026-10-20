@@ -6,6 +6,7 @@ import { site } from "@/lib/site";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import ClientEffects from "@/components/site/ClientEffects";
+import LeadDialog from "@/components/site/LeadDialog";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <LeadDialog />
         <ClientEffects />
         <script
           type="application/ld+json"

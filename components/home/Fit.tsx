@@ -1,5 +1,5 @@
 import { IconCheck, IconX } from "@tabler/icons-react";
-import { BookCall } from "@/components/ui/Button";
+import { StartProject } from "@/components/ui/Button";
 
 const fit = [
   "You need a site or product that brings in customers, not just one that looks good.",
@@ -53,7 +53,7 @@ export default function Fit() {
               ))}
             </ul>
             <div className="mt-auto pt-10">
-              <BookCall tone="ember" />
+              <StartProject tone="ember" />
             </div>
           </article>
 

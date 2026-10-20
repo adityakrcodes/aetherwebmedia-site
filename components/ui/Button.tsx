@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { IconArrowUpRight } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { calUrl, site } from "@/lib/site";
 import { EmberPill } from "@/components/brand/Mark";
 
 type Tone = "ink" | "ember";
@@ -10,27 +9,27 @@ const base =
   "group inline-flex h-12 items-center gap-3 whitespace-nowrap rounded-full text-[0.95rem] font-medium transition-[transform,background-color,color,box-shadow] duration-300 ease-expo active:scale-[0.98]";
 
 /**
- * The one primary CTA on the site. Opens the Cal.com modal, or the booking page without JS.
+ * The one primary CTA on the site. Opens the enquiry form in a modal (LeadDialog), or jumps to the
+ * inline form at the end of the page without JS. `service` pre-selects that service in the form.
  * `tone="ember"` is for dark stages, `tone="ink"` for the paper canvas.
  * Its ember pill only moves on hover: a loop that is always on screen keeps the browser rendering every frame.
  */
-export function BookCall({
+export function StartProject({
   tone = "ink",
-  calLink = site.calLink,
+  service,
   className,
-  label = "Book a call",
+  label = "Start a project",
 }: {
   tone?: Tone;
-  calLink?: string;
+  service?: string;
   className?: string;
   label?: string;
 }) {
   return (
     <a
-      href={calUrl(calLink)}
-      data-cal={calLink}
-      target="_blank"
-      rel="noopener"
+      href="#enquire"
+      data-lead={service ?? ""}
+      aria-haspopup="dialog"
       className={cn(
         base,
         "pl-1.5 pr-6 text-[0.95rem]",

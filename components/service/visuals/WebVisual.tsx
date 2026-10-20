@@ -126,7 +126,7 @@ export default function WebVisual() {
                 ["  return (", ""],
                 ["    <Hero", "text-ember"],
                 ['      title="Fast sites that sell"', ""],
-                ['      cta="Book a call"', ""],
+                ['      cta="Start a project"', ""],
                 ["    />", "text-ember"],
                 ["    <Features items={features} />", "text-ember"],
                 ["  );", ""],

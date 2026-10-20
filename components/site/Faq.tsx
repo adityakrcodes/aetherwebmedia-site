@@ -1,16 +1,15 @@
 import { IconPlus } from "@tabler/icons-react";
-import { BookCall } from "@/components/ui/Button";
-import { site } from "@/lib/site";
+import { StartProject } from "@/components/ui/Button";
 
 /** FAQ as native <details>, so it works without JavaScript. Also emits FAQPage structured data. */
 export default function Faq({
   faqs,
   heading = "Questions, answered.",
-  calLink = site.calLink,
+  service,
 }: {
   faqs: { q: string; a: string }[];
   heading?: string;
-  calLink?: string;
+  service?: string;
 }) {
   const ld = {
     "@context": "https://schema.org",
@@ -30,10 +29,10 @@ export default function Faq({
               {heading}
             </h2>
             <p data-reveal className="mt-6 max-w-sm text-ink-2">
-              Still unsure about something? Ask us directly. A call costs you nothing.
+              Still unsure about something? Leave your details and our team will get back to you within 24 hours.
             </p>
             <div data-reveal className="mt-8">
-              <BookCall calLink={calLink} />
+              <StartProject service={service} />
             </div>
           </div>
         </div>

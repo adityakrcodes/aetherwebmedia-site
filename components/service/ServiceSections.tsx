@@ -3,7 +3,7 @@ import { IconArrowUpRight, IconCheck } from "@tabler/icons-react";
 import type { Service } from "@/lib/services";
 import { services } from "@/lib/services";
 import { Stage, GiantWord } from "@/components/site/Stage";
-import { BookCall, GhostLink } from "@/components/ui/Button";
+import { StartProject, GhostLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Mark } from "@/components/brand/Mark";
 import { cn } from "@/lib/utils";
@@ -33,7 +33,7 @@ export function ServiceHero({ s }: { s: Service }) {
               {s.intro}
             </p>
             <div className="rise mt-9 flex flex-wrap items-center gap-3" style={{ "--d": 3 } as React.CSSProperties}>
-              <BookCall tone="ember" calLink={s.calLink} />
+              <StartProject tone="ember" service={s.name} />
               <GhostLink href="#process" tone="ember">
                 How we work
               </GhostLink>
@@ -203,7 +203,7 @@ export function Plans({ s }: { s: Service }) {
                 </ul>
                 <p className={cn("relative mt-8 text-sm", p.featured ? "text-ember-3" : "text-ink-3")}>Best for: {p.bestFor}</p>
                 <div className="relative mt-6 pt-2">
-                  <BookCall tone={p.featured ? "ember" : "ink"} calLink={s.calLink} className="w-full justify-start" />
+                  <StartProject tone={p.featured ? "ember" : "ink"} service={s.name} className="w-full justify-start" />
                 </div>
               </li>
             ))}
@@ -219,7 +219,7 @@ export function Plans({ s }: { s: Service }) {
               <p className="text-3xl font-medium tracking-[-0.04em]">{s.quote.title}</p>
               <p className="mt-4 max-w-md leading-relaxed text-ember-2">{s.quote.body}</p>
               <div className="mt-8">
-                <BookCall tone="ember" calLink={s.calLink} />
+                <StartProject tone="ember" service={s.name} />
               </div>
             </div>
             <div>

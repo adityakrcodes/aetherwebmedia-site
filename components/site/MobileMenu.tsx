@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { calUrl, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Item = { label: string; href: string };
@@ -71,14 +71,15 @@ export default function MobileMenu({ nav, services }: { nav: Item[]; services: I
                   </li>
                 ))}
               </ul>
+              {/* Opens the enquiry modal (LeadDialog) and closes the menu behind it. */}
               <a
-                href={calUrl()}
-                data-cal={site.calLink}
-                target="_blank"
-                rel="noopener"
+                href="#enquire"
+                data-lead=""
+                aria-haspopup="dialog"
+                onClick={() => setOpen(false)}
                 className="mt-10 flex h-14 items-center justify-center rounded-full bg-ink text-base font-medium text-paper"
               >
-                Book a call
+                Start a project
               </a>
               <a href={`mailto:${site.email}`} className="mt-4 block text-center text-sm text-ink-2">
                 {site.email}

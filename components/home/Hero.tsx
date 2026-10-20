@@ -1,6 +1,6 @@
 import { Stage, GiantWord } from "@/components/site/Stage";
 import FlameVideo from "@/components/brand/FlameVideo";
-import { BookCall, GhostLink } from "@/components/ui/Button";
+import { StartProject, GhostLink } from "@/components/ui/Button";
 import { preload } from "react-dom";
 
 export default function Hero() {
@@ -22,7 +22,7 @@ export default function Hero() {
               A team of strategists, designers and engineers building fast websites, SaaS products and custom software for growing businesses.
             </p>
             <div className="rise mt-9 flex flex-wrap items-center gap-3" style={{ "--d": 2 } as React.CSSProperties}>
-              <BookCall tone="ember" />
+              <StartProject tone="ember" />
               <GhostLink href="/services" tone="ember">
                 Explore services
               </GhostLink>

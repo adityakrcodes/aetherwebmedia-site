@@ -86,9 +86,9 @@ export default async function ServicePage({ params }: Props) {
       <Included s={s} />
       <Plans s={s} />
       {s.work && <Work items={s.work} heading="Recent work" />}
-      <Faq faqs={s.faqs} heading={`${s.name}, answered.`} calLink={s.calLink} />
+      <Faq faqs={s.faqs} heading={`${s.name}, answered.`} service={s.name} />
       <OtherServices current={s.slug} />
-      <CtaStage calLink={s.calLink} />
+      <CtaStage service={s.name} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
     </>
   );
