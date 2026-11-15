@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import AsciiFire from "@/components/brand/AsciiFire";
-import LeadForm from "@/components/site/LeadForm";
+import LeadInline from "@/components/site/LeadInline";
 import { site } from "@/lib/site";
 
 /**
@@ -61,7 +61,8 @@ export function GiantWord({ word, className }: { word: string; className?: strin
 
 /**
  * Closing call to action used at the end of every page, with the enquiry form inline.
- * The form is `#enquire`, where every StartProject button lands without JavaScript.
+ * The form is `#enquire`, where every StartProject button lands without JavaScript. It is the workspace
+ * form in its own mode (the chat when agentic), with the classic form server-rendered as the fallback.
  */
 export function CtaStage({
   heading = "Ready to ship?",
@@ -99,9 +100,9 @@ export function CtaStage({
           id="enquire"
           data-reveal
           style={{ "--d": 1 } as React.CSSProperties}
-          className="rounded-card bg-furnace/95 p-6 ring-1 ring-inset ring-ember-line sm:p-8 lg:col-span-7 lg:p-10 xl:col-span-6 xl:col-start-7"
+          className="scroll-mt-24 lg:col-span-7 xl:col-span-6 xl:col-start-7"
         >
-          <LeadForm service={service} />
+          <LeadInline service={service} />
         </div>
       </div>
     </Stage>
